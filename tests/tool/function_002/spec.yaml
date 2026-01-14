@@ -1,0 +1,20 @@
+# Copyright 2025 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+description: "Test function tools with advanced parameters: Pydantic models, defaults, and nullable fields."
+agent: tools_agent_004
+user_messages:
+  - text: "I need a round-trip flight from San Francisco to Tokyo, leaving March 15 and returning March 25. I prefer business class and direct flights only."
+  - text: "Great! Now calculate the cost for a base fare of $800 for just one passenger with carry-on only."
+  - text: "Also calculate another option: base fare $1200 for 2 passengers, with 2 checked bags each and travel insurance."

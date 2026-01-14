@@ -1,0 +1,234 @@
+id: a9e8dc04-ce9e-4717-8fae-9b306265cfc2
+app_name: tools_agent_009
+user_id: adk_conformance_test_user
+state: {}
+events:
+  - content:
+      parts:
+        - text: I need to reimburse $50 for meals.
+      role: user
+    invocation_id: e-bab19e5c-803f-4344-926d-649ad3b5635e
+    author: user
+    actions:
+      state_delta: {}
+    id: 5ef66314-fbe4-42c4-94e0-1573677fcffc
+    timestamp: 1762203717.242166
+  - content:
+      parts:
+        - thought_signature: Cq8CAePx_15p7o9rdTt0BQ0thz3xnH-bngDmMkDDrBJEX2zAVMhDalSrXvcBgeJFOkxSKbb7rqXsZ9D8NGWRntN3XIViFOhr_fkpd1ZjUnTASX0YWJTHzCIL5JcQ4wZP3r5oAV-DVMxJbd0Iwi8P2jM-Uu9YQfF5xRrZuMuDcKWzI6rcyJHv9fVHrR5-D-uho5SYoq6IIs8Hn3q3WWmEGKorMGkxxXBJXNsfu2XzjHTXMSs_P7DhV5eLfEOPaRISLMYQyNOiTklBshrf4b8Czn4ZPFfm2vuQpFdvTtUiHlONheTF5VjgxI1rZE9gBz5iuof6BsKDvvhbXr8_GqMhXYbIt-ENUYwGldMSLhi_HDVi25l1Uomf83s8wA3xqnL8h_WjK3vFPEfQeVCj5kD3696_
+          function_call:
+            id: adk-0e7aa2df-77cd-4c65-95ea-f6f1245388f3
+            args:
+              purpose: meals
+              amount: 50
+            name: reimburse
+      role: model
+    finish_reason: STOP
+    usage_metadata:
+      candidates_token_count: 7
+      candidates_tokens_details:
+        - modality: TEXT
+          token_count: 7
+      prompt_token_count: 189
+      prompt_tokens_details:
+        - modality: TEXT
+          token_count: 189
+      thoughts_token_count: 76
+      total_token_count: 272
+      traffic_type: ON_DEMAND
+    avg_logprobs: -1.093691689627511
+    invocation_id: e-bab19e5c-803f-4344-926d-649ad3b5635e
+    author: reimbursement_agent
+    long_running_tool_ids: []
+    id: 10e81062-cb22-48ce-99dc-e1afa8d0dc1b
+    timestamp: 1762203717.243641
+  - content:
+      parts:
+        - function_response:
+            id: adk-0e7aa2df-77cd-4c65-95ea-f6f1245388f3
+            name: reimburse
+            response:
+              status: ok
+      role: user
+    invocation_id: e-bab19e5c-803f-4344-926d-649ad3b5635e
+    author: reimbursement_agent
+    id: ca90a1f2-92e8-4d98-a489-6cdaf4451de5
+    timestamp: 1762203720.47892
+  - content:
+      parts:
+        - text: |
+            Your reimbursement for meals of $50 has been approved.
+      role: model
+    finish_reason: STOP
+    usage_metadata:
+      candidates_token_count: 13
+      candidates_tokens_details:
+        - modality: TEXT
+          token_count: 13
+      prompt_token_count: 201
+      prompt_tokens_details:
+        - modality: TEXT
+          token_count: 275
+      total_token_count: 214
+      traffic_type: ON_DEMAND
+    avg_logprobs: -0.3848752975463867
+    invocation_id: e-bab19e5c-803f-4344-926d-649ad3b5635e
+    author: reimbursement_agent
+    id: 300632ff-5c73-491b-ae9e-abef9946a7ee
+    timestamp: 1762203720.480611
+  - content:
+      parts:
+        - text: I need to reimburse $2000 for hotel and flight.
+      role: user
+    invocation_id: e-24a49dd1-ea58-4c40-902a-4aadf1400d02
+    author: user
+    actions:
+      state_delta: {}
+    id: eea53866-c141-4c0c-b71b-e57303d46fae
+    timestamp: 1762203722.168084
+  - content:
+      parts:
+        - thought_signature: CtACAePx_17FvzV3Q8gIPaKqQ2pbw-oSM4uokZ1VKtEEGAsnhRenzJx1FX29seEUiGlTpryuzO5GgPyfXw2ptgxJths5ZaZ5i6lVlVot-Q7gBpHIo7WAO_u_absXCNyCE8vH7d6GaZHg3TvjlY5N8Nm39irhtUxw8eYDR5nfLEtmE-JAG52QtYZdiVvIKDomwDRxmc3vj5UR0kzT1P1f8nxZbww4hhIf2_Ovt7ZGH_Nx6EPfUM-w1gDvLReeV6mMMJQJvhW7wbEKJrD8kk9KnVsht42sTzcxzkjWaAv5ZYxQdsVewjhNVn64Jp9SO4Q5IZvabJZEnHA5s8s1a40D5AGJARaVxeiXJI_bgJKFtrzUqWKE41KKjfYbL54d2nECNUapECtLfM_jzm3cVBeZQ-1sz55Y3lw_ULEDbTtQhJrWTQrrQ-v6AlF_MVwbHI0OQOvi
+          function_call:
+            id: adk-dcf1b657-c9f6-4d27-b5f8-f6591fbdff49
+            args:
+              purpose: hotel and flight
+              amount: 2000
+            name: ask_for_approval
+      role: model
+    finish_reason: STOP
+    usage_metadata:
+      candidates_token_count: 11
+      candidates_tokens_details:
+        - modality: TEXT
+          token_count: 11
+      prompt_token_count: 228
+      prompt_tokens_details:
+        - modality: TEXT
+          token_count: 302
+      thoughts_token_count: 90
+      total_token_count: 329
+      traffic_type: ON_DEMAND
+    avg_logprobs: -0.22174811363220215
+    invocation_id: e-24a49dd1-ea58-4c40-902a-4aadf1400d02
+    author: reimbursement_agent
+    long_running_tool_ids:
+      - adk-dcf1b657-c9f6-4d27-b5f8-f6591fbdff49
+    id: eb48dde8-2dd6-4f3c-bc6e-992d9ccf80f0
+    timestamp: 1762203722.180239
+  - content:
+      parts:
+        - function_response:
+            id: adk-dcf1b657-c9f6-4d27-b5f8-f6591fbdff49
+            name: ask_for_approval
+            response:
+              status: pending
+              amount: 2000
+              ticketId: reimbursement-ticket-001
+      role: user
+    invocation_id: e-24a49dd1-ea58-4c40-902a-4aadf1400d02
+    author: reimbursement_agent
+    id: 38e2a456-6c36-44bc-9628-ca17bad06e32
+    timestamp: 1762203724.180142
+  - content:
+      parts:
+        - text: |
+            Your reimbursement request for $2000 for hotel and flight has been submitted for manager approval. Your ticket ID is "reimbursement-ticket-001".
+      role: model
+    finish_reason: STOP
+    usage_metadata:
+      candidates_token_count: 35
+      candidates_tokens_details:
+        - modality: TEXT
+          token_count: 35
+      prompt_token_count: 258
+      prompt_tokens_details:
+        - modality: TEXT
+          token_count: 420
+      total_token_count: 293
+      traffic_type: ON_DEMAND
+    avg_logprobs: -0.22723971775599888
+    invocation_id: e-24a49dd1-ea58-4c40-902a-4aadf1400d02
+    author: reimbursement_agent
+    id: 7859a97d-90b9-4004-91d2-be23c4136389
+    timestamp: 1762203724.182019
+  - content:
+      parts:
+        - function_response:
+            id: adk-dcf1b657-c9f6-4d27-b5f8-f6591fbdff49
+            name: ask_for_approval
+            response:
+              status: approved
+              ticket_id: reimbursement-ticket-001
+      role: user
+    invocation_id: e-a8ba9297-c283-41a2-891e-79400320184a
+    author: user
+    actions:
+      state_delta: {}
+    id: 8d6b018a-8e81-4acc-b82c-2f1fa108f214
+    timestamp: 1762203725.30378
+  - content:
+      parts:
+        - text: |
+            Your reimbursement for hotel and flight of $2000 has been approved by your manager.
+            I will now proceed to reimburse the amount.
+        - function_call:
+            id: adk-798b3523-dca2-43ac-a67c-a98635d4890e
+            args:
+              amount: 2000
+              purpose: hotel and flight
+            name: reimburse
+      role: model
+    finish_reason: STOP
+    usage_metadata:
+      candidates_token_count: 39
+      candidates_tokens_details:
+        - modality: TEXT
+          token_count: 39
+      prompt_token_count: 257
+      prompt_tokens_details:
+        - modality: TEXT
+          token_count: 419
+      total_token_count: 296
+      traffic_type: ON_DEMAND
+    avg_logprobs: -0.10659206830538236
+    invocation_id: e-a8ba9297-c283-41a2-891e-79400320184a
+    author: reimbursement_agent
+    long_running_tool_ids: []
+    id: fb7dd8a5-af23-4133-b0c8-0f85c939ade8
+    timestamp: 1762203725.331415
+  - content:
+      parts:
+        - function_response:
+            id: adk-798b3523-dca2-43ac-a67c-a98635d4890e
+            name: reimburse
+            response:
+              status: ok
+      role: user
+    invocation_id: e-a8ba9297-c283-41a2-891e-79400320184a
+    author: reimbursement_agent
+    id: b110cb99-8559-485c-9195-974b17c51e10
+    timestamp: 1762203726.817099
+  - content:
+      parts:
+        - text: |
+            Your reimbursement for hotel and flight of $2000 has been approved.
+      role: model
+    finish_reason: STOP
+    usage_metadata:
+      candidates_token_count: 17
+      candidates_tokens_details:
+        - modality: TEXT
+          token_count: 17
+      prompt_token_count: 336
+      prompt_tokens_details:
+        - modality: TEXT
+          token_count: 498
+      total_token_count: 353
+      traffic_type: ON_DEMAND
+    avg_logprobs: -0.009892212117419523
+    invocation_id: e-a8ba9297-c283-41a2-891e-79400320184a
+    author: reimbursement_agent
+    id: 63e09e36-f43f-43c1-83d9-523773c0eff6
+    timestamp: 1762203726.818752
+last_update_time: 1762203726.818752

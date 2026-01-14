@@ -1,0 +1,54 @@
+id: c86069d5-c3b6-448a-b699-5a9df846cb70
+app_name: callback_agent_001
+user_id: adk_conformance_test_user
+state:
+  before_agent_callback_state_key: value1+value2
+events:
+  - content:
+      parts:
+        - text: What can you do?
+      role: user
+    invocation_id: e-ae2239cc-56c5-4680-a287-8f36bac8c765
+    author: user
+    actions:
+      state_delta: {}
+    id: 31e8a2a6-1d1c-4cc2-b803-246ecbe43d9e
+    timestamp: 1761249041.263406
+  - invocation_id: e-ae2239cc-56c5-4680-a287-8f36bac8c765
+    author: callback_agent_001
+    actions:
+      state_delta:
+        before_agent_callback_state_key: value1+value2
+    id: 74db0d8b-3a29-4426-8894-10fc5e5eeadb
+    timestamp: 1761249041.263743
+  - content:
+      parts:
+        - text: |-
+            Hello! I'm a helpful and friendly AI assistant. I can do quite a few things to assist you, including:
+
+            *   **Answer questions:** I can provide information on a wide range of topics.
+            *   **Perform simple tasks:** If you need help with things like calculations, definitions, or general knowledge lookups, I can assist.
+            *   **Engage in conversation:** I can chat with you and respond to your prompts.
+            *   **Generate text:** I can help write various types of content, from creative stories to summaries.
+
+            Essentially, I'm here to provide accurate and concise information and help you with your queries. How can I help you today?
+      role: model
+    finish_reason: STOP
+    usage_metadata:
+      candidates_token_count: 140
+      candidates_tokens_details:
+        - modality: TEXT
+          token_count: 140
+      prompt_token_count: 107
+      prompt_tokens_details:
+        - modality: TEXT
+          token_count: 107
+      thoughts_token_count: 28
+      total_token_count: 275
+      traffic_type: ON_DEMAND
+    avg_logprobs: -0.38012237548828126
+    invocation_id: e-ae2239cc-56c5-4680-a287-8f36bac8c765
+    author: callback_agent_001
+    id: c3f30a23-41e1-44f1-9aa6-3adc46cc9911
+    timestamp: 1761249041.264213
+last_update_time: 1761249041.264213

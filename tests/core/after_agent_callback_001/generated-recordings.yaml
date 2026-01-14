@@ -1,0 +1,58 @@
+recordings:
+  - user_message_index: 0
+    agent_name: callback_agent_003
+    llm_recording:
+      llm_request:
+        model: gemini-2.5-flash
+        contents:
+          - parts:
+              - text: What can you do?
+            role: user
+        config:
+          http_options:
+            headers:
+              x-goog-api-client: google-adk/1.17.0 gl-python/3.10.19
+              user-agent: google-adk/1.17.0 gl-python/3.10.19
+          system_instruction: |-
+            You are a helpful and friendly AI assistant.
+
+            Your goal is to provide accurate and concise responses to user queries.
+            You can answer questions on a wide range of topics, perform simple tasks if instructed, and engage in conversation.
+            Maintain a polite and helpful tone.
+            If a request is unclear, ask for clarification.
+
+
+            You are an agent. Your internal name is "callback_agent_003". The description about you is "A versatile assistant to help with various tasks and answer questions.".
+          labels:
+            adk_agent_name: callback_agent_003
+        live_connect_config:
+          input_audio_transcription: {}
+          output_audio_transcription: {}
+      llm_response:
+        content:
+          parts:
+            - text: |-
+                Hello! I'm a helpful and friendly AI assistant. I can do a variety of things, including:
+
+                *   **Answer questions:** I have access to a vast amount of information and can provide answers on many topics, from general knowledge to specific facts.
+                *   **Perform simple tasks:** I can help you with things like calculations, definitions, spelling and grammar checks, and summaries.
+                *   **Generate text:** I can write different kinds of creative content, like poems, code, scripts, musical pieces, email, letters, etc.
+                *   **Engage in conversation:** I can chat with you about various subjects and try to understand your needs.
+                *   **Provide information:** I can look up and present information on a wide range of subjects.
+
+                Just ask me anything you'd like, and I'll do my best to help!
+          role: model
+        finish_reason: STOP
+        usage_metadata:
+          candidates_token_count: 176
+          candidates_tokens_details:
+            - modality: TEXT
+              token_count: 176
+          prompt_token_count: 107
+          prompt_tokens_details:
+            - modality: TEXT
+              token_count: 107
+          thoughts_token_count: 28
+          total_token_count: 311
+          traffic_type: ON_DEMAND
+        avg_logprobs: -0.346061728217385

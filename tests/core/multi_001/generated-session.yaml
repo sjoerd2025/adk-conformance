@@ -1,0 +1,138 @@
+# Copyright 2025 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+id: 0d9ad8cc-cd06-44e1-ae4c-1c1b1e63347d
+app_name: multi_agent_001
+user_id: adk_conformance_test_user
+state: {}
+events:
+  - content:
+      parts:
+        - text: 'Help me solve this quadratic equation: x^2 + 5x + 6 = 0'
+      role: user
+    invocation_id: e-b8fb527e-50ec-4264-bf22-9f4d703b7dd3
+    author: user
+    actions:
+      state_delta: {}
+    id: 85004380-7ef0-4feb-a14d-2259a991221c
+    timestamp: 1764030540.697364
+  - model_version: gemini-2.5-flash
+    content:
+      parts:
+        - function_call:
+            id: adk-86273b4f-ffbe-4c9d-a0bd-246ff49372a1
+            args:
+              agent_name: math_tutor
+            name: transfer_to_agent
+          thought_signature: CvoCAePx_14-SV6piIC_POAjPzx9KcK855aRojE5z46nU9fA20OWevdmOz30OtiEL1hIRlmQlJT1IOR8Nb98bX3h_CTiSA5RXxz7DTO6C6Kg9NMA7rgaUkto9j0NH5fSV8EUFwazINWT0Hxa6no9l0d9-4Afj4z5mSt0FbjeiMPxjwbRQ-tVe-lKfdM7Udx0xNaGC-Br-RwEMwq12lQ_S2Lk-UlB4e8MzXDzB7qAFJoaeWqTUf771TKP4p-etQuESAdXK3SXOaSXVsjDPFeEKaikojJOQHXOl6GIbb8x5h6c8ZCPmFteU578H6mj8U9yyeKU8O5Jd3XDJ1ERkohUlWSkQ70hhkya7SCSQrbNihXlAJYj0fWwM_ZJ-7i0j5UZHFm85NLAZaXHXMz_Do4w6guqID0tcs--4vs07LoQsPrH8WXPzrb7sNcGpeUmNmqLd5ykuOZt4iVkgene4K1JFykLqhmrKGL3GO_it9KNTsIt7A36TcdKh0Q1DTTv
+      role: model
+    finish_reason: STOP
+    usage_metadata:
+      candidates_token_count: 11
+      candidates_tokens_details:
+        - modality: TEXT
+          token_count: 11
+      prompt_token_count: 508
+      prompt_tokens_details:
+        - modality: TEXT
+          token_count: 508
+      thoughts_token_count: 82
+      total_token_count: 601
+      traffic_type: ON_DEMAND
+    avg_logprobs: -0.4713189385154031
+    invocation_id: e-b8fb527e-50ec-4264-bf22-9f4d703b7dd3
+    author: study_buddy_coordinator
+    long_running_tool_ids: []
+    id: 7266456b-93f3-4895-9227-c06d55f7c850
+    timestamp: 1764030540.697824
+  - content:
+      parts:
+        - function_response:
+            id: adk-86273b4f-ffbe-4c9d-a0bd-246ff49372a1
+            name: transfer_to_agent
+            response:
+              result: null
+      role: user
+    invocation_id: e-b8fb527e-50ec-4264-bf22-9f4d703b7dd3
+    author: study_buddy_coordinator
+    actions:
+      transfer_to_agent: math_tutor
+    id: d0df8a0d-3c3e-4aef-a92f-d6f767bb95f3
+    timestamp: 1764030542.16231
+  - model_version: gemini-2.5-flash
+    content:
+      parts:
+        - text: |-
+            I can definitely help you with that! We'll solve the quadratic equation x^2 + 5x + 6 = 0 together.
+
+            Here's a step-by-step approach:
+
+            **Step 1: Understand the form of a quadratic equation**
+            A quadratic equation is typically written as ax^2 + bx + c = 0. In your equation, x^2 + 5x + 6 = 0, we have:
+            *   a = 1 (the coefficient of x^2)
+            *   b = 5 (the coefficient of x)
+            *   c = 6 (the constant term)
+
+            **Step 2: Factor the quadratic expression**
+            Our goal is to find two numbers that:
+            1.  Multiply to 'c' (which is 6)
+            2.  Add up to 'b' (which is 5)
+
+            Let's list pairs of numbers that multiply to 6:
+            *   1 and 6 (1 + 6 = 7, not 5)
+            *   2 and 3 (2 + 3 = 5, this is it!)
+            *   -1 and -6 (-1 + -6 = -7, not 5)
+            *   -2 and -3 (-2 + -3 = -5, not 5)
+
+            So, the two numbers are 2 and 3. This means we can factor the expression as:
+            (x + 2)(x + 3) = 0
+
+            **Step 3: Set each factor to zero and solve for x**
+            For the product of two factors to be zero, at least one of the factors must be zero. So, we have two possible cases:
+
+            **Case 1:**
+            x + 2 = 0
+            Subtract 2 from both sides:
+            x = -2
+
+            **Case 2:**
+            x + 3 = 0
+            Subtract 3 from both sides:
+            x = -3
+
+            **Step 4: State the solutions**
+            The solutions (also called roots) for the quadratic equation x^2 + 5x + 6 = 0 are x = -2 and x = -3.
+
+            Let me know if you'd like to try another one or have any questions about this process!
+          thought_signature: CuoEAePx_14qv2oUXmP_SzHIoSrv9edV3RsgqREoj39ccdzmkmoP5iUYoC21B0N5EYiVJN0MfUYe4Ws-iNpAPUpiXYFrx8tWIuJOw4HU6-eC31Lslp09QbXOKTzhHEwvCDVbRI8xGfaHiGLUHbVlRGeSsIK0sw9tAllgaCZODPTL7W79kgs7RRaKCcnpKL_c2FWCfHedBUrFjUvtD7NwRL-H6F-g8n713j5EWKmPAvC4lcHFSf6I_JfuMRE5ABnK9_Y1M22WfNlAk2o1c6QDPI32BSik58TJji6DLVs6Ow62052fP11_j6BcESBkyrGRbb9saqw0kmeAJ1s3mOHrou1Ga-hvQ4txEJBcwc4GekpxybWT2MZdnfPmD8E4bNxagg5ZUDbCHPTSEROgB59-UkY2VaS2dKjn1iERAABIT3lOM2Li5NsdtM0AKkLM2-SnXKRX6ZZCwiI9IDepSiY8rXaU5tBk1oXMEJ5WnMLhaLhGuAvDAEs6enqdUDlGuoMDK1esvE2ww3Vp5nLS_W6F_Z6BnQBZHRWCUiUoTZKb14it9qYjDk1H5JN6Yo0pH1MtxnkeFSmEkTOi2t1nWg4YNh5zWgAeVu81Lfcty2gT0QnfrzGinpzW-m1pnnmu8Dfu031mRH__kgujESiiXU43F4tsNhD568LZOrO4XzAIZWKI_A2Zg-vji2KTZLLnVrmtJqqsi4tNuDPjA2SOs650jBOsD2u-Xs6geO0_4GthPN_DoiWp017QhBSqEkYehIXVLN-hgKhoVRlPPHU4i36YujGdwJR2Eo_6hWmduEAdF4Grjlxj11uIb3oMDiNh
+      role: model
+    finish_reason: STOP
+    usage_metadata:
+      candidates_token_count: 487
+      candidates_tokens_details:
+        - modality: TEXT
+          token_count: 487
+      prompt_token_count: 550
+      prompt_tokens_details:
+        - modality: TEXT
+          token_count: 550
+      thoughts_token_count: 142
+      total_token_count: 1179
+      traffic_type: ON_DEMAND
+    avg_logprobs: -0.12373332468146417
+    invocation_id: e-b8fb527e-50ec-4264-bf22-9f4d703b7dd3
+    author: math_tutor
+    id: 43cf4cde-e4af-45cb-a783-6ae727618f77
+    timestamp: 1764030542.164619
+last_update_time: 1764030542.164619

@@ -1,0 +1,96 @@
+# Copyright 2025 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+id: 3f4b4445-6619-4466-b0c7-4d5a68adafcd
+app_name: sequential_agent_001
+user_id: adk_conformance_test_user
+state: {}
+events:
+  - content:
+      parts:
+        - text: I want to plan a trip to Paris from New York from August 1st to August 7th.
+      role: user
+    invocation_id: e-09e1cba8-4c14-4ae8-a833-fcb27e80ea41
+    author: user
+    actions:
+      state_delta: {}
+    id: 2f51e5b5-e094-4a9b-b949-56f62921c5c3
+    timestamp: 1761014497.635253
+  - content:
+      parts:
+        - text: 'Acknowledging Paris as your destination from our session, found flights: New York to Paris on August 1st.'
+      role: model
+    finish_reason: STOP
+    usage_metadata:
+      candidates_token_count: 23
+      candidates_tokens_details:
+        - modality: TEXT
+          token_count: 23
+      prompt_token_count: 105
+      prompt_tokens_details:
+        - modality: TEXT
+          token_count: 105
+      thoughts_token_count: 1850
+      total_token_count: 1978
+      traffic_type: ON_DEMAND
+    avg_logprobs: -40.90834377122962
+    invocation_id: e-09e1cba8-4c14-4ae8-a833-fcb27e80ea41
+    author: find_flights_agent
+    id: b0026e0b-b793-493b-9a32-a9b539fc4ea1
+    timestamp: 1761014497.635645
+  - content:
+      parts:
+        - text: Found hotels in Paris for 6 nights.
+      role: model
+    finish_reason: STOP
+    usage_metadata:
+      candidates_token_count: 9
+      candidates_tokens_details:
+        - modality: TEXT
+          token_count: 9
+      prompt_token_count: 138
+      prompt_tokens_details:
+        - modality: TEXT
+          token_count: 138
+      thoughts_token_count: 195
+      total_token_count: 342
+      traffic_type: ON_DEMAND
+    avg_logprobs: -4.766757541232639
+    invocation_id: e-09e1cba8-4c14-4ae8-a833-fcb27e80ea41
+    author: find_hotels_agent
+    id: 29a73208-16c5-4c39-9702-eec05cc377a7
+    timestamp: 1761014509.845367
+  - content:
+      parts:
+        - text: 'Trip Summary: Flights and Hotels booked for Paris.'
+      role: model
+    finish_reason: STOP
+    usage_metadata:
+      candidates_token_count: 10
+      candidates_tokens_details:
+        - modality: TEXT
+          token_count: 10
+      prompt_token_count: 144
+      prompt_tokens_details:
+        - modality: TEXT
+          token_count: 144
+      thoughts_token_count: 31
+      total_token_count: 185
+      traffic_type: ON_DEMAND
+    avg_logprobs: -0.75595121383667
+    invocation_id: e-09e1cba8-4c14-4ae8-a833-fcb27e80ea41
+    author: summarize_trip_agent
+    id: 68a786eb-676c-4164-9813-372d5b5a9dd7
+    timestamp: 1761014511.96874
+last_update_time: 1761014511.96874

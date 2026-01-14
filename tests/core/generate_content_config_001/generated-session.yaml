@@ -1,0 +1,54 @@
+# Copyright 2025 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+id: 77067ff6-bb32-4ff4-a610-53962a306558
+app_name: core_agent_002
+user_id: adk_conformance_test_user
+state: {}
+events:
+  - content:
+      parts:
+        - text: Write a very short,
+        - text: ' imaginative story about a color.'
+      role: user
+    invocation_id: e-ee260f8e-1be5-4126-b39e-5f5e2c76f27b
+    author: user
+    actions:
+      state_delta: {}
+    id: f61dc897-ac56-4e63-a14a-62bb78e3594e
+    timestamp: 1761014462.412711
+  - content:
+      parts:
+        - text: |-
+            Indigo was not a hue you saw, but one you felt. It was the whisper between the last golden ray of sunset and the first diamond glint of a star. Born in the sigh of twilight, it carried the day's forgotten dreams into the vast, inky canvas of night. Some said Indigo hummed the universe's oldest secrets, a silent vibration that painted the edges of consciousness, forever fleeting, forever profound.
+      role: model
+    finish_reason: STOP
+    usage_metadata:
+      candidates_token_count: 87
+      candidates_tokens_details:
+        - modality: TEXT
+          token_count: 87
+      prompt_token_count: 58
+      prompt_tokens_details:
+        - modality: TEXT
+          token_count: 58
+      thoughts_token_count: 153
+      total_token_count: 298
+      traffic_type: ON_DEMAND
+    avg_logprobs: -1.7619376346982758
+    invocation_id: e-ee260f8e-1be5-4126-b39e-5f5e2c76f27b
+    author: core_agent_002
+    id: c2425646-a97c-49b6-8c2c-e5a301512af7
+    timestamp: 1761014462.413186
+last_update_time: 1761014462.413186

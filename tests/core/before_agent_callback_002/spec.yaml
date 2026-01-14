@@ -1,0 +1,5 @@
+description: "Verify the before_agent_callback can shortcut an agent execution and provide a response."
+agent: callback_agent_002
+user_messages:
+  - text: "What can you do?"
+  - text: "Can you tell me a joke?"

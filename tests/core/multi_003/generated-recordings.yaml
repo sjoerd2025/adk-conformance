@@ -1,0 +1,621 @@
+# Copyright 2025 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+recordings:
+  - user_message_index: 0
+    agent_name: study_buddy_coordinator
+    llm_recording:
+      llm_request:
+        model: gemini-2.5-flash
+        contents:
+          - parts:
+              - text: Explain the Pythagorean theorem.
+            role: user
+        config:
+          http_options:
+            headers:
+              x-goog-api-client: google-adk/1.19.0 gl-python/3.12.8
+              user-agent: google-adk/1.19.0 gl-python/3.12.8
+          system_instruction: |
+            You are a Study Buddy Coordinator that helps students with their homework and study questions.
+
+            You have access to three specialized tutor agents:
+            - math_tutor: For mathematics, algebra, geometry, calculus, statistics
+            - science_tutor: For physics, chemistry, biology, earth science
+            - history_tutor: For history, geography, social studies, historical events
+
+            Your responsibilities:
+            1. Understand what subject(s) the student needs help with
+            2. Delegate to the appropriate tutor agent(s)
+            3. If a question involves multiple subjects, delegate to each relevant tutor
+            4. Combine the responses from the tutors into a helpful answer for the student
+
+            Always be encouraging and supportive in your responses.
+
+
+            You are an agent. Your internal name is "study_buddy_coordinator". The description about you is "Study coordinator that delegates questions to subject-specific tutors.".
+
+
+            You have a list of other agents to transfer to:
+
+
+            Agent name: math_tutor
+            Agent description: Mathematics tutor specializing in math problems and concepts.
+
+
+            Agent name: science_tutor
+            Agent description: Science tutor specializing in physics, chemistry, and biology.
+
+
+            Agent name: history_tutor
+            Agent description: History tutor specializing in historical events and social studies.
+
+
+            If you are the best to answer the question according to your description,
+            you can answer it.
+
+            If another agent is better for answering the question according to its
+            description, call `transfer_to_agent` function to transfer the question to that
+            agent. When transferring, do not generate any text other than the function
+            call.
+
+            **NOTE**: the only available agents for `transfer_to_agent` function are
+            `history_tutor`, `math_tutor`, `science_tutor`.
+          tools:
+            - function_declarations:
+                - description: "Transfer the question to another agent.\n\n  This tool hands off control to another agent when it's more suitable to\n  answer the user's question according to the agent's description.\n\n  Note:\n    For most use cases, you should use TransferToAgentTool instead of this\n    function directly. TransferToAgentTool provides additional enum constraints\n    that prevent LLMs from hallucinating invalid agent names.\n\n  Args:\n    agent_name: the agent name to transfer to.\n  "
+                  name: transfer_to_agent
+                  parameters:
+                    properties:
+                      agent_name:
+                        enum:
+                          - math_tutor
+                          - science_tutor
+                          - history_tutor
+                        type: STRING
+                    required:
+                      - agent_name
+                    type: OBJECT
+                  response:
+                    type: 'NULL'
+          labels:
+            adk_agent_name: study_buddy_coordinator
+        live_connect_config:
+          input_audio_transcription: {}
+          output_audio_transcription: {}
+      llm_response:
+        model_version: gemini-2.5-flash
+        content:
+          parts:
+            - function_call:
+                args:
+                  agent_name: math_tutor
+                name: transfer_to_agent
+              thought_signature: CooDAePx_15V53EnYLoMDWCz-sg0x1MnstZ9CFU0H0Fl1XsISgZB2ZdXte4zrH8RDoiasaPnGoay9yWUv-Ow8h58k1cEM1QRKexCxD6EQtp1kDCmy565tVojuizDmgYEDdc0gXsB1S3VROC_XW4d9ZloH1w0O4T_v7WdULTQBqtBxxBcQlW5JF7aToBGywf4NFmKZ2ZjR0qqsl6Qxc1OhhGtN8csHRiWBnorSDlFAtcvPoR981T3NQ_NcH6q9zi4GB0xZ0smCo9_ISh4qm739JoNPkj5VqUzSQBqpE45nkzgjI8WN0xiaM6_KpjaXZ75Z_dK5q71F6lmHWVVdKj23yVEhwagtPlY6khTXG6rYb9V5nV9f0neLvgxB0yeu9GVi04vCPHy9gQZBI5zTy6bs9aWDVqpKDy9REO34_n8Q8w57cOo-agznNJszegfNq4hMROsYLY-luzGSFhp7IyjQj2euFtu8ZpAm-cCqlU98RdGvQOSwgcfk-JKS86kVunWQYA_8jDQKEXfHDpl-g==
+          role: model
+        finish_reason: STOP
+        usage_metadata:
+          candidates_token_count: 11
+          candidates_tokens_details:
+            - modality: TEXT
+              token_count: 11
+          prompt_token_count: 493
+          prompt_tokens_details:
+            - modality: TEXT
+              token_count: 493
+          thoughts_token_count: 84
+          total_token_count: 588
+          traffic_type: ON_DEMAND
+        avg_logprobs: -0.7127666039900347
+  - user_message_index: 0
+    agent_name: study_buddy_coordinator
+    tool_recording:
+      tool_call:
+        id: adk-607b3ffb-51cf-4a9f-8d31-51d533fa4422
+        args:
+          agent_name: math_tutor
+        name: transfer_to_agent
+      tool_response:
+        id: adk-607b3ffb-51cf-4a9f-8d31-51d533fa4422
+        name: transfer_to_agent
+        response:
+          result: null
+  - user_message_index: 0
+    agent_name: math_tutor
+    llm_recording:
+      llm_request:
+        model: gemini-2.5-flash
+        contents:
+          - parts:
+              - text: Explain the Pythagorean theorem.
+            role: user
+          - parts:
+              - text: 'For context:'
+              - text: |-
+                  [study_buddy_coordinator] called tool `transfer_to_agent` with parameters: {'agent_name': 'math_tutor'}
+            role: user
+          - parts:
+              - text: 'For context:'
+              - text: |-
+                  [study_buddy_coordinator] `transfer_to_agent` tool returned result: {'result': None}
+            role: user
+        config:
+          http_options:
+            headers:
+              x-goog-api-client: google-adk/1.19.0 gl-python/3.12.8
+              user-agent: google-adk/1.19.0 gl-python/3.12.8
+          system_instruction: |
+            You are a Math Tutor specialized in helping students with mathematics.
+
+            Your expertise includes:
+            - Arithmetic and basic operations
+            - Algebra and equations
+            - Geometry and shapes
+            - Calculus and derivatives
+            - Statistics and probability
+
+            When helping students:
+            1. Break down complex problems into simple steps
+            2. Explain the reasoning behind each step
+            3. Provide clear examples
+            4. Be patient and encouraging
+
+            Focus ONLY on mathematics-related questions. For other subjects, indicate that you specialize in math.
+
+
+            You are an agent. Your internal name is "math_tutor". The description about you is "Mathematics tutor specializing in math problems and concepts.".
+
+
+            You have a list of other agents to transfer to:
+
+
+            Agent name: study_buddy_coordinator
+            Agent description: Study coordinator that delegates questions to subject-specific tutors.
+
+
+            Agent name: science_tutor
+            Agent description: Science tutor specializing in physics, chemistry, and biology.
+
+
+            Agent name: history_tutor
+            Agent description: History tutor specializing in historical events and social studies.
+
+
+            If you are the best to answer the question according to your description,
+            you can answer it.
+
+            If another agent is better for answering the question according to its
+            description, call `transfer_to_agent` function to transfer the question to that
+            agent. When transferring, do not generate any text other than the function
+            call.
+
+            **NOTE**: the only available agents for `transfer_to_agent` function are
+            `history_tutor`, `science_tutor`, `study_buddy_coordinator`.
+
+            If neither you nor the other agents are best for the question, transfer to your parent agent study_buddy_coordinator.
+          tools:
+            - function_declarations:
+                - description: "Transfer the question to another agent.\n\n  This tool hands off control to another agent when it's more suitable to\n  answer the user's question according to the agent's description.\n\n  Note:\n    For most use cases, you should use TransferToAgentTool instead of this\n    function directly. TransferToAgentTool provides additional enum constraints\n    that prevent LLMs from hallucinating invalid agent names.\n\n  Args:\n    agent_name: the agent name to transfer to.\n  "
+                  name: transfer_to_agent
+                  parameters:
+                    properties:
+                      agent_name:
+                        enum:
+                          - study_buddy_coordinator
+                          - science_tutor
+                          - history_tutor
+                        type: STRING
+                    required:
+                      - agent_name
+                    type: OBJECT
+                  response:
+                    type: 'NULL'
+          labels:
+            adk_agent_name: math_tutor
+        live_connect_config:
+          input_audio_transcription: {}
+          output_audio_transcription: {}
+      llm_response:
+        model_version: gemini-2.5-flash
+        content:
+          parts:
+            - text: |-
+                The Pythagorean theorem is a fundamental concept in geometry that describes the relationship between the three sides of a **right-angled triangle**.
+
+                Here's a breakdown:
+
+                1.  **Right-angled triangle**: This is a triangle where one of its angles measures exactly 90 degrees (a right angle).
+
+                2.  **Sides of a right-angled triangle**:
+                    *   **Hypotenuse**: This is the longest side of the right-angled triangle, and it's always opposite the right angle.
+                    *   **Legs**: The other two sides are called legs.
+
+                3.  **The Theorem**: The Pythagorean theorem states that in a right-angled triangle, the square of the length of the hypotenuse (let's call it 'c') is equal to the sum of the squares of the lengths of the other two sides (the legs, let's call them 'a' and 'b').
+
+                    This can be written as a formula:
+                    **a² + b² = c²**
+
+                **In simpler terms:** If you draw squares on each side of a right-angled triangle, the area of the square on the hypotenuse is equal to the sum of the areas of the squares on the two legs.
+
+                **Example:**
+                Imagine a right-angled triangle where:
+                *   One leg (a) is 3 units long.
+                *   The other leg (b) is 4 units long.
+
+                Using the Pythagorean theorem:
+                3² + 4² = c²
+                9 + 16 = c²
+                25 = c²
+                c = √25
+                c = 5
+
+                So, the hypotenuse (c) would be 5 units long.
+
+                The Pythagorean theorem is incredibly useful for finding the length of an unknown side in a right-angled triangle if you know the lengths of the other two sides. It also helps to determine if a triangle is a right-angled triangle if you know all three side lengths.
+              thought_signature: Cq0CAePx_16QV3vVAykeiCkSfTTnPue8O7235tA8ooDBqSZOJWY3a9FFKnH0kaHAb7r0onl-n1xpX2RNhAaewtITKBwG448LHS6bF1CW8MBpS97gk0kxwsPzhAW-so0dMqQWwH7q6yeRlS_QH9_Cv_nQgMa9cYbka-08nbczcGDPiTgUNTrVotssLe86mxAr2N1wIEJclWE-eyRQH7Npaohd4FSl6LttNmLQ_E_stbB4Q2LSF0oDneA--rAO-7d3BcQ01pNgE25LgzMqU6IIz2pao4ZmE2WJ5pgxcP3pi9JynxQBmlV_Na99poq3JynFNdLeAaps5xxXrpai4bNZXjZXBBLqQTrJCcrkkWIzSp68C-lzC-bE1sUHABFF0BbsBEEkRfpTuuSb6WN-F5s8Fw==
+          role: model
+        finish_reason: STOP
+        usage_metadata:
+          candidates_token_count: 415
+          candidates_tokens_details:
+            - modality: TEXT
+              token_count: 415
+          prompt_token_count: 535
+          prompt_tokens_details:
+            - modality: TEXT
+              token_count: 535
+          thoughts_token_count: 53
+          total_token_count: 1003
+          traffic_type: ON_DEMAND
+        avg_logprobs: -0.1145406975803605
+  - user_message_index: 1
+    agent_name: math_tutor
+    llm_recording:
+      llm_request:
+        model: gemini-2.5-flash
+        contents:
+          - parts:
+              - text: Explain the Pythagorean theorem.
+            role: user
+          - parts:
+              - text: 'For context:'
+              - text: |-
+                  [study_buddy_coordinator] called tool `transfer_to_agent` with parameters: {'agent_name': 'math_tutor'}
+            role: user
+          - parts:
+              - text: 'For context:'
+              - text: |-
+                  [study_buddy_coordinator] `transfer_to_agent` tool returned result: {'result': None}
+            role: user
+          - parts:
+              - text: |-
+                  The Pythagorean theorem is a fundamental concept in geometry that describes the relationship between the three sides of a **right-angled triangle**.
+
+                  Here's a breakdown:
+
+                  1.  **Right-angled triangle**: This is a triangle where one of its angles measures exactly 90 degrees (a right angle).
+
+                  2.  **Sides of a right-angled triangle**:
+                      *   **Hypotenuse**: This is the longest side of the right-angled triangle, and it's always opposite the right angle.
+                      *   **Legs**: The other two sides are called legs.
+
+                  3.  **The Theorem**: The Pythagorean theorem states that in a right-angled triangle, the square of the length of the hypotenuse (let's call it 'c') is equal to the sum of the squares of the lengths of the other two sides (the legs, let's call them 'a' and 'b').
+
+                      This can be written as a formula:
+                      **a² + b² = c²**
+
+                  **In simpler terms:** If you draw squares on each side of a right-angled triangle, the area of the square on the hypotenuse is equal to the sum of the areas of the squares on the two legs.
+
+                  **Example:**
+                  Imagine a right-angled triangle where:
+                  *   One leg (a) is 3 units long.
+                  *   The other leg (b) is 4 units long.
+
+                  Using the Pythagorean theorem:
+                  3² + 4² = c²
+                  9 + 16 = c²
+                  25 = c²
+                  c = √25
+                  c = 5
+
+                  So, the hypotenuse (c) would be 5 units long.
+
+                  The Pythagorean theorem is incredibly useful for finding the length of an unknown side in a right-angled triangle if you know the lengths of the other two sides. It also helps to determine if a triangle is a right-angled triangle if you know all three side lengths.
+                thought_signature: Cq0CAePx_16QV3vVAykeiCkSfTTnPue8O7235tA8ooDBqSZOJWY3a9FFKnH0kaHAb7r0onl-n1xpX2RNhAaewtITKBwG448LHS6bF1CW8MBpS97gk0kxwsPzhAW-so0dMqQWwH7q6yeRlS_QH9_Cv_nQgMa9cYbka-08nbczcGDPiTgUNTrVotssLe86mxAr2N1wIEJclWE-eyRQH7Npaohd4FSl6LttNmLQ_E_stbB4Q2LSF0oDneA--rAO-7d3BcQ01pNgE25LgzMqU6IIz2pao4ZmE2WJ5pgxcP3pi9JynxQBmlV_Na99poq3JynFNdLeAaps5xxXrpai4bNZXjZXBBLqQTrJCcrkkWIzSp68C-lzC-bE1sUHABFF0BbsBEEkRfpTuuSb6WN-F5s8Fw==
+            role: model
+          - parts:
+              - text: Thanks! Can you help me with other subjects too?
+            role: user
+        config:
+          http_options:
+            headers:
+              x-goog-api-client: google-adk/1.19.0 gl-python/3.12.8
+              user-agent: google-adk/1.19.0 gl-python/3.12.8
+          system_instruction: |
+            You are a Math Tutor specialized in helping students with mathematics.
+
+            Your expertise includes:
+            - Arithmetic and basic operations
+            - Algebra and equations
+            - Geometry and shapes
+            - Calculus and derivatives
+            - Statistics and probability
+
+            When helping students:
+            1. Break down complex problems into simple steps
+            2. Explain the reasoning behind each step
+            3. Provide clear examples
+            4. Be patient and encouraging
+
+            Focus ONLY on mathematics-related questions. For other subjects, indicate that you specialize in math.
+
+
+            You are an agent. Your internal name is "math_tutor". The description about you is "Mathematics tutor specializing in math problems and concepts.".
+
+
+            You have a list of other agents to transfer to:
+
+
+            Agent name: study_buddy_coordinator
+            Agent description: Study coordinator that delegates questions to subject-specific tutors.
+
+
+            Agent name: science_tutor
+            Agent description: Science tutor specializing in physics, chemistry, and biology.
+
+
+            Agent name: history_tutor
+            Agent description: History tutor specializing in historical events and social studies.
+
+
+            If you are the best to answer the question according to your description,
+            you can answer it.
+
+            If another agent is better for answering the question according to its
+            description, call `transfer_to_agent` function to transfer the question to that
+            agent. When transferring, do not generate any text other than the function
+            call.
+
+            **NOTE**: the only available agents for `transfer_to_agent` function are
+            `history_tutor`, `science_tutor`, `study_buddy_coordinator`.
+
+            If neither you nor the other agents are best for the question, transfer to your parent agent study_buddy_coordinator.
+          tools:
+            - function_declarations:
+                - description: "Transfer the question to another agent.\n\n  This tool hands off control to another agent when it's more suitable to\n  answer the user's question according to the agent's description.\n\n  Note:\n    For most use cases, you should use TransferToAgentTool instead of this\n    function directly. TransferToAgentTool provides additional enum constraints\n    that prevent LLMs from hallucinating invalid agent names.\n\n  Args:\n    agent_name: the agent name to transfer to.\n  "
+                  name: transfer_to_agent
+                  parameters:
+                    properties:
+                      agent_name:
+                        enum:
+                          - study_buddy_coordinator
+                          - science_tutor
+                          - history_tutor
+                        type: STRING
+                    required:
+                      - agent_name
+                    type: OBJECT
+                  response:
+                    type: 'NULL'
+          labels:
+            adk_agent_name: math_tutor
+        live_connect_config:
+          input_audio_transcription: {}
+          output_audio_transcription: {}
+      llm_response:
+        model_version: gemini-2.5-flash
+        content:
+          parts:
+            - text: |-
+                I specialize **only** in mathematics. For questions about other subjects, I'll transfer you to our study buddy coordinator who can find the right tutor for you.
+              thought_signature: CpsDAePx_16QpozplpddMGdSXeVXyfngzbTE_ax9r4KOUXb33kbrdAhoc-iiElItPV6dSsqVsMnezlc1Nhnnjl8JM9v70J3AqH11pSX8_rzYO99SnAN6bZQGs2xN3af5WEnZ8vajebYc6e8tZz0dYVZ8ycVy3z-CLewJuPkLwHQ98-4UdKxwvUn5rdpfC95HQnT6H_fWr5bgXpbX_Bkm0qbXWOew9m7jwQCUpiUhDZhlkP6OSqWLjKFZFIzBdQZAYQII2Ric8D0VgaAVVAm1HjaNsBhhvX2i1QVJK8TzQbu9XV00X5Zd193I6wgX5O9c4bS53ro3aXnykCSAoImXHy10MjwZWzR1y_HtXki4V2P0lEVyvRAUQXBvbV8LEI3OnsYOrdy4K1RWUbBBkvUQAWcYF9XPo7vr-MZAB8OX73_871-QhRTqa1IU9VGVN_2We_QNA5Gfv7nhpgJKCcTRoBJnNgAULkc_FcNbddNMeAj9SyR9XF9bYGB7I3XVKkywF3AKeJEww17FCMAwfeRMyb5TBqLlrWUH7jQOrjog
+            - function_call:
+                args:
+                  agent_name: study_buddy_coordinator
+                name: transfer_to_agent
+          role: model
+        finish_reason: STOP
+        usage_metadata:
+          candidates_token_count: 46
+          candidates_tokens_details:
+            - modality: TEXT
+              token_count: 46
+          prompt_token_count: 961
+          prompt_tokens_details:
+            - modality: TEXT
+              token_count: 1012
+          thoughts_token_count: 76
+          total_token_count: 1083
+          traffic_type: ON_DEMAND
+        avg_logprobs: -0.6769560109014097
+  - user_message_index: 1
+    agent_name: math_tutor
+    tool_recording:
+      tool_call:
+        id: adk-a0d4e96b-10c1-4a4e-97df-4ae9516b9148
+        args:
+          agent_name: study_buddy_coordinator
+        name: transfer_to_agent
+      tool_response:
+        id: adk-a0d4e96b-10c1-4a4e-97df-4ae9516b9148
+        name: transfer_to_agent
+        response:
+          result: null
+  - user_message_index: 1
+    agent_name: study_buddy_coordinator
+    llm_recording:
+      llm_request:
+        model: gemini-2.5-flash
+        contents:
+          - parts:
+              - text: Explain the Pythagorean theorem.
+            role: user
+          - parts:
+              - function_call:
+                  args:
+                    agent_name: math_tutor
+                  name: transfer_to_agent
+                thought_signature: CooDAePx_15V53EnYLoMDWCz-sg0x1MnstZ9CFU0H0Fl1XsISgZB2ZdXte4zrH8RDoiasaPnGoay9yWUv-Ow8h58k1cEM1QRKexCxD6EQtp1kDCmy565tVojuizDmgYEDdc0gXsB1S3VROC_XW4d9ZloH1w0O4T_v7WdULTQBqtBxxBcQlW5JF7aToBGywf4NFmKZ2ZjR0qqsl6Qxc1OhhGtN8csHRiWBnorSDlFAtcvPoR981T3NQ_NcH6q9zi4GB0xZ0smCo9_ISh4qm739JoNPkj5VqUzSQBqpE45nkzgjI8WN0xiaM6_KpjaXZ75Z_dK5q71F6lmHWVVdKj23yVEhwagtPlY6khTXG6rYb9V5nV9f0neLvgxB0yeu9GVi04vCPHy9gQZBI5zTy6bs9aWDVqpKDy9REO34_n8Q8w57cOo-agznNJszegfNq4hMROsYLY-luzGSFhp7IyjQj2euFtu8ZpAm-cCqlU98RdGvQOSwgcfk-JKS86kVunWQYA_8jDQKEXfHDpl-g==
+            role: model
+          - parts:
+              - function_response:
+                  name: transfer_to_agent
+                  response:
+                    result: null
+            role: user
+          - parts:
+              - text: 'For context:'
+              - text: |-
+                  [math_tutor] said: The Pythagorean theorem is a fundamental concept in geometry that describes the relationship between the three sides of a **right-angled triangle**.
+
+                  Here's a breakdown:
+
+                  1.  **Right-angled triangle**: This is a triangle where one of its angles measures exactly 90 degrees (a right angle).
+
+                  2.  **Sides of a right-angled triangle**:
+                      *   **Hypotenuse**: This is the longest side of the right-angled triangle, and it's always opposite the right angle.
+                      *   **Legs**: The other two sides are called legs.
+
+                  3.  **The Theorem**: The Pythagorean theorem states that in a right-angled triangle, the square of the length of the hypotenuse (let's call it 'c') is equal to the sum of the squares of the lengths of the other two sides (the legs, let's call them 'a' and 'b').
+
+                      This can be written as a formula:
+                      **a² + b² = c²**
+
+                  **In simpler terms:** If you draw squares on each side of a right-angled triangle, the area of the square on the hypotenuse is equal to the sum of the areas of the squares on the two legs.
+
+                  **Example:**
+                  Imagine a right-angled triangle where:
+                  *   One leg (a) is 3 units long.
+                  *   The other leg (b) is 4 units long.
+
+                  Using the Pythagorean theorem:
+                  3² + 4² = c²
+                  9 + 16 = c²
+                  25 = c²
+                  c = √25
+                  c = 5
+
+                  So, the hypotenuse (c) would be 5 units long.
+
+                  The Pythagorean theorem is incredibly useful for finding the length of an unknown side in a right-angled triangle if you know the lengths of the other two sides. It also helps to determine if a triangle is a right-angled triangle if you know all three side lengths.
+            role: user
+          - parts:
+              - text: Thanks! Can you help me with other subjects too?
+            role: user
+          - parts:
+              - text: 'For context:'
+              - text: |-
+                  [math_tutor] said: I specialize **only** in mathematics. For questions about other subjects, I'll transfer you to our study buddy coordinator who can find the right tutor for you.
+              - text: |-
+                  [math_tutor] called tool `transfer_to_agent` with parameters: {'agent_name': 'study_buddy_coordinator'}
+            role: user
+          - parts:
+              - text: 'For context:'
+              - text: |-
+                  [math_tutor] `transfer_to_agent` tool returned result: {'result': None}
+            role: user
+        config:
+          http_options:
+            headers:
+              x-goog-api-client: google-adk/1.19.0 gl-python/3.12.8
+              user-agent: google-adk/1.19.0 gl-python/3.12.8
+          system_instruction: |
+            You are a Study Buddy Coordinator that helps students with their homework and study questions.
+
+            You have access to three specialized tutor agents:
+            - math_tutor: For mathematics, algebra, geometry, calculus, statistics
+            - science_tutor: For physics, chemistry, biology, earth science
+            - history_tutor: For history, geography, social studies, historical events
+
+            Your responsibilities:
+            1. Understand what subject(s) the student needs help with
+            2. Delegate to the appropriate tutor agent(s)
+            3. If a question involves multiple subjects, delegate to each relevant tutor
+            4. Combine the responses from the tutors into a helpful answer for the student
+
+            Always be encouraging and supportive in your responses.
+
+
+            You are an agent. Your internal name is "study_buddy_coordinator". The description about you is "Study coordinator that delegates questions to subject-specific tutors.".
+
+
+            You have a list of other agents to transfer to:
+
+
+            Agent name: math_tutor
+            Agent description: Mathematics tutor specializing in math problems and concepts.
+
+
+            Agent name: science_tutor
+            Agent description: Science tutor specializing in physics, chemistry, and biology.
+
+
+            Agent name: history_tutor
+            Agent description: History tutor specializing in historical events and social studies.
+
+
+            If you are the best to answer the question according to your description,
+            you can answer it.
+
+            If another agent is better for answering the question according to its
+            description, call `transfer_to_agent` function to transfer the question to that
+            agent. When transferring, do not generate any text other than the function
+            call.
+
+            **NOTE**: the only available agents for `transfer_to_agent` function are
+            `history_tutor`, `math_tutor`, `science_tutor`.
+          tools:
+            - function_declarations:
+                - description: "Transfer the question to another agent.\n\n  This tool hands off control to another agent when it's more suitable to\n  answer the user's question according to the agent's description.\n\n  Note:\n    For most use cases, you should use TransferToAgentTool instead of this\n    function directly. TransferToAgentTool provides additional enum constraints\n    that prevent LLMs from hallucinating invalid agent names.\n\n  Args:\n    agent_name: the agent name to transfer to.\n  "
+                  name: transfer_to_agent
+                  parameters:
+                    properties:
+                      agent_name:
+                        enum:
+                          - math_tutor
+                          - science_tutor
+                          - history_tutor
+                        type: STRING
+                    required:
+                      - agent_name
+                    type: OBJECT
+                  response:
+                    type: 'NULL'
+          labels:
+            adk_agent_name: study_buddy_coordinator
+        live_connect_config:
+          input_audio_transcription: {}
+          output_audio_transcription: {}
+      llm_response:
+        model_version: gemini-2.5-flash
+        content:
+          parts:
+            - text: |-
+                Absolutely! I'd be happy to help you with other subjects. What else are you working on today? Just let me know what subject you need assistance with, and I'll connect you with the right tutor!
+              thought_signature: CrgGAePx_15btDm82_0yH4tw0do52uEd3-o3ICRDIx2OjOsdnGociUjSggT_Ql1udea8BXYG6Evehi-6ycBf7k6BUvJHKI1DhZOHekVapEEMRtbXmF5aLeZKASNpRpHawBuUaWpA-kP5l8w6E-Cn3T0Jm8I3WR89opQddhuPUl5TQg4VzZctaonma-YwWmXsrmTiSbsqb3RGxBbl1TszpTjfupTOo0Q48mVzE7AARlhRnxj1bGiTGqBlvQUqwD1aexkRUuyYJZsn1OrrbVuF5LhUWNgr8uINJFXTr2PLddz1i7RgKYxdIWl4Uha8_thUG-FukmmJon5sKeCyb09dD9LCXetSGBC6IkRtnqzqY86Cpx0Zlf9Y0O5Cp7EZbw42osSklSGG9-MDx2xaUWvYUafI7utsweauwTTYuW0dwV-k-0QUVSL8fwt4hAZb34GUHd6UVbmVNLQsuMmDnvk6uTsbz5g9SeyLhOaPsSPZ-KLzG7IS47t6KPToT27oCEjwJL1MC1Ks4WjTxhs2ZOI39Nn3WS8cvZmbQ6A27SpwqR_w65Ql65tlry5AMVcYDzQTaWXr-hqYlqxvLnNjwlX2wODTQnGq0dDCP7Ou3UObul3Yj26mRB1GeGPWgIWk4Z-S-oRIuz1nJJbc9NXPUHCRsmGfsBqE6jPZv52-kH95EsZ9T7z_sfRaCjwa9P7mqgc2FWcdX5Lv4oaihFO9RBSirPMP3ItvFlpHeaHDRxkOwmXZLvJ5YEqzyU-8PCnumTRyLJ17pJSq2KOd5miAdTg9Rt2czmC5BLg8QVItOVW2Lp8IlNI4DM4KW2CfJ-EeWTvg5R3M7WUSljga_6Wh0r0YRJNEXZg95i9nyw2xmy96U-DJmrl-6EfrGsGq_Jx6Y7OQKRbNwlHCi1yFBajIsva-6VtW8ZOxuKXr6KaVhBSxX8hBNYeu0I4iB862KxyXTW7llx-xq0AT94qOJRavoVDpB4dqFeMbQqmXrf5icBzfQ7fTwZvAOdZB4U2vgQUZMiOI2nHLdfTL7V0kLQeXAxAokB9hzUWl4iXYMrylb_HMovutObdyA_koXuRp-IIwQzKv1wx0eGQh95BstDI=
+          role: model
+        finish_reason: STOP
+        usage_metadata:
+          candidates_token_count: 44
+          candidates_tokens_details:
+            - modality: TEXT
+              token_count: 44
+          prompt_token_count: 1043
+          prompt_tokens_details:
+            - modality: TEXT
+              token_count: 1125
+          thoughts_token_count: 172
+          total_token_count: 1259
+          traffic_type: ON_DEMAND
+        avg_logprobs: -1.2942879416725852

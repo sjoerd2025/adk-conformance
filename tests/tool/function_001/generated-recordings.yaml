@@ -1,0 +1,532 @@
+# Copyright 2025 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+recordings:
+  - user_message_index: 0
+    agent_name: booking_assistant
+    llm_recording:
+      llm_request:
+        model: gemini-2.5-flash
+        contents:
+          - parts:
+              - text: |-
+                  I want to create a booking for test@example.com. Please confirm the booking and add details: 'Conformance Test'.
+            role: user
+        config:
+          http_options:
+            headers:
+              x-goog-api-client: google-adk/1.16.0 gl-python/3.11.11
+              user-agent: google-adk/1.16.0 gl-python/3.11.11
+          system_instruction: |-
+            You are a booking assistant. You can help with:
+
+            1.  Validating email addresses using the 'validate_email' tool.
+            2.  Retrieving a user ID from an email using the 'get_user_id' tool.
+            3.  Creating a new booking using the 'create_booking' tool, which requires a user ID, confirmation status, and details.
+
+            Use the appropriate tool to fulfill the user's request.
+
+
+            You are an agent. Your internal name is "booking_assistant". The description about you is "An agent for managing user bookings.".
+          tools:
+            - function_declarations:
+                - description: Checks if the provided string is a valid email format.
+                  name: validate_email
+                  parameters:
+                    properties:
+                      email:
+                        type: STRING
+                    required:
+                      - email
+                    type: OBJECT
+                  response:
+                    type: BOOLEAN
+                - description: Retrieves a user ID based on their email.
+                  name: get_user_id
+                  parameters:
+                    properties:
+                      email:
+                        type: STRING
+                    required:
+                      - email
+                    type: OBJECT
+                  response:
+                    type: INTEGER
+                - description: "Creates a booking for a user.\n\n  Args:\n    user_id: The unique identifier for the user.\n    is_confirmed: Whether the booking is confirmed.\n    details: Any additional details for the booking.\n\n  Returns:\n    A dictionary containing the booking information and the types of the\n    received arguments.\n  "
+                  name: create_booking
+                  parameters:
+                    properties:
+                      user_id:
+                        type: INTEGER
+                      is_confirmed:
+                        type: BOOLEAN
+                      details:
+                        type: STRING
+                    required:
+                      - user_id
+                      - is_confirmed
+                      - details
+                    type: OBJECT
+                  response:
+                    type: OBJECT
+          labels:
+            adk_agent_name: booking_assistant
+        live_connect_config:
+          input_audio_transcription: {}
+          output_audio_transcription: {}
+      llm_response:
+        content:
+          parts:
+            - thought_signature: CosFAePx_15iItejhcVN3skfG8GLAHdfIi-XbwaLFC9oZWGqzrgjFp3dZAWAUv4KCIyPxIs4RQcRwRw6pIS2PBuSRUMyPmq6ZU1BmVpfRmaBAlcd-L8mY7KD6smZ44JiMNiLKDBgl1lVgsuus4ibalZKphHRvTGy2XId5aWjDOtEPfwMU1kKCePH5Lu8x9rIDW3yrDPUNt-ffor0S2ActrAiRLpXfG3CgO55P8MSiIF9uX2o7380dsQyhbrRqzDMF5QfGX34CKfYUKT48k0oJdDNeM1iqP0eMP625TugxVvg5pC4Qih4zjkJObq33PPrrjiCuOezP0DLnnZfz6WDh-Clgoi74de4AnK9S2bcOSrtulF3GsVJctlpjcfYNQGcLUIRoqdKdqAMxA8nkYrqSP4-hYpheQRmrj4gixVp8Bhv_cWKcXLMWN_Tzvj65XDeNWfJwpfCXTnKX3RzRy5MHfQZvEobvxAZ7uqVCqsa-hzqjkbWo6IxsFuLdk4xX1m0KbwnDT3g4FpAv1Glmw7w0ChG3yBqJSjoltPYm7VXLAVf0naCbwJ1uMw39ACWO_2RkdN_pVGE2R8gd_9SZciRXucJci1e-h8ElhRERYoVpERnCf1K9R2Ty1IL8C3r0_vJTBKB-8mgOv4oNPmZk1B6oA5hoXbN9ggRzOnmzF9Y27AD42dMMjnYFJDFQRu6JYIrxb8TvuZLiBZmykshjNbWorxWCKt9EneJ-WdRGNNnUfwDp6acp9rEK4rDoJYcDhLv49lGX52yfhbWLLwdx3x-udpf2d8km1yhi817cLKw-5VJ38BydrVVu5n1_3Rndi0rFlHxdNxCcLPV-Ro41uylMGdmJcXRV4RyJtWCUuqi
+              function_call:
+                args:
+                  email: test@example.com
+                name: validate_email
+          role: model
+        finish_reason: STOP
+        usage_metadata:
+          candidates_token_count: 9
+          candidates_tokens_details:
+            - modality: TEXT
+              token_count: 9
+          prompt_token_count: 279
+          prompt_tokens_details:
+            - modality: TEXT
+              token_count: 279
+          thoughts_token_count: 170
+          total_token_count: 458
+          traffic_type: ON_DEMAND
+        avg_logprobs: -3.6253755357530384
+  - user_message_index: 0
+    agent_name: booking_assistant
+    tool_recording:
+      tool_call:
+        id: adk-91c488e6-e5e2-47e2-b4df-da4dae78fc32
+        args:
+          email: test@example.com
+        name: validate_email
+      tool_response:
+        id: adk-91c488e6-e5e2-47e2-b4df-da4dae78fc32
+        name: validate_email
+        response:
+          result: true
+  - user_message_index: 0
+    agent_name: booking_assistant
+    llm_recording:
+      llm_request:
+        model: gemini-2.5-flash
+        contents:
+          - parts:
+              - text: |-
+                  I want to create a booking for test@example.com. Please confirm the booking and add details: 'Conformance Test'.
+            role: user
+          - parts:
+              - thought_signature: CosFAePx_15iItejhcVN3skfG8GLAHdfIi-XbwaLFC9oZWGqzrgjFp3dZAWAUv4KCIyPxIs4RQcRwRw6pIS2PBuSRUMyPmq6ZU1BmVpfRmaBAlcd-L8mY7KD6smZ44JiMNiLKDBgl1lVgsuus4ibalZKphHRvTGy2XId5aWjDOtEPfwMU1kKCePH5Lu8x9rIDW3yrDPUNt-ffor0S2ActrAiRLpXfG3CgO55P8MSiIF9uX2o7380dsQyhbrRqzDMF5QfGX34CKfYUKT48k0oJdDNeM1iqP0eMP625TugxVvg5pC4Qih4zjkJObq33PPrrjiCuOezP0DLnnZfz6WDh-Clgoi74de4AnK9S2bcOSrtulF3GsVJctlpjcfYNQGcLUIRoqdKdqAMxA8nkYrqSP4-hYpheQRmrj4gixVp8Bhv_cWKcXLMWN_Tzvj65XDeNWfJwpfCXTnKX3RzRy5MHfQZvEobvxAZ7uqVCqsa-hzqjkbWo6IxsFuLdk4xX1m0KbwnDT3g4FpAv1Glmw7w0ChG3yBqJSjoltPYm7VXLAVf0naCbwJ1uMw39ACWO_2RkdN_pVGE2R8gd_9SZciRXucJci1e-h8ElhRERYoVpERnCf1K9R2Ty1IL8C3r0_vJTBKB-8mgOv4oNPmZk1B6oA5hoXbN9ggRzOnmzF9Y27AD42dMMjnYFJDFQRu6JYIrxb8TvuZLiBZmykshjNbWorxWCKt9EneJ-WdRGNNnUfwDp6acp9rEK4rDoJYcDhLv49lGX52yfhbWLLwdx3x-udpf2d8km1yhi817cLKw-5VJ38BydrVVu5n1_3Rndi0rFlHxdNxCcLPV-Ro41uylMGdmJcXRV4RyJtWCUuqi
+                function_call:
+                  args:
+                    email: test@example.com
+                  name: validate_email
+            role: model
+          - parts:
+              - function_response:
+                  name: validate_email
+                  response:
+                    result: true
+            role: user
+        config:
+          http_options:
+            headers:
+              x-goog-api-client: google-adk/1.16.0 gl-python/3.11.11
+              user-agent: google-adk/1.16.0 gl-python/3.11.11
+          system_instruction: |-
+            You are a booking assistant. You can help with:
+
+            1.  Validating email addresses using the 'validate_email' tool.
+            2.  Retrieving a user ID from an email using the 'get_user_id' tool.
+            3.  Creating a new booking using the 'create_booking' tool, which requires a user ID, confirmation status, and details.
+
+            Use the appropriate tool to fulfill the user's request.
+
+
+            You are an agent. Your internal name is "booking_assistant". The description about you is "An agent for managing user bookings.".
+          tools:
+            - function_declarations:
+                - description: Checks if the provided string is a valid email format.
+                  name: validate_email
+                  parameters:
+                    properties:
+                      email:
+                        type: STRING
+                    required:
+                      - email
+                    type: OBJECT
+                  response:
+                    type: BOOLEAN
+                - description: Retrieves a user ID based on their email.
+                  name: get_user_id
+                  parameters:
+                    properties:
+                      email:
+                        type: STRING
+                    required:
+                      - email
+                    type: OBJECT
+                  response:
+                    type: INTEGER
+                - description: "Creates a booking for a user.\n\n  Args:\n    user_id: The unique identifier for the user.\n    is_confirmed: Whether the booking is confirmed.\n    details: Any additional details for the booking.\n\n  Returns:\n    A dictionary containing the booking information and the types of the\n    received arguments.\n  "
+                  name: create_booking
+                  parameters:
+                    properties:
+                      user_id:
+                        type: INTEGER
+                      is_confirmed:
+                        type: BOOLEAN
+                      details:
+                        type: STRING
+                    required:
+                      - user_id
+                      - is_confirmed
+                      - details
+                    type: OBJECT
+                  response:
+                    type: OBJECT
+          labels:
+            adk_agent_name: booking_assistant
+        live_connect_config:
+          input_audio_transcription: {}
+          output_audio_transcription: {}
+      llm_response:
+        content:
+          parts:
+            - thought_signature: CqgBAePx_17xrgJb8BeAo8ZCEpaCSPyKlDUROwKoqSrjaks-EVOO6jZTXFxG4Aa4lZUn-JxGeGM3z6c8cAQWu9SgkXA5ZbeA-jNUlbammxx-HEUrj7sH-jHhODhNflbo8U_OYx1KVOD0oelibiJNSINdDcWqPQSLLnDJiOD3_m_gyYMNxnX1gKjB_ENROX3VTeURGJpIDHKitnsMELUF2LGskAnNdhKugbQz
+              function_call:
+                args:
+                  email: test@example.com
+                name: get_user_id
+          role: model
+        finish_reason: STOP
+        usage_metadata:
+          candidates_token_count: 11
+          candidates_tokens_details:
+            - modality: TEXT
+              token_count: 11
+          prompt_token_count: 293
+          prompt_tokens_details:
+            - modality: TEXT
+              token_count: 461
+          thoughts_token_count: 47
+          total_token_count: 351
+          traffic_type: ON_DEMAND
+        avg_logprobs: -0.464301889592951
+  - user_message_index: 0
+    agent_name: booking_assistant
+    tool_recording:
+      tool_call:
+        id: adk-bf30b045-e9f3-48c3-bf67-e16e713d393b
+        args:
+          email: test@example.com
+        name: get_user_id
+      tool_response:
+        id: adk-bf30b045-e9f3-48c3-bf67-e16e713d393b
+        name: get_user_id
+        response:
+          result: 6707
+  - user_message_index: 0
+    agent_name: booking_assistant
+    llm_recording:
+      llm_request:
+        model: gemini-2.5-flash
+        contents:
+          - parts:
+              - text: |-
+                  I want to create a booking for test@example.com. Please confirm the booking and add details: 'Conformance Test'.
+            role: user
+          - parts:
+              - thought_signature: CosFAePx_15iItejhcVN3skfG8GLAHdfIi-XbwaLFC9oZWGqzrgjFp3dZAWAUv4KCIyPxIs4RQcRwRw6pIS2PBuSRUMyPmq6ZU1BmVpfRmaBAlcd-L8mY7KD6smZ44JiMNiLKDBgl1lVgsuus4ibalZKphHRvTGy2XId5aWjDOtEPfwMU1kKCePH5Lu8x9rIDW3yrDPUNt-ffor0S2ActrAiRLpXfG3CgO55P8MSiIF9uX2o7380dsQyhbrRqzDMF5QfGX34CKfYUKT48k0oJdDNeM1iqP0eMP625TugxVvg5pC4Qih4zjkJObq33PPrrjiCuOezP0DLnnZfz6WDh-Clgoi74de4AnK9S2bcOSrtulF3GsVJctlpjcfYNQGcLUIRoqdKdqAMxA8nkYrqSP4-hYpheQRmrj4gixVp8Bhv_cWKcXLMWN_Tzvj65XDeNWfJwpfCXTnKX3RzRy5MHfQZvEobvxAZ7uqVCqsa-hzqjkbWo6IxsFuLdk4xX1m0KbwnDT3g4FpAv1Glmw7w0ChG3yBqJSjoltPYm7VXLAVf0naCbwJ1uMw39ACWO_2RkdN_pVGE2R8gd_9SZciRXucJci1e-h8ElhRERYoVpERnCf1K9R2Ty1IL8C3r0_vJTBKB-8mgOv4oNPmZk1B6oA5hoXbN9ggRzOnmzF9Y27AD42dMMjnYFJDFQRu6JYIrxb8TvuZLiBZmykshjNbWorxWCKt9EneJ-WdRGNNnUfwDp6acp9rEK4rDoJYcDhLv49lGX52yfhbWLLwdx3x-udpf2d8km1yhi817cLKw-5VJ38BydrVVu5n1_3Rndi0rFlHxdNxCcLPV-Ro41uylMGdmJcXRV4RyJtWCUuqi
+                function_call:
+                  args:
+                    email: test@example.com
+                  name: validate_email
+            role: model
+          - parts:
+              - function_response:
+                  name: validate_email
+                  response:
+                    result: true
+            role: user
+          - parts:
+              - thought_signature: CqgBAePx_17xrgJb8BeAo8ZCEpaCSPyKlDUROwKoqSrjaks-EVOO6jZTXFxG4Aa4lZUn-JxGeGM3z6c8cAQWu9SgkXA5ZbeA-jNUlbammxx-HEUrj7sH-jHhODhNflbo8U_OYx1KVOD0oelibiJNSINdDcWqPQSLLnDJiOD3_m_gyYMNxnX1gKjB_ENROX3VTeURGJpIDHKitnsMELUF2LGskAnNdhKugbQz
+                function_call:
+                  args:
+                    email: test@example.com
+                  name: get_user_id
+            role: model
+          - parts:
+              - function_response:
+                  name: get_user_id
+                  response:
+                    result: 6707
+            role: user
+        config:
+          http_options:
+            headers:
+              x-goog-api-client: google-adk/1.16.0 gl-python/3.11.11
+              user-agent: google-adk/1.16.0 gl-python/3.11.11
+          system_instruction: |-
+            You are a booking assistant. You can help with:
+
+            1.  Validating email addresses using the 'validate_email' tool.
+            2.  Retrieving a user ID from an email using the 'get_user_id' tool.
+            3.  Creating a new booking using the 'create_booking' tool, which requires a user ID, confirmation status, and details.
+
+            Use the appropriate tool to fulfill the user's request.
+
+
+            You are an agent. Your internal name is "booking_assistant". The description about you is "An agent for managing user bookings.".
+          tools:
+            - function_declarations:
+                - description: Checks if the provided string is a valid email format.
+                  name: validate_email
+                  parameters:
+                    properties:
+                      email:
+                        type: STRING
+                    required:
+                      - email
+                    type: OBJECT
+                  response:
+                    type: BOOLEAN
+                - description: Retrieves a user ID based on their email.
+                  name: get_user_id
+                  parameters:
+                    properties:
+                      email:
+                        type: STRING
+                    required:
+                      - email
+                    type: OBJECT
+                  response:
+                    type: INTEGER
+                - description: "Creates a booking for a user.\n\n  Args:\n    user_id: The unique identifier for the user.\n    is_confirmed: Whether the booking is confirmed.\n    details: Any additional details for the booking.\n\n  Returns:\n    A dictionary containing the booking information and the types of the\n    received arguments.\n  "
+                  name: create_booking
+                  parameters:
+                    properties:
+                      user_id:
+                        type: INTEGER
+                      is_confirmed:
+                        type: BOOLEAN
+                      details:
+                        type: STRING
+                    required:
+                      - user_id
+                      - is_confirmed
+                      - details
+                    type: OBJECT
+                  response:
+                    type: OBJECT
+          labels:
+            adk_agent_name: booking_assistant
+        live_connect_config:
+          input_audio_transcription: {}
+          output_audio_transcription: {}
+      llm_response:
+        content:
+          parts:
+            - thought_signature: CpECAePx_15q1suJBTnG5iyUR8D3FTFPZzYdXrFFDLJ290076Qgpk0iCIwTwngQ6zx1SuK0M1tcqkKGW3QdIrBWDKCjIjDU-n7nQI1-gBtzMtprmehCuKM1q30MCzqAZv352c40y_gij_84WfmXwk_lnEkEayKezj-HOtOGt7SFU1GnRe0eO8fADiXoHX5-Nyuluxn9jfwtAEqPhEPfU4XoGgvX9NfSKlVLR_OSQmAKNPikzCebCRNzGRnxKz5aY36rbVrsmP8PWE0ElpWE3nEfjZ4EjW4MZnu-1m_Yuro82yst3WtfTGc08zafb9jpqWk78ZAOLoyXjMCrtL4AB-Bwlbvyg60zuuBnbff587yfzyaI3
+              function_call:
+                args:
+                  user_id: 6707
+                  is_confirmed: true
+                  details: Conformance Test
+                name: create_booking
+          role: model
+        finish_reason: STOP
+        usage_metadata:
+          candidates_token_count: 15
+          candidates_tokens_details:
+            - modality: TEXT
+              token_count: 15
+          prompt_token_count: 311
+          prompt_tokens_details:
+            - modality: TEXT
+              token_count: 524
+          thoughts_token_count: 74
+          total_token_count: 400
+          traffic_type: ON_DEMAND
+        avg_logprobs: -0.41483227411905926
+  - user_message_index: 0
+    agent_name: booking_assistant
+    tool_recording:
+      tool_call:
+        id: adk-33d02560-7ee9-428a-b412-3f6693fbac26
+        args:
+          user_id: 6707
+          is_confirmed: true
+          details: Conformance Test
+        name: create_booking
+      tool_response:
+        id: adk-33d02560-7ee9-428a-b412-3f6693fbac26
+        name: create_booking
+        response:
+          user_id: 6707
+          is_confirmed: true
+          details: Conformance Test
+          user_id_type: |-
+            <class 'int'>
+          is_confirmed_type: |-
+            <class 'bool'>
+          details_type: |-
+            <class 'str'>
+  - user_message_index: 0
+    agent_name: booking_assistant
+    llm_recording:
+      llm_request:
+        model: gemini-2.5-flash
+        contents:
+          - parts:
+              - text: |-
+                  I want to create a booking for test@example.com. Please confirm the booking and add details: 'Conformance Test'.
+            role: user
+          - parts:
+              - thought_signature: CosFAePx_15iItejhcVN3skfG8GLAHdfIi-XbwaLFC9oZWGqzrgjFp3dZAWAUv4KCIyPxIs4RQcRwRw6pIS2PBuSRUMyPmq6ZU1BmVpfRmaBAlcd-L8mY7KD6smZ44JiMNiLKDBgl1lVgsuus4ibalZKphHRvTGy2XId5aWjDOtEPfwMU1kKCePH5Lu8x9rIDW3yrDPUNt-ffor0S2ActrAiRLpXfG3CgO55P8MSiIF9uX2o7380dsQyhbrRqzDMF5QfGX34CKfYUKT48k0oJdDNeM1iqP0eMP625TugxVvg5pC4Qih4zjkJObq33PPrrjiCuOezP0DLnnZfz6WDh-Clgoi74de4AnK9S2bcOSrtulF3GsVJctlpjcfYNQGcLUIRoqdKdqAMxA8nkYrqSP4-hYpheQRmrj4gixVp8Bhv_cWKcXLMWN_Tzvj65XDeNWfJwpfCXTnKX3RzRy5MHfQZvEobvxAZ7uqVCqsa-hzqjkbWo6IxsFuLdk4xX1m0KbwnDT3g4FpAv1Glmw7w0ChG3yBqJSjoltPYm7VXLAVf0naCbwJ1uMw39ACWO_2RkdN_pVGE2R8gd_9SZciRXucJci1e-h8ElhRERYoVpERnCf1K9R2Ty1IL8C3r0_vJTBKB-8mgOv4oNPmZk1B6oA5hoXbN9ggRzOnmzF9Y27AD42dMMjnYFJDFQRu6JYIrxb8TvuZLiBZmykshjNbWorxWCKt9EneJ-WdRGNNnUfwDp6acp9rEK4rDoJYcDhLv49lGX52yfhbWLLwdx3x-udpf2d8km1yhi817cLKw-5VJ38BydrVVu5n1_3Rndi0rFlHxdNxCcLPV-Ro41uylMGdmJcXRV4RyJtWCUuqi
+                function_call:
+                  args:
+                    email: test@example.com
+                  name: validate_email
+            role: model
+          - parts:
+              - function_response:
+                  name: validate_email
+                  response:
+                    result: true
+            role: user
+          - parts:
+              - thought_signature: CqgBAePx_17xrgJb8BeAo8ZCEpaCSPyKlDUROwKoqSrjaks-EVOO6jZTXFxG4Aa4lZUn-JxGeGM3z6c8cAQWu9SgkXA5ZbeA-jNUlbammxx-HEUrj7sH-jHhODhNflbo8U_OYx1KVOD0oelibiJNSINdDcWqPQSLLnDJiOD3_m_gyYMNxnX1gKjB_ENROX3VTeURGJpIDHKitnsMELUF2LGskAnNdhKugbQz
+                function_call:
+                  args:
+                    email: test@example.com
+                  name: get_user_id
+            role: model
+          - parts:
+              - function_response:
+                  name: get_user_id
+                  response:
+                    result: 6707
+            role: user
+          - parts:
+              - thought_signature: CpECAePx_15q1suJBTnG5iyUR8D3FTFPZzYdXrFFDLJ290076Qgpk0iCIwTwngQ6zx1SuK0M1tcqkKGW3QdIrBWDKCjIjDU-n7nQI1-gBtzMtprmehCuKM1q30MCzqAZv352c40y_gij_84WfmXwk_lnEkEayKezj-HOtOGt7SFU1GnRe0eO8fADiXoHX5-Nyuluxn9jfwtAEqPhEPfU4XoGgvX9NfSKlVLR_OSQmAKNPikzCebCRNzGRnxKz5aY36rbVrsmP8PWE0ElpWE3nEfjZ4EjW4MZnu-1m_Yuro82yst3WtfTGc08zafb9jpqWk78ZAOLoyXjMCrtL4AB-Bwlbvyg60zuuBnbff587yfzyaI3
+                function_call:
+                  args:
+                    user_id: 6707
+                    is_confirmed: true
+                    details: Conformance Test
+                  name: create_booking
+            role: model
+          - parts:
+              - function_response:
+                  name: create_booking
+                  response:
+                    user_id: 6707
+                    is_confirmed: true
+                    details: Conformance Test
+                    user_id_type: |-
+                      <class 'int'>
+                    is_confirmed_type: |-
+                      <class 'bool'>
+                    details_type: |-
+                      <class 'str'>
+            role: user
+        config:
+          http_options:
+            headers:
+              x-goog-api-client: google-adk/1.16.0 gl-python/3.11.11
+              user-agent: google-adk/1.16.0 gl-python/3.11.11
+          system_instruction: |-
+            You are a booking assistant. You can help with:
+
+            1.  Validating email addresses using the 'validate_email' tool.
+            2.  Retrieving a user ID from an email using the 'get_user_id' tool.
+            3.  Creating a new booking using the 'create_booking' tool, which requires a user ID, confirmation status, and details.
+
+            Use the appropriate tool to fulfill the user's request.
+
+
+            You are an agent. Your internal name is "booking_assistant". The description about you is "An agent for managing user bookings.".
+          tools:
+            - function_declarations:
+                - description: Checks if the provided string is a valid email format.
+                  name: validate_email
+                  parameters:
+                    properties:
+                      email:
+                        type: STRING
+                    required:
+                      - email
+                    type: OBJECT
+                  response:
+                    type: BOOLEAN
+                - description: Retrieves a user ID based on their email.
+                  name: get_user_id
+                  parameters:
+                    properties:
+                      email:
+                        type: STRING
+                    required:
+                      - email
+                    type: OBJECT
+                  response:
+                    type: INTEGER
+                - description: "Creates a booking for a user.\n\n  Args:\n    user_id: The unique identifier for the user.\n    is_confirmed: Whether the booking is confirmed.\n    details: Any additional details for the booking.\n\n  Returns:\n    A dictionary containing the booking information and the types of the\n    received arguments.\n  "
+                  name: create_booking
+                  parameters:
+                    properties:
+                      user_id:
+                        type: INTEGER
+                      is_confirmed:
+                        type: BOOLEAN
+                      details:
+                        type: STRING
+                    required:
+                      - user_id
+                      - is_confirmed
+                      - details
+                    type: OBJECT
+                  response:
+                    type: OBJECT
+          labels:
+            adk_agent_name: booking_assistant
+        live_connect_config:
+          input_audio_transcription: {}
+          output_audio_transcription: {}
+      llm_response:
+        content:
+          parts:
+            - thought_signature: CrUCAePx_14DP2nWFV53Eb9OlX0c2pu5ZkpeM1G8YF8E63u5e1ezR9MZal9-KjHvP7GDcWp0pS86YR9sLLHYeVTHZ71yrnxZmcSvc5W6XLoSWe4BrzOBWy-lXzorCye0l06eFJ-tnj_KGSB1rgTSu0tblOY1t6Y8Z1QjKekB7yS5j__BEQYZP7oyRCTrFZSYzrQaOk9qIQsC8jD20b1G7yiGcL2raAzH7x9bt_kmtFBcLsg6FELMs8FXtKMjCA-Ni23XjE_Gs8cqtEPK3prtPMq2qSkHnSqfx787wsMGaskXXHgGGzG_tJhzVdqtTS6LA9FfLrxW3qchqsjAKn2JZjTeBDpajWukDpvRM9uv-YXrZxv1efPYFOwIkjREYUzSUZwbcRR-JHAgADezUy1ejDWNswDPdIKt
+              text: |-
+                Booking created for user ID 6707 with details 'Conformance Test' and confirmation status True.
+          role: model
+        finish_reason: STOP
+        usage_metadata:
+          candidates_token_count: 22
+          candidates_tokens_details:
+            - modality: TEXT
+              token_count: 22
+          prompt_token_count: 369
+          prompt_tokens_details:
+            - modality: TEXT
+              token_count: 654
+          thoughts_token_count: 58
+          total_token_count: 449
+          traffic_type: ON_DEMAND
+        avg_logprobs: -0.9378872784701261

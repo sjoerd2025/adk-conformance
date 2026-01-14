@@ -1,0 +1,230 @@
+# Copyright 2025 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+recordings:
+  - user_message_index: 0
+    agent_name: call_center_assistant
+    llm_recording:
+      llm_request:
+        model: gemini-2.5-flash
+        contents:
+          - parts:
+              - text: 'New customer call. Customer ID: 4789, Name: Jane Doe. Please prepare greeting and identity verification questions.'
+            role: user
+        config:
+          http_options:
+            headers:
+              x-goog-api-client: google-adk/1.16.0 gl-python/3.11.11
+              user-agent: google-adk/1.16.0 gl-python/3.11.11
+          system_instruction: |-
+            You are an assistant helping a call center representative.
+            Your tasks are to:
+            1.  Generate a suitable greeting for the customer using the 'greeting_agent' tool.
+            2.  Generate questions to verify the customer's identity using the 'identity_agent' tool.
+            Combine the outputs from the tools to form a response for the representative.
+
+
+            You are an agent. Your internal name is "call_center_assistant". The description about you is "An assistant for call center representatives.".
+          tools:
+            - function_declarations:
+                - description: Generates welcome messages for customers.
+                  name: greeting_agent
+                  parameters:
+                    properties:
+                      request:
+                        type: STRING
+                    required:
+                      - request
+                    type: OBJECT
+                  response:
+                    type: STRING
+                - description: Generates identity verification questions.
+                  name: identity_agent
+                  parameters:
+                    properties:
+                      request:
+                        type: STRING
+                    required:
+                      - request
+                    type: OBJECT
+                  response:
+                    type: STRING
+          labels:
+            adk_agent_name: call_center_assistant
+        live_connect_config:
+          input_audio_transcription: {}
+          output_audio_transcription: {}
+      llm_response:
+        content:
+          parts:
+            - thought_signature: CosEAePx_17tSFOsh4XU87c9hEkp4z1qF1Z_YDObjm0nV4SrQCdns9AFLwhYEgPzxzExpwZACISzIKBHoIIMOct16YMo6FPNPi1AYP8SkyxEpOp-XvFEzV0qyXrmwnEYRZBe-HfM7qxnjB18AJGDKR3df5XrLt7laAh-XDqi-7QBF_hljdUVvQzySZRWBo5mq2aZaUFWjvL-bzoz_CvdgzLemF_5LQEUwFuFP963Xjh4hTK6SCZawFE91zi5s7twGg4N0H6hxnQeZU5D5pt3aSYVzQaNe9td8kTpDMpGzpNXHbQoPMUg5rGCCHJ7fmGzl5E7BS_e9G-1gH9AqKQt5hjbm4OYvR0mFRottvYjpn6s4NFhrW0YKZgjr18PrCkSme4ccNa1ubOb91PZcH1AQJkM2ceYuzwIxj6ZRehguFjsk9qZqif6CMWWcmFJEaBvhGaJWK-pJM7xCOnaLB07oZFhfmB-MVaS364IeC85yeBAfYqP0sQvXVk72IYQmbLpHfcjMICBbZhUB5PlUtr-ImP6EveOvkTT0UIQa-OSWU3THhBfDjiwMhz2oVP04jS8uHpOPUudZveD_-MJ4gryGp99xvzN97LMZEbvKgQSKYfu07TMdc0AOVGyWUxk9VUE38l7xoXn9MB4lJMkqcwmDHcrdTtTLLusEedXhTGCPSaZxsquBJv6FreDZB0cnA==
+              function_call:
+                args:
+                  request: new customer call
+                name: greeting_agent
+            - function_call:
+                args:
+                  request: 'Customer ID: 4789, Name: Jane Doe'
+                name: identity_agent
+          role: model
+        finish_reason: STOP
+        usage_metadata:
+          candidates_token_count: 24
+          candidates_tokens_details:
+            - modality: TEXT
+              token_count: 24
+          prompt_token_count: 158
+          prompt_tokens_details:
+            - modality: TEXT
+              token_count: 158
+          thoughts_token_count: 111
+          total_token_count: 293
+          traffic_type: PROVISIONED_THROUGHPUT
+        avg_logprobs: -0.6214407285054525
+  - user_message_index: 0
+    agent_name: call_center_assistant
+    tool_recording:
+      tool_call:
+        id: adk-85faa5ee-a40c-4ece-a4c6-a3557e231130
+        args:
+          request: new customer call
+        name: greeting_agent
+      tool_response:
+        id: adk-85faa5ee-a40c-4ece-a4c6-a3557e231130
+        name: greeting_agent
+        response:
+          result: |-
+            Hello! Welcome to [Your Company Name]. My name is [Your Name], and I'll be happy to assist you today. How can I help you get started?
+  - user_message_index: 0
+    agent_name: call_center_assistant
+    tool_recording:
+      tool_call:
+        id: adk-d5e99eeb-53bd-4cfa-8b30-fc338598ef43
+        args:
+          request: 'Customer ID: 4789, Name: Jane Doe'
+        name: identity_agent
+      tool_response:
+        id: adk-d5e99eeb-53bd-4cfa-8b30-fc338598ef43
+        name: identity_agent
+        response:
+          result: |-
+            Here are a few questions to verify your identity:
+
+            1.  What is your full legal name?
+            2.  What is your date of birth (MM/DD/YYYY)?
+            3.  What is the primary address associated with your account?
+  - user_message_index: 0
+    agent_name: call_center_assistant
+    llm_recording:
+      llm_request:
+        model: gemini-2.5-flash
+        contents:
+          - parts:
+              - text: 'New customer call. Customer ID: 4789, Name: Jane Doe. Please prepare greeting and identity verification questions.'
+            role: user
+          - parts:
+              - thought_signature: CosEAePx_17tSFOsh4XU87c9hEkp4z1qF1Z_YDObjm0nV4SrQCdns9AFLwhYEgPzxzExpwZACISzIKBHoIIMOct16YMo6FPNPi1AYP8SkyxEpOp-XvFEzV0qyXrmwnEYRZBe-HfM7qxnjB18AJGDKR3df5XrLt7laAh-XDqi-7QBF_hljdUVvQzySZRWBo5mq2aZaUFWjvL-bzoz_CvdgzLemF_5LQEUwFuFP963Xjh4hTK6SCZawFE91zi5s7twGg4N0H6hxnQeZU5D5pt3aSYVzQaNe9td8kTpDMpGzpNXHbQoPMUg5rGCCHJ7fmGzl5E7BS_e9G-1gH9AqKQt5hjbm4OYvR0mFRottvYjpn6s4NFhrW0YKZgjr18PrCkSme4ccNa1ubOb91PZcH1AQJkM2ceYuzwIxj6ZRehguFjsk9qZqif6CMWWcmFJEaBvhGaJWK-pJM7xCOnaLB07oZFhfmB-MVaS364IeC85yeBAfYqP0sQvXVk72IYQmbLpHfcjMICBbZhUB5PlUtr-ImP6EveOvkTT0UIQa-OSWU3THhBfDjiwMhz2oVP04jS8uHpOPUudZveD_-MJ4gryGp99xvzN97LMZEbvKgQSKYfu07TMdc0AOVGyWUxk9VUE38l7xoXn9MB4lJMkqcwmDHcrdTtTLLusEedXhTGCPSaZxsquBJv6FreDZB0cnA==
+                function_call:
+                  args:
+                    request: new customer call
+                  name: greeting_agent
+              - function_call:
+                  args:
+                    request: 'Customer ID: 4789, Name: Jane Doe'
+                  name: identity_agent
+            role: model
+          - parts:
+              - function_response:
+                  name: greeting_agent
+                  response:
+                    result: |-
+                      Hello! Welcome to [Your Company Name]. My name is [Your Name], and I'll be happy to assist you today. How can I help you get started?
+              - function_response:
+                  name: identity_agent
+                  response:
+                    result: |-
+                      Here are a few questions to verify your identity:
+
+                      1.  What is your full legal name?
+                      2.  What is your date of birth (MM/DD/YYYY)?
+                      3.  What is the primary address associated with your account?
+            role: user
+        config:
+          http_options:
+            headers:
+              x-goog-api-client: google-adk/1.16.0 gl-python/3.11.11
+              user-agent: google-adk/1.16.0 gl-python/3.11.11
+          system_instruction: |-
+            You are an assistant helping a call center representative.
+            Your tasks are to:
+            1.  Generate a suitable greeting for the customer using the 'greeting_agent' tool.
+            2.  Generate questions to verify the customer's identity using the 'identity_agent' tool.
+            Combine the outputs from the tools to form a response for the representative.
+
+
+            You are an agent. Your internal name is "call_center_assistant". The description about you is "An assistant for call center representatives.".
+          tools:
+            - function_declarations:
+                - description: Generates welcome messages for customers.
+                  name: greeting_agent
+                  parameters:
+                    properties:
+                      request:
+                        type: STRING
+                    required:
+                      - request
+                    type: OBJECT
+                  response:
+                    type: STRING
+                - description: Generates identity verification questions.
+                  name: identity_agent
+                  parameters:
+                    properties:
+                      request:
+                        type: STRING
+                    required:
+                      - request
+                    type: OBJECT
+                  response:
+                    type: STRING
+          labels:
+            adk_agent_name: call_center_assistant
+        live_connect_config:
+          input_audio_transcription: {}
+          output_audio_transcription: {}
+      llm_response:
+        content:
+          parts:
+            - text: |-
+                Hello! Welcome to [Your Company Name]. My name is [Your Name], and I'll be happy to assist you today. How can I help you get started?
+
+                Here are a few questions to verify your identity:
+
+                1.  What is your full legal name?
+                2.  What is your date of birth (MM/DD/YYYY)?
+                3.  What is the primary address associated with your account?
+          role: model
+        finish_reason: STOP
+        usage_metadata:
+          candidates_token_count: 88
+          candidates_tokens_details:
+            - modality: TEXT
+              token_count: 88
+          prompt_token_count: 277
+          prompt_tokens_details:
+            - modality: TEXT
+              token_count: 386
+          total_token_count: 365
+          traffic_type: PROVISIONED_THROUGHPUT
+        avg_logprobs: -0.001597899096933278

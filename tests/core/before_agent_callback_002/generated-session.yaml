@@ -1,0 +1,74 @@
+id: b872ae43-5c8e-4240-a03e-27758045f692
+app_name: callback_agent_002
+user_id: adk_conformance_test_user
+state:
+  conversation_limit_reached: 'True'
+events:
+  - content:
+      parts:
+        - text: What can you do?
+      role: user
+    invocation_id: e-02ad757c-8c4f-4342-89d0-e57b97e59cc5
+    author: user
+    actions:
+      state_delta: {}
+    id: 5d33de5c-c237-470d-bfb4-3e751836e015
+    timestamp: 1761259361.935585
+  - invocation_id: e-02ad757c-8c4f-4342-89d0-e57b97e59cc5
+    author: callback_agent_002
+    actions:
+      state_delta:
+        conversation_limit_reached: 'True'
+    id: 2e518c17-7014-4420-a02a-a5103b06ccc1
+    timestamp: 1761259361.935837
+  - content:
+      parts:
+        - text: |-
+            Hello! I'm a helpful AI assistant, and my internal name is "callback_agent_002".
+
+            Here are some of the things I can do:
+
+            *   **Answer your questions:** I can provide information on a wide range of topics.
+            *   **Perform simple tasks:** If you need help with things like calculations, definitions, or explanations.
+            *   **Engage in conversation:** I can chat about various subjects.
+            *   **Help with writing:** I can assist with generating ideas, summarizing text, or even writing creative content.
+
+            Just ask me anything you have in mind, and I'll do my best to assist you!
+      role: model
+    finish_reason: STOP
+    usage_metadata:
+      candidates_token_count: 136
+      candidates_tokens_details:
+        - modality: TEXT
+          token_count: 136
+      prompt_token_count: 107
+      prompt_tokens_details:
+        - modality: TEXT
+          token_count: 107
+      thoughts_token_count: 36
+      total_token_count: 279
+      traffic_type: ON_DEMAND
+    avg_logprobs: -0.4128591593574075
+    invocation_id: e-02ad757c-8c4f-4342-89d0-e57b97e59cc5
+    author: callback_agent_002
+    id: 2ea0655a-e3c6-4050-b145-32f69b53f1b2
+    timestamp: 1761259361.936226
+  - content:
+      parts:
+        - text: Can you tell me a joke?
+      role: user
+    invocation_id: e-2c838139-7ecf-4151-9a1e-52a5e0b993f6
+    author: user
+    actions:
+      state_delta: {}
+    id: 6a5ca2c0-38c4-4c90-830d-507bde139091
+    timestamp: 1761259363.986276
+  - content:
+      parts:
+        - text: Sorry, you have reached the limit of the conversation.
+      role: model
+    invocation_id: e-2c838139-7ecf-4151-9a1e-52a5e0b993f6
+    author: callback_agent_002
+    id: 1ca11c4a-d001-4568-9a79-728f76032f6e
+    timestamp: 1761259363.994964
+last_update_time: 1761259363.994964

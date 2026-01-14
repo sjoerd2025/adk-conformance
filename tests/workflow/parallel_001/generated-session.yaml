@@ -1,0 +1,182 @@
+# Copyright 2025 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+id: b7668dae-d058-4c23-9f4a-76e474d9dbb5
+app_name: parallel_agent_001
+user_id: adk_conformance_test_user
+state: {}
+events:
+  - content:
+      parts:
+        - text: Research the iPhone 15 Pro for me.
+      role: user
+    invocation_id: e-0659a7f5-1c8c-4a17-95f9-bc730c5be816
+    author: user
+    actions:
+      state_delta: {}
+    id: f213db63-fd51-407d-8233-634a989b820c
+    timestamp: 1761016933.505094
+  - content:
+      parts:
+        - text: |-
+            **Price Analysis:**
+            - Estimated Price: $999
+            - Price Range: $999 - $1499
+            - Value Assessment: Premium
+      role: model
+    finish_reason: STOP
+    usage_metadata:
+      candidates_token_count: 34
+      candidates_tokens_details:
+        - modality: TEXT
+          token_count: 34
+      prompt_token_count: 128
+      prompt_tokens_details:
+        - modality: TEXT
+          token_count: 128
+      thoughts_token_count: 182
+      total_token_count: 344
+      traffic_type: ON_DEMAND
+    avg_logprobs: -1.658155553481158
+    invocation_id: e-0659a7f5-1c8c-4a17-95f9-bc730c5be816
+    author: price_checker
+    branch: research_parallel_agent.price_checker
+    id: cf34d0aa-c2a3-47c6-a34a-d14431fa286f
+    timestamp: 1761016933.505918
+  - content:
+      parts:
+        - text: |-
+            **Review Analysis:**
+            - Average Rating: 4.7/5 stars
+            - Total Reviews: 18,500
+            - Pros: Exceptional camera performance (especially in low light and zoom), powerful A17 Pro chip for gaming and multitasking, lightweight and premium titanium design.
+            - Cons: Battery life could be better for heavy users, high price point.
+            - Overall Sentiment: Positive
+      role: model
+    finish_reason: STOP
+    usage_metadata:
+      candidates_token_count: 83
+      candidates_tokens_details:
+        - modality: TEXT
+          token_count: 83
+      prompt_token_count: 152
+      prompt_tokens_details:
+        - modality: TEXT
+          token_count: 152
+      thoughts_token_count: 239
+      total_token_count: 474
+      traffic_type: ON_DEMAND
+    avg_logprobs: -1.2895265142601657
+    invocation_id: e-0659a7f5-1c8c-4a17-95f9-bc730c5be816
+    author: review_analyzer
+    branch: research_parallel_agent.review_analyzer
+    id: 32788d51-c1a3-4764-9689-c5f33b75f333
+    timestamp: 1761016933.54958
+  - content:
+      parts:
+        - text: |-
+            **Product Specifications:**
+            - Category: Smartphone
+            - Key Features:
+                *   Aerospace-grade titanium design
+                *   A17 Pro chip for next-level performance
+                *   Advanced 48MP Main camera system with 3x optical zoom
+                *   Customizable Action Button
+                *   USB-C connector with USB 3 speeds
+            - Technical Specs:
+                *   Display: 6.1-inch Super Retina XDR display with ProMotion
+                *   Processor: A17 Pro Bionic chip
+                *   Rear Camera: 48MP Main, 12MP Ultra Wide, 12MP Telephoto (3x optical zoom)
+                *   Storage Options: 128GB, 256GB, 512GB, 1TB
+                *   Connectivity: 5G (sub-6 GHz and mmWave), Wi-Fi 6E, Bluetooth 5.3
+            - Release Date: September 22, 2023
+      role: model
+    finish_reason: STOP
+    usage_metadata:
+      candidates_token_count: 220
+      candidates_tokens_details:
+        - modality: TEXT
+          token_count: 220
+      prompt_token_count: 136
+      prompt_tokens_details:
+        - modality: TEXT
+          token_count: 136
+      thoughts_token_count: 276
+      total_token_count: 632
+      traffic_type: ON_DEMAND
+    avg_logprobs: -0.2975289431485263
+    invocation_id: e-0659a7f5-1c8c-4a17-95f9-bc730c5be816
+    author: spec_extractor
+    branch: research_parallel_agent.spec_extractor
+    id: 7d97f25f-046c-4674-b84b-21d984697596
+    timestamp: 1761016933.59837
+  - content:
+      parts:
+        - text: |-
+            ===== PRODUCT RESEARCH REPORT =====
+
+            iPhone 15 Pro
+
+            **Pricing Information:**
+            - Estimated Price: $999
+            - Price Range: $999 - $1499
+            - Value Assessment: Premium
+
+            **Customer Reviews:**
+            - Average Rating: 4.7/5 stars
+            - Total Reviews: 18,500
+            - Pros: Exceptional camera performance (especially in low light and zoom), powerful A17 Pro chip for gaming and multitasking, lightweight and premium titanium design.
+            - Cons: Battery life could be better for heavy users, high price point.
+            - Overall Sentiment: Positive
+
+            **Product Specifications:**
+            - Category: Smartphone
+            - Key Features:
+                *   Aerospace-grade titanium design
+                *   A17 Pro chip for next-level performance
+                *   Advanced 48MP Main camera system with 3x optical zoom
+                *   Customizable Action Button
+                *   USB-C connector with USB 3 speeds
+            - Technical Specs:
+                *   Display: 6.1-inch Super Retina XDR display with ProMotion
+                *   Processor: A17 Pro Bionic chip
+                *   Rear Camera: 48MP Main, 12MP Ultra Wide, 12MP Telephoto (3x optical zoom)
+                *   Storage Options: 128GB, 256GB, 512GB, 1TB
+                *   Connectivity: 5G (sub-6 GHz and mmWave), Wi-Fi 6E, Bluetooth 5.3
+            - Release Date: September 22, 2023
+
+            **Recommendation:**
+            The iPhone 15 Pro is a top-tier premium smartphone with an excellent average rating, highly praised for its camera, powerful performance, and premium design. While its high price point and potentially average battery life for heavy users are noted cons, the advanced specifications and positive customer sentiment make it a strong recommendation for users seeking a high-performance device, especially those prioritizing photography and a cutting-edge user experience.
+
+            ====================================
+      role: model
+    finish_reason: STOP
+    usage_metadata:
+      candidates_token_count: 442
+      candidates_tokens_details:
+        - modality: TEXT
+          token_count: 442
+      prompt_token_count: 535
+      prompt_tokens_details:
+        - modality: TEXT
+          token_count: 535
+      thoughts_token_count: 50
+      total_token_count: 1027
+      traffic_type: ON_DEMAND
+    avg_logprobs: -0.09749604997591735
+    invocation_id: e-0659a7f5-1c8c-4a17-95f9-bc730c5be816
+    author: research_summary
+    id: ac648f44-14ae-4143-abc7-a57431292fdf
+    timestamp: 1761016937.358515
+last_update_time: 1761016937.358515

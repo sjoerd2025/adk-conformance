@@ -1,0 +1,345 @@
+# Copyright 2025 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+recordings:
+  - user_message_index: 0
+    agent_name: price_checker
+    llm_recording:
+      llm_request:
+        model: gemini-2.5-flash
+        contents:
+          - parts:
+              - text: Research the iPhone 15 Pro for me.
+            role: user
+        config:
+          http_options:
+            headers:
+              x-goog-api-client: google-adk/1.16.0 gl-python/3.11.11
+              user-agent: google-adk/1.16.0 gl-python/3.11.11
+          system_instruction: |-
+            You are a Price Checker Agent for product research.
+
+            Your role is to analyze the product mentioned by the user and provide pricing information.
+
+            For testing purposes, provide a realistic price analysis in this format:
+
+            **Price Analysis:**
+            - Estimated Price: [reasonable price based on product type]
+            - Price Range: [low - high]
+            - Value Assessment: [Good/Fair/Premium]
+
+            Be concise and focus only on pricing information.
+
+
+            You are an agent. Your internal name is "price_checker". The description about you is "Analyzes product pricing information.".
+          labels:
+            adk_agent_name: price_checker
+        live_connect_config:
+          input_audio_transcription: {}
+          output_audio_transcription: {}
+      llm_response:
+        content:
+          parts:
+            - text: |-
+                **Price Analysis:**
+                - Estimated Price: $999
+                - Price Range: $999 - $1499
+                - Value Assessment: Premium
+          role: model
+        finish_reason: STOP
+        usage_metadata:
+          candidates_token_count: 34
+          candidates_tokens_details:
+            - modality: TEXT
+              token_count: 34
+          prompt_token_count: 128
+          prompt_tokens_details:
+            - modality: TEXT
+              token_count: 128
+          thoughts_token_count: 182
+          total_token_count: 344
+          traffic_type: ON_DEMAND
+        avg_logprobs: -1.658155553481158
+  - user_message_index: 0
+    agent_name: review_analyzer
+    llm_recording:
+      llm_request:
+        model: gemini-2.5-flash
+        contents:
+          - parts:
+              - text: Research the iPhone 15 Pro for me.
+            role: user
+        config:
+          http_options:
+            headers:
+              x-goog-api-client: google-adk/1.16.0 gl-python/3.11.11
+              user-agent: google-adk/1.16.0 gl-python/3.11.11
+          system_instruction: |-
+            You are a Review Analyzer Agent for product research.
+
+            Your role is to analyze the product mentioned by the user and provide review insights.
+
+            For testing purposes, provide a realistic review analysis in this format:
+
+            **Review Analysis:**
+            - Average Rating: [rating out of 5 stars]
+            - Total Reviews: [reasonable number]
+            - Pros: [2-3 common positive points]
+            - Cons: [1-2 common negative points]
+            - Overall Sentiment: [Positive/Mixed/Negative]
+
+            Be concise and focus only on review information.
+
+
+            You are an agent. Your internal name is "review_analyzer". The description about you is "Analyzes product reviews and ratings.".
+          labels:
+            adk_agent_name: review_analyzer
+        live_connect_config:
+          input_audio_transcription: {}
+          output_audio_transcription: {}
+      llm_response:
+        content:
+          parts:
+            - text: |-
+                **Review Analysis:**
+                - Average Rating: 4.7/5 stars
+                - Total Reviews: 18,500
+                - Pros: Exceptional camera performance (especially in low light and zoom), powerful A17 Pro chip for gaming and multitasking, lightweight and premium titanium design.
+                - Cons: Battery life could be better for heavy users, high price point.
+                - Overall Sentiment: Positive
+          role: model
+        finish_reason: STOP
+        usage_metadata:
+          candidates_token_count: 83
+          candidates_tokens_details:
+            - modality: TEXT
+              token_count: 83
+          prompt_token_count: 152
+          prompt_tokens_details:
+            - modality: TEXT
+              token_count: 152
+          thoughts_token_count: 239
+          total_token_count: 474
+          traffic_type: ON_DEMAND
+        avg_logprobs: -1.2895265142601657
+  - user_message_index: 0
+    agent_name: spec_extractor
+    llm_recording:
+      llm_request:
+        model: gemini-2.5-flash
+        contents:
+          - parts:
+              - text: Research the iPhone 15 Pro for me.
+            role: user
+        config:
+          http_options:
+            headers:
+              x-goog-api-client: google-adk/1.16.0 gl-python/3.11.11
+              user-agent: google-adk/1.16.0 gl-python/3.11.11
+          system_instruction: |-
+            You are a Specification Extractor Agent for product research.
+
+            Your role is to analyze the product mentioned by the user and provide key specifications.
+
+            For testing purposes, provide realistic product specifications in this format:
+
+            **Product Specifications:**
+            - Category: [product category]
+            - Key Features: [list 3-5 main features]
+            - Technical Specs: [relevant technical details]
+            - Release Date: [estimated or actual]
+
+            Be concise and focus only on factual specifications.
+
+
+            You are an agent. Your internal name is "spec_extractor". The description about you is "Extracts product specifications and features.".
+          labels:
+            adk_agent_name: spec_extractor
+        live_connect_config:
+          input_audio_transcription: {}
+          output_audio_transcription: {}
+      llm_response:
+        content:
+          parts:
+            - text: |-
+                **Product Specifications:**
+                - Category: Smartphone
+                - Key Features:
+                    *   Aerospace-grade titanium design
+                    *   A17 Pro chip for next-level performance
+                    *   Advanced 48MP Main camera system with 3x optical zoom
+                    *   Customizable Action Button
+                    *   USB-C connector with USB 3 speeds
+                - Technical Specs:
+                    *   Display: 6.1-inch Super Retina XDR display with ProMotion
+                    *   Processor: A17 Pro Bionic chip
+                    *   Rear Camera: 48MP Main, 12MP Ultra Wide, 12MP Telephoto (3x optical zoom)
+                    *   Storage Options: 128GB, 256GB, 512GB, 1TB
+                    *   Connectivity: 5G (sub-6 GHz and mmWave), Wi-Fi 6E, Bluetooth 5.3
+                - Release Date: September 22, 2023
+          role: model
+        finish_reason: STOP
+        usage_metadata:
+          candidates_token_count: 220
+          candidates_tokens_details:
+            - modality: TEXT
+              token_count: 220
+          prompt_token_count: 136
+          prompt_tokens_details:
+            - modality: TEXT
+              token_count: 136
+          thoughts_token_count: 276
+          total_token_count: 632
+          traffic_type: ON_DEMAND
+        avg_logprobs: -0.2975289431485263
+  - user_message_index: 0
+    agent_name: research_summary
+    llm_recording:
+      llm_request:
+        model: gemini-2.5-flash
+        contents:
+          - parts:
+              - text: Research the iPhone 15 Pro for me.
+            role: user
+          - parts:
+              - text: 'For context:'
+              - text: |-
+                  [price_checker] said: **Price Analysis:**
+                  - Estimated Price: $999
+                  - Price Range: $999 - $1499
+                  - Value Assessment: Premium
+            role: user
+          - parts:
+              - text: 'For context:'
+              - text: |-
+                  [review_analyzer] said: **Review Analysis:**
+                  - Average Rating: 4.7/5 stars
+                  - Total Reviews: 18,500
+                  - Pros: Exceptional camera performance (especially in low light and zoom), powerful A17 Pro chip for gaming and multitasking, lightweight and premium titanium design.
+                  - Cons: Battery life could be better for heavy users, high price point.
+                  - Overall Sentiment: Positive
+            role: user
+          - parts:
+              - text: 'For context:'
+              - text: |-
+                  [spec_extractor] said: **Product Specifications:**
+                  - Category: Smartphone
+                  - Key Features:
+                      *   Aerospace-grade titanium design
+                      *   A17 Pro chip for next-level performance
+                      *   Advanced 48MP Main camera system with 3x optical zoom
+                      *   Customizable Action Button
+                      *   USB-C connector with USB 3 speeds
+                  - Technical Specs:
+                      *   Display: 6.1-inch Super Retina XDR display with ProMotion
+                      *   Processor: A17 Pro Bionic chip
+                      *   Rear Camera: 48MP Main, 12MP Ultra Wide, 12MP Telephoto (3x optical zoom)
+                      *   Storage Options: 128GB, 256GB, 512GB, 1TB
+                      *   Connectivity: 5G (sub-6 GHz and mmWave), Wi-Fi 6E, Bluetooth 5.3
+                  - Release Date: September 22, 2023
+            role: user
+        config:
+          http_options:
+            headers:
+              x-goog-api-client: google-adk/1.16.0 gl-python/3.11.11
+              user-agent: google-adk/1.16.0 gl-python/3.11.11
+          system_instruction: |-
+            You are a Product Research Summary Agent.
+
+            Your role is to compile the results from the price checker, review analyzer, and specification extractor into a comprehensive product research report.
+
+            Review the conversation history and identify the outputs from all three research agents.
+
+            Present the information in this format:
+
+            ===== PRODUCT RESEARCH REPORT =====
+
+            [Product Name]
+
+            **Pricing Information:**
+            [Summary from price_checker]
+
+            **Customer Reviews:**
+            [Summary from review_analyzer]
+
+            **Product Specifications:**
+            [Summary from spec_extractor]
+
+            **Recommendation:**
+            [Brief recommendation based on all three analyses]
+
+            ====================================
+
+
+            You are an agent. Your internal name is "research_summary". The description about you is "Summarizes the parallel research results into a comprehensive product report.".
+          labels:
+            adk_agent_name: research_summary
+        live_connect_config:
+          input_audio_transcription: {}
+          output_audio_transcription: {}
+      llm_response:
+        content:
+          parts:
+            - text: |-
+                ===== PRODUCT RESEARCH REPORT =====
+
+                iPhone 15 Pro
+
+                **Pricing Information:**
+                - Estimated Price: $999
+                - Price Range: $999 - $1499
+                - Value Assessment: Premium
+
+                **Customer Reviews:**
+                - Average Rating: 4.7/5 stars
+                - Total Reviews: 18,500
+                - Pros: Exceptional camera performance (especially in low light and zoom), powerful A17 Pro chip for gaming and multitasking, lightweight and premium titanium design.
+                - Cons: Battery life could be better for heavy users, high price point.
+                - Overall Sentiment: Positive
+
+                **Product Specifications:**
+                - Category: Smartphone
+                - Key Features:
+                    *   Aerospace-grade titanium design
+                    *   A17 Pro chip for next-level performance
+                    *   Advanced 48MP Main camera system with 3x optical zoom
+                    *   Customizable Action Button
+                    *   USB-C connector with USB 3 speeds
+                - Technical Specs:
+                    *   Display: 6.1-inch Super Retina XDR display with ProMotion
+                    *   Processor: A17 Pro Bionic chip
+                    *   Rear Camera: 48MP Main, 12MP Ultra Wide, 12MP Telephoto (3x optical zoom)
+                    *   Storage Options: 128GB, 256GB, 512GB, 1TB
+                    *   Connectivity: 5G (sub-6 GHz and mmWave), Wi-Fi 6E, Bluetooth 5.3
+                - Release Date: September 22, 2023
+
+                **Recommendation:**
+                The iPhone 15 Pro is a top-tier premium smartphone with an excellent average rating, highly praised for its camera, powerful performance, and premium design. While its high price point and potentially average battery life for heavy users are noted cons, the advanced specifications and positive customer sentiment make it a strong recommendation for users seeking a high-performance device, especially those prioritizing photography and a cutting-edge user experience.
+
+                ====================================
+          role: model
+        finish_reason: STOP
+        usage_metadata:
+          candidates_token_count: 442
+          candidates_tokens_details:
+            - modality: TEXT
+              token_count: 442
+          prompt_token_count: 535
+          prompt_tokens_details:
+            - modality: TEXT
+              token_count: 535
+          thoughts_token_count: 50
+          total_token_count: 1027
+          traffic_type: ON_DEMAND
+        avg_logprobs: -0.09749604997591735

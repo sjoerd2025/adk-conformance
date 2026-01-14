@@ -1,0 +1,207 @@
+# Copyright 2025 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+id: e858f63e-ce11-421b-aac7-470c5e5bf22e
+app_name: multi_agent_001
+user_id: adk_conformance_test_user
+state: {}
+events:
+  - content:
+      parts:
+        - text: What is photosynthesis?
+      role: user
+    invocation_id: e-d9777447-89f3-478d-a4f9-3da555f4463d
+    author: user
+    actions:
+      state_delta: {}
+    id: b733786f-b0d8-4d5d-89e0-4006915da2f0
+    timestamp: 1764030546.150657
+  - model_version: gemini-2.5-flash
+    content:
+      parts:
+        - function_call:
+            id: adk-c6e2e8b6-c6b9-45f3-87b9-5ac51b1f5ebc
+            args:
+              agent_name: science_tutor
+            name: transfer_to_agent
+          thought_signature: CuwBAePx_146wt-gnNKjga-FpwxJ2woV3fFCWlfVGnw0bvUaz-tfiie50dxVpuTy05GlDo0gWUL1B0zBkr1mq5P3QYkJSJOerlwTgx-2iNuvjOLmgu3GYy69k_mtdNDV-WUIsXu8xC0S3UQT_X-oT7YoX_xHHRjjEw-_-D6zmIAL94duS3wpF3srRBF7_miCmdr3ueO5E7NaR2c7cG__BDlvjhaNzvibgrobZRyiW99CTGEK1AwXaCETEX1KzDuaPvE9kz_HOQ_F9nNqQGcVlCxFalYMzhXObMjoX7rhKB1L4_Zg6uwifpUel_a8GbM=
+      role: model
+    finish_reason: STOP
+    usage_metadata:
+      candidates_token_count: 11
+      candidates_tokens_details:
+        - modality: TEXT
+          token_count: 11
+      prompt_token_count: 492
+      prompt_tokens_details:
+        - modality: TEXT
+          token_count: 492
+      thoughts_token_count: 47
+      total_token_count: 550
+      traffic_type: ON_DEMAND
+    avg_logprobs: -0.53137037970803
+    invocation_id: e-d9777447-89f3-478d-a4f9-3da555f4463d
+    author: study_buddy_coordinator
+    long_running_tool_ids: []
+    id: 70fecc12-c93e-4416-864e-f63c9e720de4
+    timestamp: 1764030546.151294
+  - content:
+      parts:
+        - function_response:
+            id: adk-c6e2e8b6-c6b9-45f3-87b9-5ac51b1f5ebc
+            name: transfer_to_agent
+            response:
+              result: null
+      role: user
+    invocation_id: e-d9777447-89f3-478d-a4f9-3da555f4463d
+    author: study_buddy_coordinator
+    actions:
+      transfer_to_agent: science_tutor
+    id: 6d24fd05-a6de-48f9-a540-1883c0e568bc
+    timestamp: 1764030547.503035
+  - model_version: gemini-2.5-flash
+    content:
+      parts:
+        - text: |-
+            Photosynthesis is a fascinating process that plants and some other organisms use to turn sunlight into food! Think of it like a plant's kitchen, where it cooks up its own meals.
+
+            Here's a breakdown:
+
+            *   **Ingredients:** Plants need three main things for photosynthesis:
+                1.  **Sunlight:** This provides the energy for the whole process.
+                2.  **Water (H₂O):** Plants absorb this from the soil through their roots.
+                3.  **Carbon Dioxide (CO₂):** They take this gas from the air through tiny pores on their leaves called stomata.
+
+            *   **The Kitchen (Chloroplasts):** Inside the plant cells, especially in the leaves, there are special organelles called chloroplasts. These are like the plant's mini-factories where photosynthesis happens. Chloroplasts contain a green pigment called **chlorophyll**, which is what gives plants their green color and, more importantly, is responsible for capturing sunlight!
+
+            *   **The Recipe (The Process):**
+                *   Chlorophyll traps the energy from sunlight.
+                *   This energy is then used to convert water and carbon dioxide into two main products:
+                    *   **Glucose (sugar):** This is the plant's food! It uses glucose for energy to grow, flower, and produce fruits.
+                    *   **Oxygen (O₂):** This is released back into the air as a byproduct. And guess what? This is the oxygen that humans and animals breathe!
+
+            **In simple terms:** Plants take in sunlight, water, and carbon dioxide, and through a chemical reaction in their leaves, they create their own food (sugar) and release oxygen.
+
+            **Real-world example:** Have you ever seen a houseplant thriving near a sunny window? That plant is busily performing photosynthesis to grow big and strong! Or think about how trees in a forest help keep our air fresh – they're constantly taking in CO2 and giving us oxygen.
+
+            It's a super important process not just for plants, but for almost all life on Earth!
+          thought_signature: CqUCAePx_17Tet1LYCEhj4r7iYBNE6yXs8L29y0frRsBdiXm6EpFwd8o3JItf5tI3PFsjiiYrPE8t1DCjMMugcUgRJO6J0IN-AjlYGXdOfux8fE3N-kgoLnuwS8etEH7aVSYMG93RQfJK3oSlGd-RG2hWOHdWrpm6PC7s7eCiUdrYqrZajM6r5_fT8uF4wI7sqqCTwv4KYA-r3ci7ROTIT1NdfMlEBSU6zVcbzfgs6U6tKGGF6hPHsjRmSSMVbmmcKrl3DkEGZV9z1RNUorD6y_4bSq8pZ9IqobWu_bFOd9gCe_jp1qnFvEh9Lw7jgFKQMZA6mzmmvZqx3hqLZFZvW2cgcY5U0DSB_-qZJyiG8USZjDKx-O3mFh54pO_XFLlojiHtmBKNzY=
+      role: model
+    finish_reason: STOP
+    usage_metadata:
+      candidates_token_count: 431
+      candidates_tokens_details:
+        - modality: TEXT
+          token_count: 431
+      prompt_token_count: 562
+      prompt_tokens_details:
+        - modality: TEXT
+          token_count: 562
+      thoughts_token_count: 56
+      total_token_count: 1049
+      traffic_type: ON_DEMAND
+    avg_logprobs: -0.251597782851925
+    invocation_id: e-d9777447-89f3-478d-a4f9-3da555f4463d
+    author: science_tutor
+    id: 13bb8aae-5964-453a-a802-067e7b69732d
+    timestamp: 1764030547.505209
+  - content:
+      parts:
+        - text: Now help me calculate the area of a rectangle that is 5 meters by 3 meters.
+      role: user
+    invocation_id: e-398f5610-3e07-4694-bd34-ee2f512eb074
+    author: user
+    actions:
+      state_delta: {}
+    id: c79b0792-1541-4245-99ae-b403afa84d1c
+    timestamp: 1764030551.265447
+  - model_version: gemini-2.5-flash
+    content:
+      parts:
+        - function_call:
+            id: adk-a8571f0b-9a64-43a0-a0be-72e04b7fc499
+            args:
+              agent_name: math_tutor
+            name: transfer_to_agent
+          thought_signature: CvsCAePx_14m3s-yuvpmvHX3AHUUfYxjSjZwaBYt0SFozsIEPxo6WT6BzUdOVvht1mq-WFK4UQCOgGvWotjBWGUoEzHxs9ysH75FkwNEQPC0GUSvshpdPXYmh5dGQvxxlnLCmzaDvEeEDj0qHgkh0GaU1Fgzs6uoCSCz7LLAB1WBdFgXOgi08BjsfVUGTLWdbAitRnfDxY804z9T3VlAi-G6L140jfJ3BGv9mZK61CH5fiBRO8mktlPyLoUPDNEEhqNyHo66xGLSIM5yyvE58ulACTRiCgYGW28Y4l9N9c08nDMqHivXHzyZGTyyLUFHixeQmr7MIyQf-UtYjQ_w_083YJb-MnPZFZIUNGfgId-jF6S8RJ9rQw56AvLB64MrsPM1dnGcEh5JQWgI2KVhz0mbm-DmzYezdjDse2tFxBf8KUmAfiveCfmwbUgnPzu1AKME-eXDJPygLuGUA7jItm_L9m-rPOI6tysf7CtR3Rfotqy0BWA9Wt4bp87vsg==
+      role: model
+    finish_reason: STOP
+    usage_metadata:
+      candidates_token_count: 11
+      candidates_tokens_details:
+        - modality: TEXT
+          token_count: 11
+      prompt_token_count: 1012
+      prompt_tokens_details:
+        - modality: TEXT
+          token_count: 1066
+      thoughts_token_count: 76
+      total_token_count: 1099
+      traffic_type: ON_DEMAND
+    avg_logprobs: -0.9975049278952859
+    invocation_id: e-398f5610-3e07-4694-bd34-ee2f512eb074
+    author: science_tutor
+    long_running_tool_ids: []
+    id: 7e45a733-187a-41f9-854d-bb83f0424887
+    timestamp: 1764030551.274536
+  - content:
+      parts:
+        - function_response:
+            id: adk-a8571f0b-9a64-43a0-a0be-72e04b7fc499
+            name: transfer_to_agent
+            response:
+              result: null
+      role: user
+    invocation_id: e-398f5610-3e07-4694-bd34-ee2f512eb074
+    author: science_tutor
+    actions:
+      transfer_to_agent: math_tutor
+    id: f6e5808f-05a3-4288-8ee5-0d8f6e0517d2
+    timestamp: 1764030552.989943
+  - model_version: gemini-2.5-flash
+    content:
+      parts:
+        - text: |-
+            To calculate the area of a rectangle, you multiply its length by its width.
+
+            In this case:
+            *   Length = 5 meters
+            *   Width = 3 meters
+
+            Area = Length × Width
+            Area = 5 meters × 3 meters
+            Area = 15 square meters
+
+            So, the area of the rectangle is 15 square meters.
+          thought_signature: CtIBAePx_17ejfPjAN_r2AXrhXgWhWRKTVUGQeV1OK5aEZbaKnU4Hwd9dISwhRWYe5Tb1TqEQgW2rlOe8nqH6jdPx8fKq0Xjs0ZHv4VnrJ6A62MaVaTfJu18f3THHqAxdStMi-a8DZJG9THbETmBAXg4svliCu2Q8Kr9ycRMWLucQUUNj52uWedojBMCTNVq8aV7QlnbFlpniUQz5txrybVEQDNMxFI0QZwIECIfToOSfyoseUENK4YSx4veak5gaBxRCDK6ob3ctvIO_juE9Gvo5_uq
+      role: model
+    finish_reason: STOP
+    usage_metadata:
+      candidates_token_count: 76
+      candidates_tokens_details:
+        - modality: TEXT
+          token_count: 76
+      prompt_token_count: 1048
+      prompt_tokens_details:
+        - modality: TEXT
+          token_count: 1048
+      thoughts_token_count: 37
+      total_token_count: 1161
+      traffic_type: ON_DEMAND
+    avg_logprobs: -0.19268114943253367
+    invocation_id: e-398f5610-3e07-4694-bd34-ee2f512eb074
+    author: math_tutor
+    id: aa24de44-0907-46ac-9efd-3cf1a06479e0
+    timestamp: 1764030552.992945
+last_update_time: 1764030552.992945

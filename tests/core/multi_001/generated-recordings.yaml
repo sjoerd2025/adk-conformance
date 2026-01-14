@@ -1,0 +1,290 @@
+# Copyright 2025 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+recordings:
+  - user_message_index: 0
+    agent_name: study_buddy_coordinator
+    llm_recording:
+      llm_request:
+        model: gemini-2.5-flash
+        contents:
+          - parts:
+              - text: 'Help me solve this quadratic equation: x^2 + 5x + 6 = 0'
+            role: user
+        config:
+          http_options:
+            headers:
+              x-goog-api-client: google-adk/1.19.0 gl-python/3.12.8
+              user-agent: google-adk/1.19.0 gl-python/3.12.8
+          system_instruction: |
+            You are a Study Buddy Coordinator that helps students with their homework and study questions.
+
+            You have access to three specialized tutor agents:
+            - math_tutor: For mathematics, algebra, geometry, calculus, statistics
+            - science_tutor: For physics, chemistry, biology, earth science
+            - history_tutor: For history, geography, social studies, historical events
+
+            Your responsibilities:
+            1. Understand what subject(s) the student needs help with
+            2. Delegate to the appropriate tutor agent(s)
+            3. If a question involves multiple subjects, delegate to each relevant tutor
+            4. Combine the responses from the tutors into a helpful answer for the student
+
+            Always be encouraging and supportive in your responses.
+
+
+            You are an agent. Your internal name is "study_buddy_coordinator". The description about you is "Study coordinator that delegates questions to subject-specific tutors.".
+
+
+            You have a list of other agents to transfer to:
+
+
+            Agent name: math_tutor
+            Agent description: Mathematics tutor specializing in math problems and concepts.
+
+
+            Agent name: science_tutor
+            Agent description: Science tutor specializing in physics, chemistry, and biology.
+
+
+            Agent name: history_tutor
+            Agent description: History tutor specializing in historical events and social studies.
+
+
+            If you are the best to answer the question according to your description,
+            you can answer it.
+
+            If another agent is better for answering the question according to its
+            description, call `transfer_to_agent` function to transfer the question to that
+            agent. When transferring, do not generate any text other than the function
+            call.
+
+            **NOTE**: the only available agents for `transfer_to_agent` function are
+            `history_tutor`, `math_tutor`, `science_tutor`.
+          tools:
+            - function_declarations:
+                - description: "Transfer the question to another agent.\n\n  This tool hands off control to another agent when it's more suitable to\n  answer the user's question according to the agent's description.\n\n  Note:\n    For most use cases, you should use TransferToAgentTool instead of this\n    function directly. TransferToAgentTool provides additional enum constraints\n    that prevent LLMs from hallucinating invalid agent names.\n\n  Args:\n    agent_name: the agent name to transfer to.\n  "
+                  name: transfer_to_agent
+                  parameters:
+                    properties:
+                      agent_name:
+                        enum:
+                          - math_tutor
+                          - science_tutor
+                          - history_tutor
+                        type: STRING
+                    required:
+                      - agent_name
+                    type: OBJECT
+                  response:
+                    type: 'NULL'
+          labels:
+            adk_agent_name: study_buddy_coordinator
+        live_connect_config:
+          input_audio_transcription: {}
+          output_audio_transcription: {}
+      llm_response:
+        model_version: gemini-2.5-flash
+        content:
+          parts:
+            - function_call:
+                args:
+                  agent_name: math_tutor
+                name: transfer_to_agent
+              thought_signature: CvoCAePx_14-SV6piIC_POAjPzx9KcK855aRojE5z46nU9fA20OWevdmOz30OtiEL1hIRlmQlJT1IOR8Nb98bX3h_CTiSA5RXxz7DTO6C6Kg9NMA7rgaUkto9j0NH5fSV8EUFwazINWT0Hxa6no9l0d9-4Afj4z5mSt0FbjeiMPxjwbRQ-tVe-lKfdM7Udx0xNaGC-Br-RwEMwq12lQ_S2Lk-UlB4e8MzXDzB7qAFJoaeWqTUf771TKP4p-etQuESAdXK3SXOaSXVsjDPFeEKaikojJOQHXOl6GIbb8x5h6c8ZCPmFteU578H6mj8U9yyeKU8O5Jd3XDJ1ERkohUlWSkQ70hhkya7SCSQrbNihXlAJYj0fWwM_ZJ-7i0j5UZHFm85NLAZaXHXMz_Do4w6guqID0tcs--4vs07LoQsPrH8WXPzrb7sNcGpeUmNmqLd5ykuOZt4iVkgene4K1JFykLqhmrKGL3GO_it9KNTsIt7A36TcdKh0Q1DTTv
+          role: model
+        finish_reason: STOP
+        usage_metadata:
+          candidates_token_count: 11
+          candidates_tokens_details:
+            - modality: TEXT
+              token_count: 11
+          prompt_token_count: 508
+          prompt_tokens_details:
+            - modality: TEXT
+              token_count: 508
+          thoughts_token_count: 82
+          total_token_count: 601
+          traffic_type: ON_DEMAND
+        avg_logprobs: -0.4713189385154031
+  - user_message_index: 0
+    agent_name: study_buddy_coordinator
+    tool_recording:
+      tool_call:
+        id: adk-86273b4f-ffbe-4c9d-a0bd-246ff49372a1
+        args:
+          agent_name: math_tutor
+        name: transfer_to_agent
+      tool_response:
+        id: adk-86273b4f-ffbe-4c9d-a0bd-246ff49372a1
+        name: transfer_to_agent
+        response:
+          result: null
+  - user_message_index: 0
+    agent_name: math_tutor
+    llm_recording:
+      llm_request:
+        model: gemini-2.5-flash
+        contents:
+          - parts:
+              - text: 'Help me solve this quadratic equation: x^2 + 5x + 6 = 0'
+            role: user
+          - parts:
+              - text: 'For context:'
+              - text: |-
+                  [study_buddy_coordinator] called tool `transfer_to_agent` with parameters: {'agent_name': 'math_tutor'}
+            role: user
+          - parts:
+              - text: 'For context:'
+              - text: |-
+                  [study_buddy_coordinator] `transfer_to_agent` tool returned result: {'result': None}
+            role: user
+        config:
+          http_options:
+            headers:
+              x-goog-api-client: google-adk/1.19.0 gl-python/3.12.8
+              user-agent: google-adk/1.19.0 gl-python/3.12.8
+          system_instruction: |
+            You are a Math Tutor specialized in helping students with mathematics.
+
+            Your expertise includes:
+            - Arithmetic and basic operations
+            - Algebra and equations
+            - Geometry and shapes
+            - Calculus and derivatives
+            - Statistics and probability
+
+            When helping students:
+            1. Break down complex problems into simple steps
+            2. Explain the reasoning behind each step
+            3. Provide clear examples
+            4. Be patient and encouraging
+
+            Focus ONLY on mathematics-related questions. For other subjects, indicate that you specialize in math.
+
+
+            You are an agent. Your internal name is "math_tutor". The description about you is "Mathematics tutor specializing in math problems and concepts.".
+
+
+            You have a list of other agents to transfer to:
+
+
+            Agent name: study_buddy_coordinator
+            Agent description: Study coordinator that delegates questions to subject-specific tutors.
+
+
+            Agent name: science_tutor
+            Agent description: Science tutor specializing in physics, chemistry, and biology.
+
+
+            Agent name: history_tutor
+            Agent description: History tutor specializing in historical events and social studies.
+
+
+            If you are the best to answer the question according to your description,
+            you can answer it.
+
+            If another agent is better for answering the question according to its
+            description, call `transfer_to_agent` function to transfer the question to that
+            agent. When transferring, do not generate any text other than the function
+            call.
+
+            **NOTE**: the only available agents for `transfer_to_agent` function are
+            `history_tutor`, `science_tutor`, `study_buddy_coordinator`.
+
+            If neither you nor the other agents are best for the question, transfer to your parent agent study_buddy_coordinator.
+          tools:
+            - function_declarations:
+                - description: "Transfer the question to another agent.\n\n  This tool hands off control to another agent when it's more suitable to\n  answer the user's question according to the agent's description.\n\n  Note:\n    For most use cases, you should use TransferToAgentTool instead of this\n    function directly. TransferToAgentTool provides additional enum constraints\n    that prevent LLMs from hallucinating invalid agent names.\n\n  Args:\n    agent_name: the agent name to transfer to.\n  "
+                  name: transfer_to_agent
+                  parameters:
+                    properties:
+                      agent_name:
+                        enum:
+                          - study_buddy_coordinator
+                          - science_tutor
+                          - history_tutor
+                        type: STRING
+                    required:
+                      - agent_name
+                    type: OBJECT
+                  response:
+                    type: 'NULL'
+          labels:
+            adk_agent_name: math_tutor
+        live_connect_config:
+          input_audio_transcription: {}
+          output_audio_transcription: {}
+      llm_response:
+        model_version: gemini-2.5-flash
+        content:
+          parts:
+            - text: |-
+                I can definitely help you with that! We'll solve the quadratic equation x^2 + 5x + 6 = 0 together.
+
+                Here's a step-by-step approach:
+
+                **Step 1: Understand the form of a quadratic equation**
+                A quadratic equation is typically written as ax^2 + bx + c = 0. In your equation, x^2 + 5x + 6 = 0, we have:
+                *   a = 1 (the coefficient of x^2)
+                *   b = 5 (the coefficient of x)
+                *   c = 6 (the constant term)
+
+                **Step 2: Factor the quadratic expression**
+                Our goal is to find two numbers that:
+                1.  Multiply to 'c' (which is 6)
+                2.  Add up to 'b' (which is 5)
+
+                Let's list pairs of numbers that multiply to 6:
+                *   1 and 6 (1 + 6 = 7, not 5)
+                *   2 and 3 (2 + 3 = 5, this is it!)
+                *   -1 and -6 (-1 + -6 = -7, not 5)
+                *   -2 and -3 (-2 + -3 = -5, not 5)
+
+                So, the two numbers are 2 and 3. This means we can factor the expression as:
+                (x + 2)(x + 3) = 0
+
+                **Step 3: Set each factor to zero and solve for x**
+                For the product of two factors to be zero, at least one of the factors must be zero. So, we have two possible cases:
+
+                **Case 1:**
+                x + 2 = 0
+                Subtract 2 from both sides:
+                x = -2
+
+                **Case 2:**
+                x + 3 = 0
+                Subtract 3 from both sides:
+                x = -3
+
+                **Step 4: State the solutions**
+                The solutions (also called roots) for the quadratic equation x^2 + 5x + 6 = 0 are x = -2 and x = -3.
+
+                Let me know if you'd like to try another one or have any questions about this process!
+              thought_signature: CuoEAePx_14qv2oUXmP_SzHIoSrv9edV3RsgqREoj39ccdzmkmoP5iUYoC21B0N5EYiVJN0MfUYe4Ws-iNpAPUpiXYFrx8tWIuJOw4HU6-eC31Lslp09QbXOKTzhHEwvCDVbRI8xGfaHiGLUHbVlRGeSsIK0sw9tAllgaCZODPTL7W79kgs7RRaKCcnpKL_c2FWCfHedBUrFjUvtD7NwRL-H6F-g8n713j5EWKmPAvC4lcHFSf6I_JfuMRE5ABnK9_Y1M22WfNlAk2o1c6QDPI32BSik58TJji6DLVs6Ow62052fP11_j6BcESBkyrGRbb9saqw0kmeAJ1s3mOHrou1Ga-hvQ4txEJBcwc4GekpxybWT2MZdnfPmD8E4bNxagg5ZUDbCHPTSEROgB59-UkY2VaS2dKjn1iERAABIT3lOM2Li5NsdtM0AKkLM2-SnXKRX6ZZCwiI9IDepSiY8rXaU5tBk1oXMEJ5WnMLhaLhGuAvDAEs6enqdUDlGuoMDK1esvE2ww3Vp5nLS_W6F_Z6BnQBZHRWCUiUoTZKb14it9qYjDk1H5JN6Yo0pH1MtxnkeFSmEkTOi2t1nWg4YNh5zWgAeVu81Lfcty2gT0QnfrzGinpzW-m1pnnmu8Dfu031mRH__kgujESiiXU43F4tsNhD568LZOrO4XzAIZWKI_A2Zg-vji2KTZLLnVrmtJqqsi4tNuDPjA2SOs650jBOsD2u-Xs6geO0_4GthPN_DoiWp017QhBSqEkYehIXVLN-hgKhoVRlPPHU4i36YujGdwJR2Eo_6hWmduEAdF4Grjlxj11uIb3oMDiNh
+          role: model
+        finish_reason: STOP
+        usage_metadata:
+          candidates_token_count: 487
+          candidates_tokens_details:
+            - modality: TEXT
+              token_count: 487
+          prompt_token_count: 550
+          prompt_tokens_details:
+            - modality: TEXT
+              token_count: 550
+          thoughts_token_count: 142
+          total_token_count: 1179
+          traffic_type: ON_DEMAND
+        avg_logprobs: -0.12373332468146417

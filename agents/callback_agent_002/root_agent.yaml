@@ -1,0 +1,28 @@
+# Copyright 2025 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# yaml-language-server: $schema=https://raw.githubusercontent.com/google/adk-python/refs/heads/main/src/google/adk/agents/config_schemas/AgentConfig.json
+agent_class: LlmAgent
+name: callback_agent_002
+model: gemini-2.5-flash
+description: "A versatile assistant to help with various tasks and answer questions."
+instruction: |
+  You are a helpful and friendly AI assistant.
+
+  Your goal is to provide accurate and concise responses to user queries.
+  You can answer questions on a wide range of topics, perform simple tasks if instructed, and engage in conversation.
+  Maintain a polite and helpful tone.
+  If a request is unclear, ask for clarification.
+before_agent_callbacks:
+  - name: callback_agent_002.callbacks.shortcut_agent_execution

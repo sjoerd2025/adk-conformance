@@ -1,0 +1,185 @@
+# Copyright 2025 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+id: ebd69dcc-4efa-4971-b072-3297d78a33b1
+app_name: tools_agent_002
+user_id: adk_conformance_test_user
+state: {}
+events:
+  - content:
+      parts:
+        - text: |-
+            I want to create a booking for test@example.com. Please confirm the booking and add details: 'Conformance Test'.
+      role: user
+    invocation_id: e-934228aa-4768-49bc-8bc9-203aad4f503f
+    author: user
+    actions:
+      state_delta: {}
+    id: b2679d9d-2468-41af-87cb-547de5213fc2
+    timestamp: 1761015311.948896
+  - content:
+      parts:
+        - thought_signature: CosFAePx_15iItejhcVN3skfG8GLAHdfIi-XbwaLFC9oZWGqzrgjFp3dZAWAUv4KCIyPxIs4RQcRwRw6pIS2PBuSRUMyPmq6ZU1BmVpfRmaBAlcd-L8mY7KD6smZ44JiMNiLKDBgl1lVgsuus4ibalZKphHRvTGy2XId5aWjDOtEPfwMU1kKCePH5Lu8x9rIDW3yrDPUNt-ffor0S2ActrAiRLpXfG3CgO55P8MSiIF9uX2o7380dsQyhbrRqzDMF5QfGX34CKfYUKT48k0oJdDNeM1iqP0eMP625TugxVvg5pC4Qih4zjkJObq33PPrrjiCuOezP0DLnnZfz6WDh-Clgoi74de4AnK9S2bcOSrtulF3GsVJctlpjcfYNQGcLUIRoqdKdqAMxA8nkYrqSP4-hYpheQRmrj4gixVp8Bhv_cWKcXLMWN_Tzvj65XDeNWfJwpfCXTnKX3RzRy5MHfQZvEobvxAZ7uqVCqsa-hzqjkbWo6IxsFuLdk4xX1m0KbwnDT3g4FpAv1Glmw7w0ChG3yBqJSjoltPYm7VXLAVf0naCbwJ1uMw39ACWO_2RkdN_pVGE2R8gd_9SZciRXucJci1e-h8ElhRERYoVpERnCf1K9R2Ty1IL8C3r0_vJTBKB-8mgOv4oNPmZk1B6oA5hoXbN9ggRzOnmzF9Y27AD42dMMjnYFJDFQRu6JYIrxb8TvuZLiBZmykshjNbWorxWCKt9EneJ-WdRGNNnUfwDp6acp9rEK4rDoJYcDhLv49lGX52yfhbWLLwdx3x-udpf2d8km1yhi817cLKw-5VJ38BydrVVu5n1_3Rndi0rFlHxdNxCcLPV-Ro41uylMGdmJcXRV4RyJtWCUuqi
+          function_call:
+            id: adk-91c488e6-e5e2-47e2-b4df-da4dae78fc32
+            args:
+              email: test@example.com
+            name: validate_email
+      role: model
+    finish_reason: STOP
+    usage_metadata:
+      candidates_token_count: 9
+      candidates_tokens_details:
+        - modality: TEXT
+          token_count: 9
+      prompt_token_count: 279
+      prompt_tokens_details:
+        - modality: TEXT
+          token_count: 279
+      thoughts_token_count: 170
+      total_token_count: 458
+      traffic_type: ON_DEMAND
+    avg_logprobs: -3.6253755357530384
+    invocation_id: e-934228aa-4768-49bc-8bc9-203aad4f503f
+    author: booking_assistant
+    long_running_tool_ids: []
+    id: 6305c390-e237-4bb4-b812-76e728857f25
+    timestamp: 1761015311.949786
+  - content:
+      parts:
+        - function_response:
+            id: adk-91c488e6-e5e2-47e2-b4df-da4dae78fc32
+            name: validate_email
+            response:
+              result: true
+      role: user
+    invocation_id: e-934228aa-4768-49bc-8bc9-203aad4f503f
+    author: booking_assistant
+    id: 9bb80e50-a716-415d-8f50-5dcd317797fb
+    timestamp: 1761015314.134515
+  - content:
+      parts:
+        - thought_signature: CqgBAePx_17xrgJb8BeAo8ZCEpaCSPyKlDUROwKoqSrjaks-EVOO6jZTXFxG4Aa4lZUn-JxGeGM3z6c8cAQWu9SgkXA5ZbeA-jNUlbammxx-HEUrj7sH-jHhODhNflbo8U_OYx1KVOD0oelibiJNSINdDcWqPQSLLnDJiOD3_m_gyYMNxnX1gKjB_ENROX3VTeURGJpIDHKitnsMELUF2LGskAnNdhKugbQz
+          function_call:
+            id: adk-bf30b045-e9f3-48c3-bf67-e16e713d393b
+            args:
+              email: test@example.com
+            name: get_user_id
+      role: model
+    finish_reason: STOP
+    usage_metadata:
+      candidates_token_count: 11
+      candidates_tokens_details:
+        - modality: TEXT
+          token_count: 11
+      prompt_token_count: 293
+      prompt_tokens_details:
+        - modality: TEXT
+          token_count: 461
+      thoughts_token_count: 47
+      total_token_count: 351
+      traffic_type: ON_DEMAND
+    avg_logprobs: -0.464301889592951
+    invocation_id: e-934228aa-4768-49bc-8bc9-203aad4f503f
+    author: booking_assistant
+    long_running_tool_ids: []
+    id: 1605dc5a-5551-4b04-a1ff-4f0870cb7721
+    timestamp: 1761015314.135231
+  - content:
+      parts:
+        - function_response:
+            id: adk-bf30b045-e9f3-48c3-bf67-e16e713d393b
+            name: get_user_id
+            response:
+              result: 6707
+      role: user
+    invocation_id: e-934228aa-4768-49bc-8bc9-203aad4f503f
+    author: booking_assistant
+    id: 72dde495-1edd-4056-8d4c-712c04b99b65
+    timestamp: 1761015315.587853
+  - content:
+      parts:
+        - thought_signature: CpECAePx_15q1suJBTnG5iyUR8D3FTFPZzYdXrFFDLJ290076Qgpk0iCIwTwngQ6zx1SuK0M1tcqkKGW3QdIrBWDKCjIjDU-n7nQI1-gBtzMtprmehCuKM1q30MCzqAZv352c40y_gij_84WfmXwk_lnEkEayKezj-HOtOGt7SFU1GnRe0eO8fADiXoHX5-Nyuluxn9jfwtAEqPhEPfU4XoGgvX9NfSKlVLR_OSQmAKNPikzCebCRNzGRnxKz5aY36rbVrsmP8PWE0ElpWE3nEfjZ4EjW4MZnu-1m_Yuro82yst3WtfTGc08zafb9jpqWk78ZAOLoyXjMCrtL4AB-Bwlbvyg60zuuBnbff587yfzyaI3
+          function_call:
+            id: adk-33d02560-7ee9-428a-b412-3f6693fbac26
+            args:
+              user_id: 6707
+              is_confirmed: true
+              details: Conformance Test
+            name: create_booking
+      role: model
+    finish_reason: STOP
+    usage_metadata:
+      candidates_token_count: 15
+      candidates_tokens_details:
+        - modality: TEXT
+          token_count: 15
+      prompt_token_count: 311
+      prompt_tokens_details:
+        - modality: TEXT
+          token_count: 524
+      thoughts_token_count: 74
+      total_token_count: 400
+      traffic_type: ON_DEMAND
+    avg_logprobs: -0.41483227411905926
+    invocation_id: e-934228aa-4768-49bc-8bc9-203aad4f503f
+    author: booking_assistant
+    long_running_tool_ids: []
+    id: f86c6873-cf0a-49a5-803a-3af409e4674d
+    timestamp: 1761015315.58858
+  - content:
+      parts:
+        - function_response:
+            id: adk-33d02560-7ee9-428a-b412-3f6693fbac26
+            name: create_booking
+            response:
+              user_id: 6707
+              is_confirmed: true
+              details: Conformance Test
+              user_id_type: |-
+                <class 'int'>
+              is_confirmed_type: |-
+                <class 'bool'>
+              details_type: |-
+                <class 'str'>
+      role: user
+    invocation_id: e-934228aa-4768-49bc-8bc9-203aad4f503f
+    author: booking_assistant
+    id: 982bcba1-94c7-4a57-8fdb-4386250bdd45
+    timestamp: 1761015317.194835
+  - content:
+      parts:
+        - thought_signature: CrUCAePx_14DP2nWFV53Eb9OlX0c2pu5ZkpeM1G8YF8E63u5e1ezR9MZal9-KjHvP7GDcWp0pS86YR9sLLHYeVTHZ71yrnxZmcSvc5W6XLoSWe4BrzOBWy-lXzorCye0l06eFJ-tnj_KGSB1rgTSu0tblOY1t6Y8Z1QjKekB7yS5j__BEQYZP7oyRCTrFZSYzrQaOk9qIQsC8jD20b1G7yiGcL2raAzH7x9bt_kmtFBcLsg6FELMs8FXtKMjCA-Ni23XjE_Gs8cqtEPK3prtPMq2qSkHnSqfx787wsMGaskXXHgGGzG_tJhzVdqtTS6LA9FfLrxW3qchqsjAKn2JZjTeBDpajWukDpvRM9uv-YXrZxv1efPYFOwIkjREYUzSUZwbcRR-JHAgADezUy1ejDWNswDPdIKt
+          text: |-
+            Booking created for user ID 6707 with details 'Conformance Test' and confirmation status True.
+      role: model
+    finish_reason: STOP
+    usage_metadata:
+      candidates_token_count: 22
+      candidates_tokens_details:
+        - modality: TEXT
+          token_count: 22
+      prompt_token_count: 369
+      prompt_tokens_details:
+        - modality: TEXT
+          token_count: 654
+      thoughts_token_count: 58
+      total_token_count: 449
+      traffic_type: ON_DEMAND
+    avg_logprobs: -0.9378872784701261
+    invocation_id: e-934228aa-4768-49bc-8bc9-203aad4f503f
+    author: booking_assistant
+    id: 2ed6d24e-cc4f-4924-8c1b-e0b23c6c5266
+    timestamp: 1761015317.195529
+last_update_time: 1761015317.195529

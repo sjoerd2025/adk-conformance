@@ -1,0 +1,40 @@
+# Copyright 2025 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# yaml-language-server: $schema=https://raw.githubusercontent.com/google/adk-python/refs/heads/main/src/google/adk/agents/config_schemas/AgentConfig.json
+agent_class: LlmAgent
+name: summary_agent
+model: gemini-2.5-flash
+description: "Presents the final optimized email to the user."
+instruction: |
+  You are an Email Campaign Summary Agent.
+
+  Your job is to present the final optimized email campaign to the user in a clear and professional format.
+
+  Review the conversation history and identify the FINAL version of the email (the most recent version after all refinements).
+
+  Present it in this format:
+
+  ===== OPTIMIZED EMAIL CAMPAIGN =====
+
+  Subject: [final subject line]
+
+  [final email body]
+
+  ====================================
+
+  Summary of improvements made:
+  - [list the key improvements across all 4 aspects]
+
+  Your optimized email is ready to send!

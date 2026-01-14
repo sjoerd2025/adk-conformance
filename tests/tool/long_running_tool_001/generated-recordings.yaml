@@ -1,0 +1,723 @@
+recordings:
+  - user_message_index: 0
+    agent_name: reimbursement_agent
+    llm_recording:
+      llm_request:
+        model: gemini-2.5-flash
+        contents:
+          - parts:
+              - text: I need to reimburse $50 for meals.
+            role: user
+        config:
+          http_options:
+            headers:
+              x-goog-api-client: google-adk/1.17.0 gl-python/3.10.19
+              user-agent: google-adk/1.17.0 gl-python/3.10.19
+          system_instruction: |-
+            You are an agent whose job is to handle the reimbursement process for
+            the employees. If the amount is less than $100, you will automatically
+            approve the reimbursement.
+
+            If the amount is greater than $100, you will
+            ask for approval from the manager. If the manager approves, you will
+            call reimburse() to reimburse the amount to the employee. If the manager
+            rejects, you will inform the employee of the rejection.
+
+
+            You are an agent. Your internal name is "reimbursement_agent".
+          tools:
+            - function_declarations:
+                - description: Reimburse the amount of money to the employee.
+                  name: reimburse
+                  parameters:
+                    properties:
+                      purpose:
+                        type: STRING
+                      amount:
+                        type: NUMBER
+                    required:
+                      - purpose
+                      - amount
+                    type: OBJECT
+                  response:
+                    type: STRING
+                - description: |-
+                    Ask for approval for the reimbursement.
+
+                    NOTE: This is a long-running operation. Do not call this tool again if it has already returned some intermediate or pending status.
+                  name: ask_for_approval
+                  parameters:
+                    properties:
+                      purpose:
+                        type: STRING
+                      amount:
+                        type: NUMBER
+                    required:
+                      - purpose
+                      - amount
+                    type: OBJECT
+                  response:
+                    type: OBJECT
+          labels:
+            adk_agent_name: reimbursement_agent
+        live_connect_config:
+          input_audio_transcription: {}
+          output_audio_transcription: {}
+      llm_response:
+        content:
+          parts:
+            - thought_signature: Cq8CAePx_15p7o9rdTt0BQ0thz3xnH-bngDmMkDDrBJEX2zAVMhDalSrXvcBgeJFOkxSKbb7rqXsZ9D8NGWRntN3XIViFOhr_fkpd1ZjUnTASX0YWJTHzCIL5JcQ4wZP3r5oAV-DVMxJbd0Iwi8P2jM-Uu9YQfF5xRrZuMuDcKWzI6rcyJHv9fVHrR5-D-uho5SYoq6IIs8Hn3q3WWmEGKorMGkxxXBJXNsfu2XzjHTXMSs_P7DhV5eLfEOPaRISLMYQyNOiTklBshrf4b8Czn4ZPFfm2vuQpFdvTtUiHlONheTF5VjgxI1rZE9gBz5iuof6BsKDvvhbXr8_GqMhXYbIt-ENUYwGldMSLhi_HDVi25l1Uomf83s8wA3xqnL8h_WjK3vFPEfQeVCj5kD3696_
+              function_call:
+                args:
+                  purpose: meals
+                  amount: 50
+                name: reimburse
+          role: model
+        finish_reason: STOP
+        usage_metadata:
+          candidates_token_count: 7
+          candidates_tokens_details:
+            - modality: TEXT
+              token_count: 7
+          prompt_token_count: 189
+          prompt_tokens_details:
+            - modality: TEXT
+              token_count: 189
+          thoughts_token_count: 76
+          total_token_count: 272
+          traffic_type: ON_DEMAND
+        avg_logprobs: -1.093691689627511
+  - user_message_index: 0
+    agent_name: reimbursement_agent
+    tool_recording:
+      tool_call:
+        id: adk-0e7aa2df-77cd-4c65-95ea-f6f1245388f3
+        args:
+          purpose: meals
+          amount: 50
+        name: reimburse
+      tool_response:
+        id: adk-0e7aa2df-77cd-4c65-95ea-f6f1245388f3
+        name: reimburse
+        response:
+          status: ok
+  - user_message_index: 0
+    agent_name: reimbursement_agent
+    llm_recording:
+      llm_request:
+        model: gemini-2.5-flash
+        contents:
+          - parts:
+              - text: I need to reimburse $50 for meals.
+            role: user
+          - parts:
+              - thought_signature: Cq8CAePx_15p7o9rdTt0BQ0thz3xnH-bngDmMkDDrBJEX2zAVMhDalSrXvcBgeJFOkxSKbb7rqXsZ9D8NGWRntN3XIViFOhr_fkpd1ZjUnTASX0YWJTHzCIL5JcQ4wZP3r5oAV-DVMxJbd0Iwi8P2jM-Uu9YQfF5xRrZuMuDcKWzI6rcyJHv9fVHrR5-D-uho5SYoq6IIs8Hn3q3WWmEGKorMGkxxXBJXNsfu2XzjHTXMSs_P7DhV5eLfEOPaRISLMYQyNOiTklBshrf4b8Czn4ZPFfm2vuQpFdvTtUiHlONheTF5VjgxI1rZE9gBz5iuof6BsKDvvhbXr8_GqMhXYbIt-ENUYwGldMSLhi_HDVi25l1Uomf83s8wA3xqnL8h_WjK3vFPEfQeVCj5kD3696_
+                function_call:
+                  args:
+                    purpose: meals
+                    amount: 50
+                  name: reimburse
+            role: model
+          - parts:
+              - function_response:
+                  name: reimburse
+                  response:
+                    status: ok
+            role: user
+        config:
+          http_options:
+            headers:
+              x-goog-api-client: google-adk/1.17.0 gl-python/3.10.19
+              user-agent: google-adk/1.17.0 gl-python/3.10.19
+          system_instruction: |-
+            You are an agent whose job is to handle the reimbursement process for
+            the employees. If the amount is less than $100, you will automatically
+            approve the reimbursement.
+
+            If the amount is greater than $100, you will
+            ask for approval from the manager. If the manager approves, you will
+            call reimburse() to reimburse the amount to the employee. If the manager
+            rejects, you will inform the employee of the rejection.
+
+
+            You are an agent. Your internal name is "reimbursement_agent".
+          tools:
+            - function_declarations:
+                - description: Reimburse the amount of money to the employee.
+                  name: reimburse
+                  parameters:
+                    properties:
+                      purpose:
+                        type: STRING
+                      amount:
+                        type: NUMBER
+                    required:
+                      - purpose
+                      - amount
+                    type: OBJECT
+                  response:
+                    type: STRING
+                - description: |-
+                    Ask for approval for the reimbursement.
+
+                    NOTE: This is a long-running operation. Do not call this tool again if it has already returned some intermediate or pending status.
+                  name: ask_for_approval
+                  parameters:
+                    properties:
+                      purpose:
+                        type: STRING
+                      amount:
+                        type: NUMBER
+                    required:
+                      - purpose
+                      - amount
+                    type: OBJECT
+                  response:
+                    type: OBJECT
+          labels:
+            adk_agent_name: reimbursement_agent
+        live_connect_config:
+          input_audio_transcription: {}
+          output_audio_transcription: {}
+      llm_response:
+        content:
+          parts:
+            - text: |
+                Your reimbursement for meals of $50 has been approved.
+          role: model
+        finish_reason: STOP
+        usage_metadata:
+          candidates_token_count: 13
+          candidates_tokens_details:
+            - modality: TEXT
+              token_count: 13
+          prompt_token_count: 201
+          prompt_tokens_details:
+            - modality: TEXT
+              token_count: 275
+          total_token_count: 214
+          traffic_type: ON_DEMAND
+        avg_logprobs: -0.3848752975463867
+  - user_message_index: 1
+    agent_name: reimbursement_agent
+    llm_recording:
+      llm_request:
+        model: gemini-2.5-flash
+        contents:
+          - parts:
+              - text: I need to reimburse $50 for meals.
+            role: user
+          - parts:
+              - thought_signature: Cq8CAePx_15p7o9rdTt0BQ0thz3xnH-bngDmMkDDrBJEX2zAVMhDalSrXvcBgeJFOkxSKbb7rqXsZ9D8NGWRntN3XIViFOhr_fkpd1ZjUnTASX0YWJTHzCIL5JcQ4wZP3r5oAV-DVMxJbd0Iwi8P2jM-Uu9YQfF5xRrZuMuDcKWzI6rcyJHv9fVHrR5-D-uho5SYoq6IIs8Hn3q3WWmEGKorMGkxxXBJXNsfu2XzjHTXMSs_P7DhV5eLfEOPaRISLMYQyNOiTklBshrf4b8Czn4ZPFfm2vuQpFdvTtUiHlONheTF5VjgxI1rZE9gBz5iuof6BsKDvvhbXr8_GqMhXYbIt-ENUYwGldMSLhi_HDVi25l1Uomf83s8wA3xqnL8h_WjK3vFPEfQeVCj5kD3696_
+                function_call:
+                  args:
+                    purpose: meals
+                    amount: 50
+                  name: reimburse
+            role: model
+          - parts:
+              - function_response:
+                  name: reimburse
+                  response:
+                    status: ok
+            role: user
+          - parts:
+              - text: |
+                  Your reimbursement for meals of $50 has been approved.
+            role: model
+          - parts:
+              - text: I need to reimburse $2000 for hotel and flight.
+            role: user
+        config:
+          http_options:
+            headers:
+              x-goog-api-client: google-adk/1.17.0 gl-python/3.10.19
+              user-agent: google-adk/1.17.0 gl-python/3.10.19
+          system_instruction: |-
+            You are an agent whose job is to handle the reimbursement process for
+            the employees. If the amount is less than $100, you will automatically
+            approve the reimbursement.
+
+            If the amount is greater than $100, you will
+            ask for approval from the manager. If the manager approves, you will
+            call reimburse() to reimburse the amount to the employee. If the manager
+            rejects, you will inform the employee of the rejection.
+
+
+            You are an agent. Your internal name is "reimbursement_agent".
+          tools:
+            - function_declarations:
+                - description: Reimburse the amount of money to the employee.
+                  name: reimburse
+                  parameters:
+                    properties:
+                      purpose:
+                        type: STRING
+                      amount:
+                        type: NUMBER
+                    required:
+                      - purpose
+                      - amount
+                    type: OBJECT
+                  response:
+                    type: STRING
+                - description: |-
+                    Ask for approval for the reimbursement.
+
+                    NOTE: This is a long-running operation. Do not call this tool again if it has already returned some intermediate or pending status.
+                  name: ask_for_approval
+                  parameters:
+                    properties:
+                      purpose:
+                        type: STRING
+                      amount:
+                        type: NUMBER
+                    required:
+                      - purpose
+                      - amount
+                    type: OBJECT
+                  response:
+                    type: OBJECT
+          labels:
+            adk_agent_name: reimbursement_agent
+        live_connect_config:
+          input_audio_transcription: {}
+          output_audio_transcription: {}
+      llm_response:
+        content:
+          parts:
+            - thought_signature: CtACAePx_17FvzV3Q8gIPaKqQ2pbw-oSM4uokZ1VKtEEGAsnhRenzJx1FX29seEUiGlTpryuzO5GgPyfXw2ptgxJths5ZaZ5i6lVlVot-Q7gBpHIo7WAO_u_absXCNyCE8vH7d6GaZHg3TvjlY5N8Nm39irhtUxw8eYDR5nfLEtmE-JAG52QtYZdiVvIKDomwDRxmc3vj5UR0kzT1P1f8nxZbww4hhIf2_Ovt7ZGH_Nx6EPfUM-w1gDvLReeV6mMMJQJvhW7wbEKJrD8kk9KnVsht42sTzcxzkjWaAv5ZYxQdsVewjhNVn64Jp9SO4Q5IZvabJZEnHA5s8s1a40D5AGJARaVxeiXJI_bgJKFtrzUqWKE41KKjfYbL54d2nECNUapECtLfM_jzm3cVBeZQ-1sz55Y3lw_ULEDbTtQhJrWTQrrQ-v6AlF_MVwbHI0OQOvi
+              function_call:
+                args:
+                  purpose: hotel and flight
+                  amount: 2000
+                name: ask_for_approval
+          role: model
+        finish_reason: STOP
+        usage_metadata:
+          candidates_token_count: 11
+          candidates_tokens_details:
+            - modality: TEXT
+              token_count: 11
+          prompt_token_count: 228
+          prompt_tokens_details:
+            - modality: TEXT
+              token_count: 302
+          thoughts_token_count: 90
+          total_token_count: 329
+          traffic_type: ON_DEMAND
+        avg_logprobs: -0.22174811363220215
+  - user_message_index: 1
+    agent_name: reimbursement_agent
+    tool_recording:
+      tool_call:
+        id: adk-dcf1b657-c9f6-4d27-b5f8-f6591fbdff49
+        args:
+          purpose: hotel and flight
+          amount: 2000
+        name: ask_for_approval
+      tool_response:
+        id: adk-dcf1b657-c9f6-4d27-b5f8-f6591fbdff49
+        name: ask_for_approval
+        response:
+          status: pending
+          amount: 2000
+          ticketId: reimbursement-ticket-001
+  - user_message_index: 1
+    agent_name: reimbursement_agent
+    llm_recording:
+      llm_request:
+        model: gemini-2.5-flash
+        contents:
+          - parts:
+              - text: I need to reimburse $50 for meals.
+            role: user
+          - parts:
+              - thought_signature: Cq8CAePx_15p7o9rdTt0BQ0thz3xnH-bngDmMkDDrBJEX2zAVMhDalSrXvcBgeJFOkxSKbb7rqXsZ9D8NGWRntN3XIViFOhr_fkpd1ZjUnTASX0YWJTHzCIL5JcQ4wZP3r5oAV-DVMxJbd0Iwi8P2jM-Uu9YQfF5xRrZuMuDcKWzI6rcyJHv9fVHrR5-D-uho5SYoq6IIs8Hn3q3WWmEGKorMGkxxXBJXNsfu2XzjHTXMSs_P7DhV5eLfEOPaRISLMYQyNOiTklBshrf4b8Czn4ZPFfm2vuQpFdvTtUiHlONheTF5VjgxI1rZE9gBz5iuof6BsKDvvhbXr8_GqMhXYbIt-ENUYwGldMSLhi_HDVi25l1Uomf83s8wA3xqnL8h_WjK3vFPEfQeVCj5kD3696_
+                function_call:
+                  args:
+                    purpose: meals
+                    amount: 50
+                  name: reimburse
+            role: model
+          - parts:
+              - function_response:
+                  name: reimburse
+                  response:
+                    status: ok
+            role: user
+          - parts:
+              - text: |
+                  Your reimbursement for meals of $50 has been approved.
+            role: model
+          - parts:
+              - text: I need to reimburse $2000 for hotel and flight.
+            role: user
+          - parts:
+              - thought_signature: CtACAePx_17FvzV3Q8gIPaKqQ2pbw-oSM4uokZ1VKtEEGAsnhRenzJx1FX29seEUiGlTpryuzO5GgPyfXw2ptgxJths5ZaZ5i6lVlVot-Q7gBpHIo7WAO_u_absXCNyCE8vH7d6GaZHg3TvjlY5N8Nm39irhtUxw8eYDR5nfLEtmE-JAG52QtYZdiVvIKDomwDRxmc3vj5UR0kzT1P1f8nxZbww4hhIf2_Ovt7ZGH_Nx6EPfUM-w1gDvLReeV6mMMJQJvhW7wbEKJrD8kk9KnVsht42sTzcxzkjWaAv5ZYxQdsVewjhNVn64Jp9SO4Q5IZvabJZEnHA5s8s1a40D5AGJARaVxeiXJI_bgJKFtrzUqWKE41KKjfYbL54d2nECNUapECtLfM_jzm3cVBeZQ-1sz55Y3lw_ULEDbTtQhJrWTQrrQ-v6AlF_MVwbHI0OQOvi
+                function_call:
+                  args:
+                    purpose: hotel and flight
+                    amount: 2000
+                  name: ask_for_approval
+            role: model
+          - parts:
+              - function_response:
+                  name: ask_for_approval
+                  response:
+                    status: pending
+                    amount: 2000
+                    ticketId: reimbursement-ticket-001
+            role: user
+        config:
+          http_options:
+            headers:
+              x-goog-api-client: google-adk/1.17.0 gl-python/3.10.19
+              user-agent: google-adk/1.17.0 gl-python/3.10.19
+          system_instruction: |-
+            You are an agent whose job is to handle the reimbursement process for
+            the employees. If the amount is less than $100, you will automatically
+            approve the reimbursement.
+
+            If the amount is greater than $100, you will
+            ask for approval from the manager. If the manager approves, you will
+            call reimburse() to reimburse the amount to the employee. If the manager
+            rejects, you will inform the employee of the rejection.
+
+
+            You are an agent. Your internal name is "reimbursement_agent".
+          tools:
+            - function_declarations:
+                - description: Reimburse the amount of money to the employee.
+                  name: reimburse
+                  parameters:
+                    properties:
+                      purpose:
+                        type: STRING
+                      amount:
+                        type: NUMBER
+                    required:
+                      - purpose
+                      - amount
+                    type: OBJECT
+                  response:
+                    type: STRING
+                - description: |-
+                    Ask for approval for the reimbursement.
+
+                    NOTE: This is a long-running operation. Do not call this tool again if it has already returned some intermediate or pending status.
+                  name: ask_for_approval
+                  parameters:
+                    properties:
+                      purpose:
+                        type: STRING
+                      amount:
+                        type: NUMBER
+                    required:
+                      - purpose
+                      - amount
+                    type: OBJECT
+                  response:
+                    type: OBJECT
+          labels:
+            adk_agent_name: reimbursement_agent
+        live_connect_config:
+          input_audio_transcription: {}
+          output_audio_transcription: {}
+      llm_response:
+        content:
+          parts:
+            - text: |
+                Your reimbursement request for $2000 for hotel and flight has been submitted for manager approval. Your ticket ID is "reimbursement-ticket-001".
+          role: model
+        finish_reason: STOP
+        usage_metadata:
+          candidates_token_count: 35
+          candidates_tokens_details:
+            - modality: TEXT
+              token_count: 35
+          prompt_token_count: 258
+          prompt_tokens_details:
+            - modality: TEXT
+              token_count: 420
+          total_token_count: 293
+          traffic_type: ON_DEMAND
+        avg_logprobs: -0.22723971775599888
+  - user_message_index: 2
+    agent_name: reimbursement_agent
+    llm_recording:
+      llm_request:
+        model: gemini-2.5-flash
+        contents:
+          - parts:
+              - text: I need to reimburse $50 for meals.
+            role: user
+          - parts:
+              - thought_signature: Cq8CAePx_15p7o9rdTt0BQ0thz3xnH-bngDmMkDDrBJEX2zAVMhDalSrXvcBgeJFOkxSKbb7rqXsZ9D8NGWRntN3XIViFOhr_fkpd1ZjUnTASX0YWJTHzCIL5JcQ4wZP3r5oAV-DVMxJbd0Iwi8P2jM-Uu9YQfF5xRrZuMuDcKWzI6rcyJHv9fVHrR5-D-uho5SYoq6IIs8Hn3q3WWmEGKorMGkxxXBJXNsfu2XzjHTXMSs_P7DhV5eLfEOPaRISLMYQyNOiTklBshrf4b8Czn4ZPFfm2vuQpFdvTtUiHlONheTF5VjgxI1rZE9gBz5iuof6BsKDvvhbXr8_GqMhXYbIt-ENUYwGldMSLhi_HDVi25l1Uomf83s8wA3xqnL8h_WjK3vFPEfQeVCj5kD3696_
+                function_call:
+                  args:
+                    purpose: meals
+                    amount: 50
+                  name: reimburse
+            role: model
+          - parts:
+              - function_response:
+                  name: reimburse
+                  response:
+                    status: ok
+            role: user
+          - parts:
+              - text: |
+                  Your reimbursement for meals of $50 has been approved.
+            role: model
+          - parts:
+              - text: I need to reimburse $2000 for hotel and flight.
+            role: user
+          - parts:
+              - thought_signature: CtACAePx_17FvzV3Q8gIPaKqQ2pbw-oSM4uokZ1VKtEEGAsnhRenzJx1FX29seEUiGlTpryuzO5GgPyfXw2ptgxJths5ZaZ5i6lVlVot-Q7gBpHIo7WAO_u_absXCNyCE8vH7d6GaZHg3TvjlY5N8Nm39irhtUxw8eYDR5nfLEtmE-JAG52QtYZdiVvIKDomwDRxmc3vj5UR0kzT1P1f8nxZbww4hhIf2_Ovt7ZGH_Nx6EPfUM-w1gDvLReeV6mMMJQJvhW7wbEKJrD8kk9KnVsht42sTzcxzkjWaAv5ZYxQdsVewjhNVn64Jp9SO4Q5IZvabJZEnHA5s8s1a40D5AGJARaVxeiXJI_bgJKFtrzUqWKE41KKjfYbL54d2nECNUapECtLfM_jzm3cVBeZQ-1sz55Y3lw_ULEDbTtQhJrWTQrrQ-v6AlF_MVwbHI0OQOvi
+                function_call:
+                  args:
+                    purpose: hotel and flight
+                    amount: 2000
+                  name: ask_for_approval
+            role: model
+          - parts:
+              - function_response:
+                  name: ask_for_approval
+                  response:
+                    status: approved
+                    ticket_id: reimbursement-ticket-001
+            role: user
+        config:
+          http_options:
+            headers:
+              x-goog-api-client: google-adk/1.17.0 gl-python/3.10.19
+              user-agent: google-adk/1.17.0 gl-python/3.10.19
+          system_instruction: |-
+            You are an agent whose job is to handle the reimbursement process for
+            the employees. If the amount is less than $100, you will automatically
+            approve the reimbursement.
+
+            If the amount is greater than $100, you will
+            ask for approval from the manager. If the manager approves, you will
+            call reimburse() to reimburse the amount to the employee. If the manager
+            rejects, you will inform the employee of the rejection.
+
+
+            You are an agent. Your internal name is "reimbursement_agent".
+          tools:
+            - function_declarations:
+                - description: Reimburse the amount of money to the employee.
+                  name: reimburse
+                  parameters:
+                    properties:
+                      purpose:
+                        type: STRING
+                      amount:
+                        type: NUMBER
+                    required:
+                      - purpose
+                      - amount
+                    type: OBJECT
+                  response:
+                    type: STRING
+                - description: |-
+                    Ask for approval for the reimbursement.
+
+                    NOTE: This is a long-running operation. Do not call this tool again if it has already returned some intermediate or pending status.
+                  name: ask_for_approval
+                  parameters:
+                    properties:
+                      purpose:
+                        type: STRING
+                      amount:
+                        type: NUMBER
+                    required:
+                      - purpose
+                      - amount
+                    type: OBJECT
+                  response:
+                    type: OBJECT
+          labels:
+            adk_agent_name: reimbursement_agent
+        live_connect_config:
+          input_audio_transcription: {}
+          output_audio_transcription: {}
+      llm_response:
+        content:
+          parts:
+            - text: |
+                Your reimbursement for hotel and flight of $2000 has been approved by your manager.
+                I will now proceed to reimburse the amount.
+            - function_call:
+                args:
+                  amount: 2000
+                  purpose: hotel and flight
+                name: reimburse
+          role: model
+        finish_reason: STOP
+        usage_metadata:
+          candidates_token_count: 39
+          candidates_tokens_details:
+            - modality: TEXT
+              token_count: 39
+          prompt_token_count: 257
+          prompt_tokens_details:
+            - modality: TEXT
+              token_count: 419
+          total_token_count: 296
+          traffic_type: ON_DEMAND
+        avg_logprobs: -0.10659206830538236
+  - user_message_index: 2
+    agent_name: reimbursement_agent
+    tool_recording:
+      tool_call:
+        id: adk-798b3523-dca2-43ac-a67c-a98635d4890e
+        args:
+          amount: 2000
+          purpose: hotel and flight
+        name: reimburse
+      tool_response:
+        id: adk-798b3523-dca2-43ac-a67c-a98635d4890e
+        name: reimburse
+        response:
+          status: ok
+  - user_message_index: 2
+    agent_name: reimbursement_agent
+    llm_recording:
+      llm_request:
+        model: gemini-2.5-flash
+        contents:
+          - parts:
+              - text: I need to reimburse $50 for meals.
+            role: user
+          - parts:
+              - thought_signature: Cq8CAePx_15p7o9rdTt0BQ0thz3xnH-bngDmMkDDrBJEX2zAVMhDalSrXvcBgeJFOkxSKbb7rqXsZ9D8NGWRntN3XIViFOhr_fkpd1ZjUnTASX0YWJTHzCIL5JcQ4wZP3r5oAV-DVMxJbd0Iwi8P2jM-Uu9YQfF5xRrZuMuDcKWzI6rcyJHv9fVHrR5-D-uho5SYoq6IIs8Hn3q3WWmEGKorMGkxxXBJXNsfu2XzjHTXMSs_P7DhV5eLfEOPaRISLMYQyNOiTklBshrf4b8Czn4ZPFfm2vuQpFdvTtUiHlONheTF5VjgxI1rZE9gBz5iuof6BsKDvvhbXr8_GqMhXYbIt-ENUYwGldMSLhi_HDVi25l1Uomf83s8wA3xqnL8h_WjK3vFPEfQeVCj5kD3696_
+                function_call:
+                  args:
+                    purpose: meals
+                    amount: 50
+                  name: reimburse
+            role: model
+          - parts:
+              - function_response:
+                  name: reimburse
+                  response:
+                    status: ok
+            role: user
+          - parts:
+              - text: |
+                  Your reimbursement for meals of $50 has been approved.
+            role: model
+          - parts:
+              - text: I need to reimburse $2000 for hotel and flight.
+            role: user
+          - parts:
+              - thought_signature: CtACAePx_17FvzV3Q8gIPaKqQ2pbw-oSM4uokZ1VKtEEGAsnhRenzJx1FX29seEUiGlTpryuzO5GgPyfXw2ptgxJths5ZaZ5i6lVlVot-Q7gBpHIo7WAO_u_absXCNyCE8vH7d6GaZHg3TvjlY5N8Nm39irhtUxw8eYDR5nfLEtmE-JAG52QtYZdiVvIKDomwDRxmc3vj5UR0kzT1P1f8nxZbww4hhIf2_Ovt7ZGH_Nx6EPfUM-w1gDvLReeV6mMMJQJvhW7wbEKJrD8kk9KnVsht42sTzcxzkjWaAv5ZYxQdsVewjhNVn64Jp9SO4Q5IZvabJZEnHA5s8s1a40D5AGJARaVxeiXJI_bgJKFtrzUqWKE41KKjfYbL54d2nECNUapECtLfM_jzm3cVBeZQ-1sz55Y3lw_ULEDbTtQhJrWTQrrQ-v6AlF_MVwbHI0OQOvi
+                function_call:
+                  args:
+                    purpose: hotel and flight
+                    amount: 2000
+                  name: ask_for_approval
+            role: model
+          - parts:
+              - function_response:
+                  name: ask_for_approval
+                  response:
+                    status: approved
+                    ticket_id: reimbursement-ticket-001
+            role: user
+          - parts:
+              - text: |
+                  Your reimbursement request for $2000 for hotel and flight has been submitted for manager approval. Your ticket ID is "reimbursement-ticket-001".
+            role: model
+          - parts:
+              - text: |
+                  Your reimbursement for hotel and flight of $2000 has been approved by your manager.
+                  I will now proceed to reimburse the amount.
+              - function_call:
+                  args:
+                    amount: 2000
+                    purpose: hotel and flight
+                  name: reimburse
+            role: model
+          - parts:
+              - function_response:
+                  name: reimburse
+                  response:
+                    status: ok
+            role: user
+        config:
+          http_options:
+            headers:
+              x-goog-api-client: google-adk/1.17.0 gl-python/3.10.19
+              user-agent: google-adk/1.17.0 gl-python/3.10.19
+          system_instruction: |-
+            You are an agent whose job is to handle the reimbursement process for
+            the employees. If the amount is less than $100, you will automatically
+            approve the reimbursement.
+
+            If the amount is greater than $100, you will
+            ask for approval from the manager. If the manager approves, you will
+            call reimburse() to reimburse the amount to the employee. If the manager
+            rejects, you will inform the employee of the rejection.
+
+
+            You are an agent. Your internal name is "reimbursement_agent".
+          tools:
+            - function_declarations:
+                - description: Reimburse the amount of money to the employee.
+                  name: reimburse
+                  parameters:
+                    properties:
+                      purpose:
+                        type: STRING
+                      amount:
+                        type: NUMBER
+                    required:
+                      - purpose
+                      - amount
+                    type: OBJECT
+                  response:
+                    type: STRING
+                - description: |-
+                    Ask for approval for the reimbursement.
+
+                    NOTE: This is a long-running operation. Do not call this tool again if it has already returned some intermediate or pending status.
+                  name: ask_for_approval
+                  parameters:
+                    properties:
+                      purpose:
+                        type: STRING
+                      amount:
+                        type: NUMBER
+                    required:
+                      - purpose
+                      - amount
+                    type: OBJECT
+                  response:
+                    type: OBJECT
+          labels:
+            adk_agent_name: reimbursement_agent
+        live_connect_config:
+          input_audio_transcription: {}
+          output_audio_transcription: {}
+      llm_response:
+        content:
+          parts:
+            - text: |
+                Your reimbursement for hotel and flight of $2000 has been approved.
+          role: model
+        finish_reason: STOP
+        usage_metadata:
+          candidates_token_count: 17
+          candidates_tokens_details:
+            - modality: TEXT
+              token_count: 17
+          prompt_token_count: 336
+          prompt_tokens_details:
+            - modality: TEXT
+              token_count: 498
+          total_token_count: 353
+          traffic_type: ON_DEMAND
+        avg_logprobs: -0.009892212117419523

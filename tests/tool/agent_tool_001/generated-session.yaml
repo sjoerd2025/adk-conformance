@@ -1,0 +1,114 @@
+# Copyright 2025 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+id: fda90de9-07cd-4224-abf0-38d6f559643a
+app_name: tools_agent_003
+user_id: adk_conformance_test_user
+state: {}
+events:
+  - content:
+      parts:
+        - text: 'New customer call. Customer ID: 4789, Name: Jane Doe. Please prepare greeting and identity verification questions.'
+      role: user
+    invocation_id: e-467e432c-0925-4f45-8782-41a3d6d18046
+    author: user
+    actions:
+      state_delta: {}
+    id: 78e55059-80e8-420c-aaa3-34d3034bc1ac
+    timestamp: 1761014471.28477
+  - content:
+      parts:
+        - thought_signature: CosEAePx_17tSFOsh4XU87c9hEkp4z1qF1Z_YDObjm0nV4SrQCdns9AFLwhYEgPzxzExpwZACISzIKBHoIIMOct16YMo6FPNPi1AYP8SkyxEpOp-XvFEzV0qyXrmwnEYRZBe-HfM7qxnjB18AJGDKR3df5XrLt7laAh-XDqi-7QBF_hljdUVvQzySZRWBo5mq2aZaUFWjvL-bzoz_CvdgzLemF_5LQEUwFuFP963Xjh4hTK6SCZawFE91zi5s7twGg4N0H6hxnQeZU5D5pt3aSYVzQaNe9td8kTpDMpGzpNXHbQoPMUg5rGCCHJ7fmGzl5E7BS_e9G-1gH9AqKQt5hjbm4OYvR0mFRottvYjpn6s4NFhrW0YKZgjr18PrCkSme4ccNa1ubOb91PZcH1AQJkM2ceYuzwIxj6ZRehguFjsk9qZqif6CMWWcmFJEaBvhGaJWK-pJM7xCOnaLB07oZFhfmB-MVaS364IeC85yeBAfYqP0sQvXVk72IYQmbLpHfcjMICBbZhUB5PlUtr-ImP6EveOvkTT0UIQa-OSWU3THhBfDjiwMhz2oVP04jS8uHpOPUudZveD_-MJ4gryGp99xvzN97LMZEbvKgQSKYfu07TMdc0AOVGyWUxk9VUE38l7xoXn9MB4lJMkqcwmDHcrdTtTLLusEedXhTGCPSaZxsquBJv6FreDZB0cnA==
+          function_call:
+            id: adk-85faa5ee-a40c-4ece-a4c6-a3557e231130
+            args:
+              request: new customer call
+            name: greeting_agent
+        - function_call:
+            id: adk-d5e99eeb-53bd-4cfa-8b30-fc338598ef43
+            args:
+              request: 'Customer ID: 4789, Name: Jane Doe'
+            name: identity_agent
+      role: model
+    finish_reason: STOP
+    usage_metadata:
+      candidates_token_count: 24
+      candidates_tokens_details:
+        - modality: TEXT
+          token_count: 24
+      prompt_token_count: 158
+      prompt_tokens_details:
+        - modality: TEXT
+          token_count: 158
+      thoughts_token_count: 111
+      total_token_count: 293
+      traffic_type: PROVISIONED_THROUGHPUT
+    avg_logprobs: -0.6214407285054525
+    invocation_id: e-467e432c-0925-4f45-8782-41a3d6d18046
+    author: call_center_assistant
+    long_running_tool_ids: []
+    id: e6c0d555-0d23-43b4-8350-a1a1ac2d9657
+    timestamp: 1761014471.285322
+  - content:
+      parts:
+        - function_response:
+            id: adk-85faa5ee-a40c-4ece-a4c6-a3557e231130
+            name: greeting_agent
+            response:
+              result: |-
+                Hello! Welcome to [Your Company Name]. My name is [Your Name], and I'll be happy to assist you today. How can I help you get started?
+        - function_response:
+            id: adk-d5e99eeb-53bd-4cfa-8b30-fc338598ef43
+            name: identity_agent
+            response:
+              result: |-
+                Here are a few questions to verify your identity:
+
+                1.  What is your full legal name?
+                2.  What is your date of birth (MM/DD/YYYY)?
+                3.  What is the primary address associated with your account?
+      role: user
+    invocation_id: e-467e432c-0925-4f45-8782-41a3d6d18046
+    author: call_center_assistant
+    id: 461b1994-bc9d-4a94-af52-93ff34b25ba5
+    timestamp: 1761014474.611716
+  - content:
+      parts:
+        - text: |-
+            Hello! Welcome to [Your Company Name]. My name is [Your Name], and I'll be happy to assist you today. How can I help you get started?
+
+            Here are a few questions to verify your identity:
+
+            1.  What is your full legal name?
+            2.  What is your date of birth (MM/DD/YYYY)?
+            3.  What is the primary address associated with your account?
+      role: model
+    finish_reason: STOP
+    usage_metadata:
+      candidates_token_count: 88
+      candidates_tokens_details:
+        - modality: TEXT
+          token_count: 88
+      prompt_token_count: 277
+      prompt_tokens_details:
+        - modality: TEXT
+          token_count: 386
+      total_token_count: 365
+      traffic_type: PROVISIONED_THROUGHPUT
+    avg_logprobs: -0.001597899096933278
+    invocation_id: e-467e432c-0925-4f45-8782-41a3d6d18046
+    author: call_center_assistant
+    id: 7680477c-ef44-4ba5-a1f2-9dcc830ef7ff
+    timestamp: 1761014475.224695
+last_update_time: 1761014475.224695

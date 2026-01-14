@@ -1,0 +1,118 @@
+# Copyright 2025 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+id: 0080b9ad-c142-408a-bee5-62006a8f0877
+app_name: core_agent_001
+user_id: adk_conformance_test_user
+state: {}
+events:
+  - content:
+      parts:
+        - text: What is your name?
+      role: user
+    invocation_id: e-33c006cc-b15c-462d-a438-eaecfe4ecf01
+    author: user
+    actions:
+      state_delta: {}
+    id: c94a866c-b33e-4a06-b1d0-b606f064f748
+    timestamp: 1761014467.272041
+  - content:
+      parts:
+        - text: |-
+            My internal name is "core_agent_001". I am an ADK Core Assistant.
+      role: model
+    finish_reason: STOP
+    usage_metadata:
+      candidates_token_count: 21
+      candidates_tokens_details:
+        - modality: TEXT
+          token_count: 21
+      prompt_token_count: 113
+      prompt_tokens_details:
+        - modality: TEXT
+          token_count: 113
+      thoughts_token_count: 25
+      total_token_count: 159
+      traffic_type: PROVISIONED_THROUGHPUT
+    avg_logprobs: -0.7522494906470889
+    invocation_id: e-33c006cc-b15c-462d-a438-eaecfe4ecf01
+    author: core_agent_001
+    id: 71177fed-03f7-49d3-9774-e0ac26d454e3
+    timestamp: 1761014467.27248
+  - content:
+      parts:
+        - text: What is your purpose?
+      role: user
+    invocation_id: e-cd0efb1b-4793-4d38-b186-85b646200eeb
+    author: user
+    actions:
+      state_delta: {}
+    id: 2dc41059-2b1a-429c-abfc-82547b9626f5
+    timestamp: 1761014468.36296
+  - content:
+      parts:
+        - text: |-
+            My purpose is to be a helpful and friendly AI assistant. I aim to provide accurate and concise responses to user queries, answer questions on a wide range of topics, and perform simple tasks when instructed. I'm here to assist and engage in conversation in a polite and helpful manner.
+      role: model
+    finish_reason: STOP
+    usage_metadata:
+      candidates_token_count: 57
+      candidates_tokens_details:
+        - modality: TEXT
+          token_count: 57
+      prompt_token_count: 139
+      prompt_tokens_details:
+        - modality: TEXT
+          token_count: 139
+      thoughts_token_count: 25
+      total_token_count: 221
+      traffic_type: PROVISIONED_THROUGHPUT
+    avg_logprobs: -0.3097113893743147
+    invocation_id: e-cd0efb1b-4793-4d38-b186-85b646200eeb
+    author: core_agent_001
+    id: e20b9f9e-cb50-481e-b68f-492c64f822ab
+    timestamp: 1761014468.36704
+  - content:
+      parts:
+        - text: Are you friendly?
+      role: user
+    invocation_id: e-f667535a-b814-4e6c-a6b2-ad5055e3039f
+    author: user
+    actions:
+      state_delta: {}
+    id: e332d663-d2af-43ae-93ef-ecf6cb9f6435
+    timestamp: 1761014469.729108
+  - content:
+      parts:
+        - text: Yes, I am designed to be friendly, helpful, and polite! I strive to assist users in a positive and approachable way.
+      role: model
+    finish_reason: STOP
+    usage_metadata:
+      candidates_token_count: 26
+      candidates_tokens_details:
+        - modality: TEXT
+          token_count: 26
+      prompt_token_count: 200
+      prompt_tokens_details:
+        - modality: TEXT
+          token_count: 200
+      thoughts_token_count: 65
+      total_token_count: 291
+      traffic_type: PROVISIONED_THROUGHPUT
+    avg_logprobs: -1.3797275836651142
+    invocation_id: e-f667535a-b814-4e6c-a6b2-ad5055e3039f
+    author: core_agent_001
+    id: 9521f871-79f9-4858-bc6c-0efaaa0f1ac4
+    timestamp: 1761014469.734836
+last_update_time: 1761014469.734836

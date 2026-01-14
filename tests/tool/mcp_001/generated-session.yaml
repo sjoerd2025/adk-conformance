@@ -1,0 +1,81 @@
+id: 4c09ab7c-b603-4555-9ee4-592adc2b44ed
+app_name: tools_agent_006
+user_id: adk_conformance_test_user
+state: {}
+events:
+  - content:
+      parts:
+        - text: Add 5 and 7 together.
+      role: user
+    invocation_id: e-34ef5dca-ebc2-4066-8a79-6ae842fc0b45
+    author: user
+    actions:
+      state_delta: {}
+    id: a0b1cf5a-d21f-44f8-8a3b-79aca36a7c4d
+    timestamp: 1761026841.301994
+  - content:
+      parts:
+        - thought_signature: Cs0BAePx_16nKUKb_0u6O-XkTqJfwS_I-rlWvvKT3TQvxhCkIoH_c08WFJtF-j5w0VSqnTpwxIicHhRk5vblmiIgBp5dVOATzzeRDWv4h8SGqa18vnOxDJazkUp929k2-HayCGCVH4_va4KpQ4jfPZroio2WozVDq4tKOK2k8nkJK8jfYSpyqiw_47swO0z_ozwyrQx8aE7c5OJoOj3NcHiH47cTT9paLr0rvQxjz_IqfIxlzPeV6OYnotCKQ6mXV24bRYcGoT1U1v0K48SF3Q==
+          function_call:
+            id: adk-c2957487-8db9-4144-8787-69901aa28528
+            args:
+              b: 7
+              a: 5
+            name: add
+      role: model
+    finish_reason: STOP
+    usage_metadata:
+      candidates_token_count: 5
+      candidates_tokens_details:
+        - modality: TEXT
+          token_count: 5
+      prompt_token_count: 209
+      prompt_tokens_details:
+        - modality: TEXT
+          token_count: 209
+      thoughts_token_count: 53
+      total_token_count: 267
+      traffic_type: ON_DEMAND
+    avg_logprobs: -1.7109228134155274
+    invocation_id: e-34ef5dca-ebc2-4066-8a79-6ae842fc0b45
+    author: mcp_demo_assistant
+    long_running_tool_ids: []
+    id: 229c2a53-c707-4625-8c28-1f145eae8067
+    timestamp: 1761026842.666499
+  - content:
+      parts:
+        - function_response:
+            id: adk-c2957487-8db9-4144-8787-69901aa28528
+            name: add
+            response:
+              content:
+                - type: text
+                  text: The sum of 5 and 7 is 12.
+              isError: false
+      role: user
+    invocation_id: e-34ef5dca-ebc2-4066-8a79-6ae842fc0b45
+    author: mcp_demo_assistant
+    id: 0117f241-52f6-4a30-b4af-1711c6d414cb
+    timestamp: 1761026844.497633
+  - content:
+      parts:
+        - text: The sum of 5 and 7 is 12.
+      role: model
+    finish_reason: STOP
+    usage_metadata:
+      candidates_token_count: 13
+      candidates_tokens_details:
+        - modality: TEXT
+          token_count: 13
+      prompt_token_count: 234
+      prompt_tokens_details:
+        - modality: TEXT
+          token_count: 285
+      total_token_count: 247
+      traffic_type: ON_DEMAND
+    avg_logprobs: -0.0013209077028127818
+    invocation_id: e-34ef5dca-ebc2-4066-8a79-6ae842fc0b45
+    author: mcp_demo_assistant
+    id: eabb093e-194b-4803-a18f-15040e8ac4cb
+    timestamp: 1761026844.505742
+last_update_time: 1761026844.505742

@@ -1,0 +1,55 @@
+id: b9f27699-ea13-45ed-929f-5e6a312fd317
+app_name: callback_agent_003
+user_id: adk_conformance_test_user
+state:
+  after_agent_callback_state_key: value1+value2
+events:
+  - content:
+      parts:
+        - text: What can you do?
+      role: user
+    invocation_id: e-ac2772e0-2dfc-4721-9e59-f519007c252f
+    author: user
+    actions:
+      state_delta: {}
+    id: 5a705d37-e0b6-401a-90ad-00047ff92d80
+    timestamp: 1761263460.637621
+  - content:
+      parts:
+        - text: |-
+            Hello! I'm a helpful and friendly AI assistant. I can do a variety of things, including:
+
+            *   **Answer questions:** I have access to a vast amount of information and can provide answers on many topics, from general knowledge to specific facts.
+            *   **Perform simple tasks:** I can help you with things like calculations, definitions, spelling and grammar checks, and summaries.
+            *   **Generate text:** I can write different kinds of creative content, like poems, code, scripts, musical pieces, email, letters, etc.
+            *   **Engage in conversation:** I can chat with you about various subjects and try to understand your needs.
+            *   **Provide information:** I can look up and present information on a wide range of subjects.
+
+            Just ask me anything you'd like, and I'll do my best to help!
+      role: model
+    finish_reason: STOP
+    usage_metadata:
+      candidates_token_count: 176
+      candidates_tokens_details:
+        - modality: TEXT
+          token_count: 176
+      prompt_token_count: 107
+      prompt_tokens_details:
+        - modality: TEXT
+          token_count: 107
+      thoughts_token_count: 28
+      total_token_count: 311
+      traffic_type: ON_DEMAND
+    avg_logprobs: -0.346061728217385
+    invocation_id: e-ac2772e0-2dfc-4721-9e59-f519007c252f
+    author: callback_agent_003
+    id: bf3e6fad-5858-4a7b-b821-3e1152772410
+    timestamp: 1761263460.638156
+  - invocation_id: e-ac2772e0-2dfc-4721-9e59-f519007c252f
+    author: callback_agent_003
+    actions:
+      state_delta:
+        after_agent_callback_state_key: value1+value2
+    id: c5d5d576-8817-4ecc-aa59-a68d87a0ca40
+    timestamp: 1761263462.913806
+last_update_time: 1761263462.913806

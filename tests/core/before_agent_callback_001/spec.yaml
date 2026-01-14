@@ -1,0 +1,4 @@
+description: "Verify the before_agent_callback modifies the value in the session state."
+agent: callback_agent_001
+user_messages:
+  - text: "What can you do?"

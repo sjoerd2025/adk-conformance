@@ -1,0 +1,209 @@
+# Copyright 2025 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+id: b8f4027c-db38-47dd-bbd9-b02e2aa91226
+app_name: multi_agent_001
+user_id: adk_conformance_test_user
+state: {}
+events:
+  - content:
+      parts:
+        - text: Explain the Pythagorean theorem.
+      role: user
+    invocation_id: e-29e6116f-c6a9-49a9-8aff-fe95743f0a9e
+    author: user
+    actions:
+      state_delta: {}
+    id: 98194130-7556-466b-8d54-823ab8629f4e
+    timestamp: 1764030554.62291
+  - model_version: gemini-2.5-flash
+    content:
+      parts:
+        - function_call:
+            id: adk-607b3ffb-51cf-4a9f-8d31-51d533fa4422
+            args:
+              agent_name: math_tutor
+            name: transfer_to_agent
+          thought_signature: CooDAePx_15V53EnYLoMDWCz-sg0x1MnstZ9CFU0H0Fl1XsISgZB2ZdXte4zrH8RDoiasaPnGoay9yWUv-Ow8h58k1cEM1QRKexCxD6EQtp1kDCmy565tVojuizDmgYEDdc0gXsB1S3VROC_XW4d9ZloH1w0O4T_v7WdULTQBqtBxxBcQlW5JF7aToBGywf4NFmKZ2ZjR0qqsl6Qxc1OhhGtN8csHRiWBnorSDlFAtcvPoR981T3NQ_NcH6q9zi4GB0xZ0smCo9_ISh4qm739JoNPkj5VqUzSQBqpE45nkzgjI8WN0xiaM6_KpjaXZ75Z_dK5q71F6lmHWVVdKj23yVEhwagtPlY6khTXG6rYb9V5nV9f0neLvgxB0yeu9GVi04vCPHy9gQZBI5zTy6bs9aWDVqpKDy9REO34_n8Q8w57cOo-agznNJszegfNq4hMROsYLY-luzGSFhp7IyjQj2euFtu8ZpAm-cCqlU98RdGvQOSwgcfk-JKS86kVunWQYA_8jDQKEXfHDpl-g==
+      role: model
+    finish_reason: STOP
+    usage_metadata:
+      candidates_token_count: 11
+      candidates_tokens_details:
+        - modality: TEXT
+          token_count: 11
+      prompt_token_count: 493
+      prompt_tokens_details:
+        - modality: TEXT
+          token_count: 493
+      thoughts_token_count: 84
+      total_token_count: 588
+      traffic_type: ON_DEMAND
+    avg_logprobs: -0.7127666039900347
+    invocation_id: e-29e6116f-c6a9-49a9-8aff-fe95743f0a9e
+    author: study_buddy_coordinator
+    long_running_tool_ids: []
+    id: 73c4310f-598f-48f6-9902-69bf8ef41085
+    timestamp: 1764030554.62493
+  - content:
+      parts:
+        - function_response:
+            id: adk-607b3ffb-51cf-4a9f-8d31-51d533fa4422
+            name: transfer_to_agent
+            response:
+              result: null
+      role: user
+    invocation_id: e-29e6116f-c6a9-49a9-8aff-fe95743f0a9e
+    author: study_buddy_coordinator
+    actions:
+      transfer_to_agent: math_tutor
+    id: 91b0a846-aa48-4673-897a-c02325d7c03d
+    timestamp: 1764030556.23705
+  - model_version: gemini-2.5-flash
+    content:
+      parts:
+        - text: |-
+            The Pythagorean theorem is a fundamental concept in geometry that describes the relationship between the three sides of a **right-angled triangle**.
+
+            Here's a breakdown:
+
+            1.  **Right-angled triangle**: This is a triangle where one of its angles measures exactly 90 degrees (a right angle).
+
+            2.  **Sides of a right-angled triangle**:
+                *   **Hypotenuse**: This is the longest side of the right-angled triangle, and it's always opposite the right angle.
+                *   **Legs**: The other two sides are called legs.
+
+            3.  **The Theorem**: The Pythagorean theorem states that in a right-angled triangle, the square of the length of the hypotenuse (let's call it 'c') is equal to the sum of the squares of the lengths of the other two sides (the legs, let's call them 'a' and 'b').
+
+                This can be written as a formula:
+                **a² + b² = c²**
+
+            **In simpler terms:** If you draw squares on each side of a right-angled triangle, the area of the square on the hypotenuse is equal to the sum of the areas of the squares on the two legs.
+
+            **Example:**
+            Imagine a right-angled triangle where:
+            *   One leg (a) is 3 units long.
+            *   The other leg (b) is 4 units long.
+
+            Using the Pythagorean theorem:
+            3² + 4² = c²
+            9 + 16 = c²
+            25 = c²
+            c = √25
+            c = 5
+
+            So, the hypotenuse (c) would be 5 units long.
+
+            The Pythagorean theorem is incredibly useful for finding the length of an unknown side in a right-angled triangle if you know the lengths of the other two sides. It also helps to determine if a triangle is a right-angled triangle if you know all three side lengths.
+          thought_signature: Cq0CAePx_16QV3vVAykeiCkSfTTnPue8O7235tA8ooDBqSZOJWY3a9FFKnH0kaHAb7r0onl-n1xpX2RNhAaewtITKBwG448LHS6bF1CW8MBpS97gk0kxwsPzhAW-so0dMqQWwH7q6yeRlS_QH9_Cv_nQgMa9cYbka-08nbczcGDPiTgUNTrVotssLe86mxAr2N1wIEJclWE-eyRQH7Npaohd4FSl6LttNmLQ_E_stbB4Q2LSF0oDneA--rAO-7d3BcQ01pNgE25LgzMqU6IIz2pao4ZmE2WJ5pgxcP3pi9JynxQBmlV_Na99poq3JynFNdLeAaps5xxXrpai4bNZXjZXBBLqQTrJCcrkkWIzSp68C-lzC-bE1sUHABFF0BbsBEEkRfpTuuSb6WN-F5s8Fw==
+      role: model
+    finish_reason: STOP
+    usage_metadata:
+      candidates_token_count: 415
+      candidates_tokens_details:
+        - modality: TEXT
+          token_count: 415
+      prompt_token_count: 535
+      prompt_tokens_details:
+        - modality: TEXT
+          token_count: 535
+      thoughts_token_count: 53
+      total_token_count: 1003
+      traffic_type: ON_DEMAND
+    avg_logprobs: -0.1145406975803605
+    invocation_id: e-29e6116f-c6a9-49a9-8aff-fe95743f0a9e
+    author: math_tutor
+    id: 0242e4cd-75bc-411e-b6b8-d8bbd6be8c7d
+    timestamp: 1764030556.240535
+  - content:
+      parts:
+        - text: Thanks! Can you help me with other subjects too?
+      role: user
+    invocation_id: e-7c56f14c-4af9-4522-a6ea-91a6d95f2589
+    author: user
+    actions:
+      state_delta: {}
+    id: 464d1d46-5e2e-471b-923c-7ebcbb57b708
+    timestamp: 1764030559.636696
+  - model_version: gemini-2.5-flash
+    content:
+      parts:
+        - text: |-
+            I specialize **only** in mathematics. For questions about other subjects, I'll transfer you to our study buddy coordinator who can find the right tutor for you.
+          thought_signature: CpsDAePx_16QpozplpddMGdSXeVXyfngzbTE_ax9r4KOUXb33kbrdAhoc-iiElItPV6dSsqVsMnezlc1Nhnnjl8JM9v70J3AqH11pSX8_rzYO99SnAN6bZQGs2xN3af5WEnZ8vajebYc6e8tZz0dYVZ8ycVy3z-CLewJuPkLwHQ98-4UdKxwvUn5rdpfC95HQnT6H_fWr5bgXpbX_Bkm0qbXWOew9m7jwQCUpiUhDZhlkP6OSqWLjKFZFIzBdQZAYQII2Ric8D0VgaAVVAm1HjaNsBhhvX2i1QVJK8TzQbu9XV00X5Zd193I6wgX5O9c4bS53ro3aXnykCSAoImXHy10MjwZWzR1y_HtXki4V2P0lEVyvRAUQXBvbV8LEI3OnsYOrdy4K1RWUbBBkvUQAWcYF9XPo7vr-MZAB8OX73_871-QhRTqa1IU9VGVN_2We_QNA5Gfv7nhpgJKCcTRoBJnNgAULkc_FcNbddNMeAj9SyR9XF9bYGB7I3XVKkywF3AKeJEww17FCMAwfeRMyb5TBqLlrWUH7jQOrjog
+        - function_call:
+            id: adk-a0d4e96b-10c1-4a4e-97df-4ae9516b9148
+            args:
+              agent_name: study_buddy_coordinator
+            name: transfer_to_agent
+      role: model
+    finish_reason: STOP
+    usage_metadata:
+      candidates_token_count: 46
+      candidates_tokens_details:
+        - modality: TEXT
+          token_count: 46
+      prompt_token_count: 961
+      prompt_tokens_details:
+        - modality: TEXT
+          token_count: 1012
+      thoughts_token_count: 76
+      total_token_count: 1083
+      traffic_type: ON_DEMAND
+    avg_logprobs: -0.6769560109014097
+    invocation_id: e-7c56f14c-4af9-4522-a6ea-91a6d95f2589
+    author: math_tutor
+    long_running_tool_ids: []
+    id: 9731389e-b13f-42fb-b57b-65cd405d76b6
+    timestamp: 1764030559.653622
+  - content:
+      parts:
+        - function_response:
+            id: adk-a0d4e96b-10c1-4a4e-97df-4ae9516b9148
+            name: transfer_to_agent
+            response:
+              result: null
+      role: user
+    invocation_id: e-7c56f14c-4af9-4522-a6ea-91a6d95f2589
+    author: math_tutor
+    actions:
+      transfer_to_agent: study_buddy_coordinator
+    id: 3b4fe057-03bd-4d8e-852b-7b0d90fdf033
+    timestamp: 1764030561.464229
+  - model_version: gemini-2.5-flash
+    content:
+      parts:
+        - text: |-
+            Absolutely! I'd be happy to help you with other subjects. What else are you working on today? Just let me know what subject you need assistance with, and I'll connect you with the right tutor!
+          thought_signature: CrgGAePx_15btDm82_0yH4tw0do52uEd3-o3ICRDIx2OjOsdnGociUjSggT_Ql1udea8BXYG6Evehi-6ycBf7k6BUvJHKI1DhZOHekVapEEMRtbXmF5aLeZKASNpRpHawBuUaWpA-kP5l8w6E-Cn3T0Jm8I3WR89opQddhuPUl5TQg4VzZctaonma-YwWmXsrmTiSbsqb3RGxBbl1TszpTjfupTOo0Q48mVzE7AARlhRnxj1bGiTGqBlvQUqwD1aexkRUuyYJZsn1OrrbVuF5LhUWNgr8uINJFXTr2PLddz1i7RgKYxdIWl4Uha8_thUG-FukmmJon5sKeCyb09dD9LCXetSGBC6IkRtnqzqY86Cpx0Zlf9Y0O5Cp7EZbw42osSklSGG9-MDx2xaUWvYUafI7utsweauwTTYuW0dwV-k-0QUVSL8fwt4hAZb34GUHd6UVbmVNLQsuMmDnvk6uTsbz5g9SeyLhOaPsSPZ-KLzG7IS47t6KPToT27oCEjwJL1MC1Ks4WjTxhs2ZOI39Nn3WS8cvZmbQ6A27SpwqR_w65Ql65tlry5AMVcYDzQTaWXr-hqYlqxvLnNjwlX2wODTQnGq0dDCP7Ou3UObul3Yj26mRB1GeGPWgIWk4Z-S-oRIuz1nJJbc9NXPUHCRsmGfsBqE6jPZv52-kH95EsZ9T7z_sfRaCjwa9P7mqgc2FWcdX5Lv4oaihFO9RBSirPMP3ItvFlpHeaHDRxkOwmXZLvJ5YEqzyU-8PCnumTRyLJ17pJSq2KOd5miAdTg9Rt2czmC5BLg8QVItOVW2Lp8IlNI4DM4KW2CfJ-EeWTvg5R3M7WUSljga_6Wh0r0YRJNEXZg95i9nyw2xmy96U-DJmrl-6EfrGsGq_Jx6Y7OQKRbNwlHCi1yFBajIsva-6VtW8ZOxuKXr6KaVhBSxX8hBNYeu0I4iB862KxyXTW7llx-xq0AT94qOJRavoVDpB4dqFeMbQqmXrf5icBzfQ7fTwZvAOdZB4U2vgQUZMiOI2nHLdfTL7V0kLQeXAxAokB9hzUWl4iXYMrylb_HMovutObdyA_koXuRp-IIwQzKv1wx0eGQh95BstDI=
+      role: model
+    finish_reason: STOP
+    usage_metadata:
+      candidates_token_count: 44
+      candidates_tokens_details:
+        - modality: TEXT
+          token_count: 44
+      prompt_token_count: 1043
+      prompt_tokens_details:
+        - modality: TEXT
+          token_count: 1125
+      thoughts_token_count: 172
+      total_token_count: 1259
+      traffic_type: ON_DEMAND
+    avg_logprobs: -1.2942879416725852
+    invocation_id: e-7c56f14c-4af9-4522-a6ea-91a6d95f2589
+    author: study_buddy_coordinator
+    id: f889e7bc-c4fe-4e88-a05a-471408a4718b
+    timestamp: 1764030561.468504
+last_update_time: 1764030561.468504

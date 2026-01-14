@@ -1,0 +1,98 @@
+# Copyright 2025 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+id: 367c3ccb-e977-4f00-b3d8-70fc47c3bdd2
+app_name: tools_agent_008
+user_id: adk_conformance_test_user
+state: {}
+events:
+  - content:
+      parts:
+        - text: |-
+            Where's Google's Headquarter?
+      role: user
+    invocation_id: e-ad1ed827-79b0-45a5-b78f-0aaba4d7da88
+    author: user
+    actions:
+      state_delta: {}
+    id: 9750c205-e78c-46b6-8759-49936cf9626c
+    timestamp: 1761679510.58609
+  - content:
+      parts:
+        - text: |-
+            Google's global headquarters, known as the Googleplex, is located at 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA.
+      role: model
+    grounding_metadata:
+      grounding_chunks:
+        - maps:
+            place_id: places/ChIJj61dQgK6j4AR4GeTYWZsKWw
+            title: Googleplex
+            uri: https://maps.google.com/?cid=7793879817120868320
+        - maps:
+            place_id: places/ChIJ1yjFJ1-7j4ARG_RVqFD1h7k
+            title: Google B40
+            uri: https://maps.google.com/?cid=13368923745643000859
+        - maps:
+            place_id: places/ChIJVVUVy_25j4ARtLNXs5iHGLw
+            title: Google 1395 Charleston
+            uri: https://maps.google.com/?cid=13553732168485155764
+        - maps:
+            place_id: places/ChIJN8KDNnq7j4AR18Xh9LVB4c4
+            title: Google B43
+            uri: https://maps.google.com/?cid=14907268491326375383
+        - maps:
+            place_id: places/ChIJ-ZPIsFK7j4ARt1tM_P16sfI
+            title: Google 1875
+            uri: https://maps.google.com/?cid=17487894059334523831
+        - maps:
+            place_id: places/ChIJedBa3G-3j4ARwE-cCcR2vDI
+            title: Google Bay View
+            uri: https://maps.google.com/?cid=3655927581864906688
+        - maps:
+            place_id: places/ChIJ8_1RFxu7j4ARbOw_1c58mlE
+            title: Google 1965
+            uri: https://maps.google.com/?cid=5880149491268447340
+      grounding_supports:
+        - grounding_chunk_indices:
+            - 0
+            - 1
+          segment:
+            end_index: 125
+            text: |-
+              Google's global headquarters, known as the Googleplex, is located at 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA.
+      retrieval_queries:
+        - |-
+          Google's headquarters location
+    finish_reason: STOP
+    usage_metadata:
+      candidates_token_count: 37
+      candidates_tokens_details:
+        - modality: TEXT
+          token_count: 37
+      prompt_token_count: 68
+      prompt_tokens_details:
+        - modality: TEXT
+          token_count: 68
+      thoughts_token_count: 126
+      tool_use_prompt_token_count: 39
+      tool_use_prompt_tokens_details:
+        - modality: TEXT
+          token_count: 39
+      total_token_count: 270
+      traffic_type: ON_DEMAND
+    invocation_id: e-ad1ed827-79b0-45a5-b78f-0aaba4d7da88
+    author: google_maps_tool_agent
+    id: 323112ea-df4b-4868-b1f8-cfe2818ece2c
+    timestamp: 1761679510.58656
+last_update_time: 1761679510.58656

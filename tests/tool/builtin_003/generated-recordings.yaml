@@ -1,0 +1,106 @@
+# Copyright 2025 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+recordings:
+  - user_message_index: 0
+    agent_name: google_maps_tool_agent
+    llm_recording:
+      llm_request:
+        model: gemini-2.5-flash
+        contents:
+          - parts:
+              - text: |-
+                  Where's Google's Headquarter?
+            role: user
+        config:
+          http_options:
+            headers:
+              x-goog-api-client: google-adk/1.17.0 gl-python/3.10.19
+              user-agent: google-adk/1.17.0 gl-python/3.10.19
+          system_instruction: |-
+            You are a restaurant recommender. You can use the google_maps_grounding tool to find information about local restaurants.
+
+
+            You are an agent. Your internal name is "google_maps_tool_agent". The description about you is "Demonstrates Google Maps Grounding Tool usage.".
+          tools:
+            - google_maps: {}
+          labels:
+            adk_agent_name: google_maps_tool_agent
+        live_connect_config:
+          input_audio_transcription: {}
+          output_audio_transcription: {}
+      llm_response:
+        content:
+          parts:
+            - text: |-
+                Google's global headquarters, known as the Googleplex, is located at 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA.
+          role: model
+        grounding_metadata:
+          grounding_chunks:
+            - maps:
+                place_id: places/ChIJj61dQgK6j4AR4GeTYWZsKWw
+                title: Googleplex
+                uri: https://maps.google.com/?cid=7793879817120868320
+            - maps:
+                place_id: places/ChIJ1yjFJ1-7j4ARG_RVqFD1h7k
+                title: Google B40
+                uri: https://maps.google.com/?cid=13368923745643000859
+            - maps:
+                place_id: places/ChIJVVUVy_25j4ARtLNXs5iHGLw
+                title: Google 1395 Charleston
+                uri: https://maps.google.com/?cid=13553732168485155764
+            - maps:
+                place_id: places/ChIJN8KDNnq7j4AR18Xh9LVB4c4
+                title: Google B43
+                uri: https://maps.google.com/?cid=14907268491326375383
+            - maps:
+                place_id: places/ChIJ-ZPIsFK7j4ARt1tM_P16sfI
+                title: Google 1875
+                uri: https://maps.google.com/?cid=17487894059334523831
+            - maps:
+                place_id: places/ChIJedBa3G-3j4ARwE-cCcR2vDI
+                title: Google Bay View
+                uri: https://maps.google.com/?cid=3655927581864906688
+            - maps:
+                place_id: places/ChIJ8_1RFxu7j4ARbOw_1c58mlE
+                title: Google 1965
+                uri: https://maps.google.com/?cid=5880149491268447340
+          grounding_supports:
+            - grounding_chunk_indices:
+                - 0
+                - 1
+              segment:
+                end_index: 125
+                text: |-
+                  Google's global headquarters, known as the Googleplex, is located at 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA.
+          retrieval_queries:
+            - |-
+              Google's headquarters location
+        finish_reason: STOP
+        usage_metadata:
+          candidates_token_count: 37
+          candidates_tokens_details:
+            - modality: TEXT
+              token_count: 37
+          prompt_token_count: 68
+          prompt_tokens_details:
+            - modality: TEXT
+              token_count: 68
+          thoughts_token_count: 126
+          tool_use_prompt_token_count: 39
+          tool_use_prompt_tokens_details:
+            - modality: TEXT
+              token_count: 39
+          total_token_count: 270
+          traffic_type: ON_DEMAND

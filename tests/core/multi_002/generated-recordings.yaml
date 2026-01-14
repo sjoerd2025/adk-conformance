@@ -1,0 +1,596 @@
+# Copyright 2025 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+recordings:
+  - user_message_index: 0
+    agent_name: study_buddy_coordinator
+    llm_recording:
+      llm_request:
+        model: gemini-2.5-flash
+        contents:
+          - parts:
+              - text: What is photosynthesis?
+            role: user
+        config:
+          http_options:
+            headers:
+              x-goog-api-client: google-adk/1.19.0 gl-python/3.12.8
+              user-agent: google-adk/1.19.0 gl-python/3.12.8
+          system_instruction: |
+            You are a Study Buddy Coordinator that helps students with their homework and study questions.
+
+            You have access to three specialized tutor agents:
+            - math_tutor: For mathematics, algebra, geometry, calculus, statistics
+            - science_tutor: For physics, chemistry, biology, earth science
+            - history_tutor: For history, geography, social studies, historical events
+
+            Your responsibilities:
+            1. Understand what subject(s) the student needs help with
+            2. Delegate to the appropriate tutor agent(s)
+            3. If a question involves multiple subjects, delegate to each relevant tutor
+            4. Combine the responses from the tutors into a helpful answer for the student
+
+            Always be encouraging and supportive in your responses.
+
+
+            You are an agent. Your internal name is "study_buddy_coordinator". The description about you is "Study coordinator that delegates questions to subject-specific tutors.".
+
+
+            You have a list of other agents to transfer to:
+
+
+            Agent name: math_tutor
+            Agent description: Mathematics tutor specializing in math problems and concepts.
+
+
+            Agent name: science_tutor
+            Agent description: Science tutor specializing in physics, chemistry, and biology.
+
+
+            Agent name: history_tutor
+            Agent description: History tutor specializing in historical events and social studies.
+
+
+            If you are the best to answer the question according to your description,
+            you can answer it.
+
+            If another agent is better for answering the question according to its
+            description, call `transfer_to_agent` function to transfer the question to that
+            agent. When transferring, do not generate any text other than the function
+            call.
+
+            **NOTE**: the only available agents for `transfer_to_agent` function are
+            `history_tutor`, `math_tutor`, `science_tutor`.
+          tools:
+            - function_declarations:
+                - description: "Transfer the question to another agent.\n\n  This tool hands off control to another agent when it's more suitable to\n  answer the user's question according to the agent's description.\n\n  Note:\n    For most use cases, you should use TransferToAgentTool instead of this\n    function directly. TransferToAgentTool provides additional enum constraints\n    that prevent LLMs from hallucinating invalid agent names.\n\n  Args:\n    agent_name: the agent name to transfer to.\n  "
+                  name: transfer_to_agent
+                  parameters:
+                    properties:
+                      agent_name:
+                        enum:
+                          - math_tutor
+                          - science_tutor
+                          - history_tutor
+                        type: STRING
+                    required:
+                      - agent_name
+                    type: OBJECT
+                  response:
+                    type: 'NULL'
+          labels:
+            adk_agent_name: study_buddy_coordinator
+        live_connect_config:
+          input_audio_transcription: {}
+          output_audio_transcription: {}
+      llm_response:
+        model_version: gemini-2.5-flash
+        content:
+          parts:
+            - function_call:
+                args:
+                  agent_name: science_tutor
+                name: transfer_to_agent
+              thought_signature: CuwBAePx_146wt-gnNKjga-FpwxJ2woV3fFCWlfVGnw0bvUaz-tfiie50dxVpuTy05GlDo0gWUL1B0zBkr1mq5P3QYkJSJOerlwTgx-2iNuvjOLmgu3GYy69k_mtdNDV-WUIsXu8xC0S3UQT_X-oT7YoX_xHHRjjEw-_-D6zmIAL94duS3wpF3srRBF7_miCmdr3ueO5E7NaR2c7cG__BDlvjhaNzvibgrobZRyiW99CTGEK1AwXaCETEX1KzDuaPvE9kz_HOQ_F9nNqQGcVlCxFalYMzhXObMjoX7rhKB1L4_Zg6uwifpUel_a8GbM=
+          role: model
+        finish_reason: STOP
+        usage_metadata:
+          candidates_token_count: 11
+          candidates_tokens_details:
+            - modality: TEXT
+              token_count: 11
+          prompt_token_count: 492
+          prompt_tokens_details:
+            - modality: TEXT
+              token_count: 492
+          thoughts_token_count: 47
+          total_token_count: 550
+          traffic_type: ON_DEMAND
+        avg_logprobs: -0.53137037970803
+  - user_message_index: 0
+    agent_name: study_buddy_coordinator
+    tool_recording:
+      tool_call:
+        id: adk-c6e2e8b6-c6b9-45f3-87b9-5ac51b1f5ebc
+        args:
+          agent_name: science_tutor
+        name: transfer_to_agent
+      tool_response:
+        id: adk-c6e2e8b6-c6b9-45f3-87b9-5ac51b1f5ebc
+        name: transfer_to_agent
+        response:
+          result: null
+  - user_message_index: 0
+    agent_name: science_tutor
+    llm_recording:
+      llm_request:
+        model: gemini-2.5-flash
+        contents:
+          - parts:
+              - text: What is photosynthesis?
+            role: user
+          - parts:
+              - text: 'For context:'
+              - text: |-
+                  [study_buddy_coordinator] called tool `transfer_to_agent` with parameters: {'agent_name': 'science_tutor'}
+            role: user
+          - parts:
+              - text: 'For context:'
+              - text: |-
+                  [study_buddy_coordinator] `transfer_to_agent` tool returned result: {'result': None}
+            role: user
+        config:
+          http_options:
+            headers:
+              x-goog-api-client: google-adk/1.19.0 gl-python/3.12.8
+              user-agent: google-adk/1.19.0 gl-python/3.12.8
+          system_instruction: |
+            You are a Science Tutor specialized in helping students with science subjects.
+
+            Your expertise includes:
+            - Physics (motion, forces, energy, electricity)
+            - Chemistry (elements, reactions, molecules, periodic table)
+            - Biology (cells, organisms, ecosystems, human body)
+            - Earth Science (geology, weather, climate)
+
+            When helping students:
+            1. Explain scientific concepts with real-world examples
+            2. Use clear and simple language
+            3. Relate concepts to everyday experiences
+            4. Encourage scientific thinking and curiosity
+
+            Focus ONLY on science-related questions. For other subjects, indicate that you specialize in science.
+
+
+            You are an agent. Your internal name is "science_tutor". The description about you is "Science tutor specializing in physics, chemistry, and biology.".
+
+
+            You have a list of other agents to transfer to:
+
+
+            Agent name: study_buddy_coordinator
+            Agent description: Study coordinator that delegates questions to subject-specific tutors.
+
+
+            Agent name: math_tutor
+            Agent description: Mathematics tutor specializing in math problems and concepts.
+
+
+            Agent name: history_tutor
+            Agent description: History tutor specializing in historical events and social studies.
+
+
+            If you are the best to answer the question according to your description,
+            you can answer it.
+
+            If another agent is better for answering the question according to its
+            description, call `transfer_to_agent` function to transfer the question to that
+            agent. When transferring, do not generate any text other than the function
+            call.
+
+            **NOTE**: the only available agents for `transfer_to_agent` function are
+            `history_tutor`, `math_tutor`, `study_buddy_coordinator`.
+
+            If neither you nor the other agents are best for the question, transfer to your parent agent study_buddy_coordinator.
+          tools:
+            - function_declarations:
+                - description: "Transfer the question to another agent.\n\n  This tool hands off control to another agent when it's more suitable to\n  answer the user's question according to the agent's description.\n\n  Note:\n    For most use cases, you should use TransferToAgentTool instead of this\n    function directly. TransferToAgentTool provides additional enum constraints\n    that prevent LLMs from hallucinating invalid agent names.\n\n  Args:\n    agent_name: the agent name to transfer to.\n  "
+                  name: transfer_to_agent
+                  parameters:
+                    properties:
+                      agent_name:
+                        enum:
+                          - study_buddy_coordinator
+                          - math_tutor
+                          - history_tutor
+                        type: STRING
+                    required:
+                      - agent_name
+                    type: OBJECT
+                  response:
+                    type: 'NULL'
+          labels:
+            adk_agent_name: science_tutor
+        live_connect_config:
+          input_audio_transcription: {}
+          output_audio_transcription: {}
+      llm_response:
+        model_version: gemini-2.5-flash
+        content:
+          parts:
+            - text: |-
+                Photosynthesis is a fascinating process that plants and some other organisms use to turn sunlight into food! Think of it like a plant's kitchen, where it cooks up its own meals.
+
+                Here's a breakdown:
+
+                *   **Ingredients:** Plants need three main things for photosynthesis:
+                    1.  **Sunlight:** This provides the energy for the whole process.
+                    2.  **Water (H₂O):** Plants absorb this from the soil through their roots.
+                    3.  **Carbon Dioxide (CO₂):** They take this gas from the air through tiny pores on their leaves called stomata.
+
+                *   **The Kitchen (Chloroplasts):** Inside the plant cells, especially in the leaves, there are special organelles called chloroplasts. These are like the plant's mini-factories where photosynthesis happens. Chloroplasts contain a green pigment called **chlorophyll**, which is what gives plants their green color and, more importantly, is responsible for capturing sunlight!
+
+                *   **The Recipe (The Process):**
+                    *   Chlorophyll traps the energy from sunlight.
+                    *   This energy is then used to convert water and carbon dioxide into two main products:
+                        *   **Glucose (sugar):** This is the plant's food! It uses glucose for energy to grow, flower, and produce fruits.
+                        *   **Oxygen (O₂):** This is released back into the air as a byproduct. And guess what? This is the oxygen that humans and animals breathe!
+
+                **In simple terms:** Plants take in sunlight, water, and carbon dioxide, and through a chemical reaction in their leaves, they create their own food (sugar) and release oxygen.
+
+                **Real-world example:** Have you ever seen a houseplant thriving near a sunny window? That plant is busily performing photosynthesis to grow big and strong! Or think about how trees in a forest help keep our air fresh – they're constantly taking in CO2 and giving us oxygen.
+
+                It's a super important process not just for plants, but for almost all life on Earth!
+              thought_signature: CqUCAePx_17Tet1LYCEhj4r7iYBNE6yXs8L29y0frRsBdiXm6EpFwd8o3JItf5tI3PFsjiiYrPE8t1DCjMMugcUgRJO6J0IN-AjlYGXdOfux8fE3N-kgoLnuwS8etEH7aVSYMG93RQfJK3oSlGd-RG2hWOHdWrpm6PC7s7eCiUdrYqrZajM6r5_fT8uF4wI7sqqCTwv4KYA-r3ci7ROTIT1NdfMlEBSU6zVcbzfgs6U6tKGGF6hPHsjRmSSMVbmmcKrl3DkEGZV9z1RNUorD6y_4bSq8pZ9IqobWu_bFOd9gCe_jp1qnFvEh9Lw7jgFKQMZA6mzmmvZqx3hqLZFZvW2cgcY5U0DSB_-qZJyiG8USZjDKx-O3mFh54pO_XFLlojiHtmBKNzY=
+          role: model
+        finish_reason: STOP
+        usage_metadata:
+          candidates_token_count: 431
+          candidates_tokens_details:
+            - modality: TEXT
+              token_count: 431
+          prompt_token_count: 562
+          prompt_tokens_details:
+            - modality: TEXT
+              token_count: 562
+          thoughts_token_count: 56
+          total_token_count: 1049
+          traffic_type: ON_DEMAND
+        avg_logprobs: -0.251597782851925
+  - user_message_index: 1
+    agent_name: science_tutor
+    llm_recording:
+      llm_request:
+        model: gemini-2.5-flash
+        contents:
+          - parts:
+              - text: What is photosynthesis?
+            role: user
+          - parts:
+              - text: 'For context:'
+              - text: |-
+                  [study_buddy_coordinator] called tool `transfer_to_agent` with parameters: {'agent_name': 'science_tutor'}
+            role: user
+          - parts:
+              - text: 'For context:'
+              - text: |-
+                  [study_buddy_coordinator] `transfer_to_agent` tool returned result: {'result': None}
+            role: user
+          - parts:
+              - text: |-
+                  Photosynthesis is a fascinating process that plants and some other organisms use to turn sunlight into food! Think of it like a plant's kitchen, where it cooks up its own meals.
+
+                  Here's a breakdown:
+
+                  *   **Ingredients:** Plants need three main things for photosynthesis:
+                      1.  **Sunlight:** This provides the energy for the whole process.
+                      2.  **Water (H₂O):** Plants absorb this from the soil through their roots.
+                      3.  **Carbon Dioxide (CO₂):** They take this gas from the air through tiny pores on their leaves called stomata.
+
+                  *   **The Kitchen (Chloroplasts):** Inside the plant cells, especially in the leaves, there are special organelles called chloroplasts. These are like the plant's mini-factories where photosynthesis happens. Chloroplasts contain a green pigment called **chlorophyll**, which is what gives plants their green color and, more importantly, is responsible for capturing sunlight!
+
+                  *   **The Recipe (The Process):**
+                      *   Chlorophyll traps the energy from sunlight.
+                      *   This energy is then used to convert water and carbon dioxide into two main products:
+                          *   **Glucose (sugar):** This is the plant's food! It uses glucose for energy to grow, flower, and produce fruits.
+                          *   **Oxygen (O₂):** This is released back into the air as a byproduct. And guess what? This is the oxygen that humans and animals breathe!
+
+                  **In simple terms:** Plants take in sunlight, water, and carbon dioxide, and through a chemical reaction in their leaves, they create their own food (sugar) and release oxygen.
+
+                  **Real-world example:** Have you ever seen a houseplant thriving near a sunny window? That plant is busily performing photosynthesis to grow big and strong! Or think about how trees in a forest help keep our air fresh – they're constantly taking in CO2 and giving us oxygen.
+
+                  It's a super important process not just for plants, but for almost all life on Earth!
+                thought_signature: CqUCAePx_17Tet1LYCEhj4r7iYBNE6yXs8L29y0frRsBdiXm6EpFwd8o3JItf5tI3PFsjiiYrPE8t1DCjMMugcUgRJO6J0IN-AjlYGXdOfux8fE3N-kgoLnuwS8etEH7aVSYMG93RQfJK3oSlGd-RG2hWOHdWrpm6PC7s7eCiUdrYqrZajM6r5_fT8uF4wI7sqqCTwv4KYA-r3ci7ROTIT1NdfMlEBSU6zVcbzfgs6U6tKGGF6hPHsjRmSSMVbmmcKrl3DkEGZV9z1RNUorD6y_4bSq8pZ9IqobWu_bFOd9gCe_jp1qnFvEh9Lw7jgFKQMZA6mzmmvZqx3hqLZFZvW2cgcY5U0DSB_-qZJyiG8USZjDKx-O3mFh54pO_XFLlojiHtmBKNzY=
+            role: model
+          - parts:
+              - text: Now help me calculate the area of a rectangle that is 5 meters by 3 meters.
+            role: user
+        config:
+          http_options:
+            headers:
+              x-goog-api-client: google-adk/1.19.0 gl-python/3.12.8
+              user-agent: google-adk/1.19.0 gl-python/3.12.8
+          system_instruction: |
+            You are a Science Tutor specialized in helping students with science subjects.
+
+            Your expertise includes:
+            - Physics (motion, forces, energy, electricity)
+            - Chemistry (elements, reactions, molecules, periodic table)
+            - Biology (cells, organisms, ecosystems, human body)
+            - Earth Science (geology, weather, climate)
+
+            When helping students:
+            1. Explain scientific concepts with real-world examples
+            2. Use clear and simple language
+            3. Relate concepts to everyday experiences
+            4. Encourage scientific thinking and curiosity
+
+            Focus ONLY on science-related questions. For other subjects, indicate that you specialize in science.
+
+
+            You are an agent. Your internal name is "science_tutor". The description about you is "Science tutor specializing in physics, chemistry, and biology.".
+
+
+            You have a list of other agents to transfer to:
+
+
+            Agent name: study_buddy_coordinator
+            Agent description: Study coordinator that delegates questions to subject-specific tutors.
+
+
+            Agent name: math_tutor
+            Agent description: Mathematics tutor specializing in math problems and concepts.
+
+
+            Agent name: history_tutor
+            Agent description: History tutor specializing in historical events and social studies.
+
+
+            If you are the best to answer the question according to your description,
+            you can answer it.
+
+            If another agent is better for answering the question according to its
+            description, call `transfer_to_agent` function to transfer the question to that
+            agent. When transferring, do not generate any text other than the function
+            call.
+
+            **NOTE**: the only available agents for `transfer_to_agent` function are
+            `history_tutor`, `math_tutor`, `study_buddy_coordinator`.
+
+            If neither you nor the other agents are best for the question, transfer to your parent agent study_buddy_coordinator.
+          tools:
+            - function_declarations:
+                - description: "Transfer the question to another agent.\n\n  This tool hands off control to another agent when it's more suitable to\n  answer the user's question according to the agent's description.\n\n  Note:\n    For most use cases, you should use TransferToAgentTool instead of this\n    function directly. TransferToAgentTool provides additional enum constraints\n    that prevent LLMs from hallucinating invalid agent names.\n\n  Args:\n    agent_name: the agent name to transfer to.\n  "
+                  name: transfer_to_agent
+                  parameters:
+                    properties:
+                      agent_name:
+                        enum:
+                          - study_buddy_coordinator
+                          - math_tutor
+                          - history_tutor
+                        type: STRING
+                    required:
+                      - agent_name
+                    type: OBJECT
+                  response:
+                    type: 'NULL'
+          labels:
+            adk_agent_name: science_tutor
+        live_connect_config:
+          input_audio_transcription: {}
+          output_audio_transcription: {}
+      llm_response:
+        model_version: gemini-2.5-flash
+        content:
+          parts:
+            - function_call:
+                args:
+                  agent_name: math_tutor
+                name: transfer_to_agent
+              thought_signature: CvsCAePx_14m3s-yuvpmvHX3AHUUfYxjSjZwaBYt0SFozsIEPxo6WT6BzUdOVvht1mq-WFK4UQCOgGvWotjBWGUoEzHxs9ysH75FkwNEQPC0GUSvshpdPXYmh5dGQvxxlnLCmzaDvEeEDj0qHgkh0GaU1Fgzs6uoCSCz7LLAB1WBdFgXOgi08BjsfVUGTLWdbAitRnfDxY804z9T3VlAi-G6L140jfJ3BGv9mZK61CH5fiBRO8mktlPyLoUPDNEEhqNyHo66xGLSIM5yyvE58ulACTRiCgYGW28Y4l9N9c08nDMqHivXHzyZGTyyLUFHixeQmr7MIyQf-UtYjQ_w_083YJb-MnPZFZIUNGfgId-jF6S8RJ9rQw56AvLB64MrsPM1dnGcEh5JQWgI2KVhz0mbm-DmzYezdjDse2tFxBf8KUmAfiveCfmwbUgnPzu1AKME-eXDJPygLuGUA7jItm_L9m-rPOI6tysf7CtR3Rfotqy0BWA9Wt4bp87vsg==
+          role: model
+        finish_reason: STOP
+        usage_metadata:
+          candidates_token_count: 11
+          candidates_tokens_details:
+            - modality: TEXT
+              token_count: 11
+          prompt_token_count: 1012
+          prompt_tokens_details:
+            - modality: TEXT
+              token_count: 1066
+          thoughts_token_count: 76
+          total_token_count: 1099
+          traffic_type: ON_DEMAND
+        avg_logprobs: -0.9975049278952859
+  - user_message_index: 1
+    agent_name: science_tutor
+    tool_recording:
+      tool_call:
+        id: adk-a8571f0b-9a64-43a0-a0be-72e04b7fc499
+        args:
+          agent_name: math_tutor
+        name: transfer_to_agent
+      tool_response:
+        id: adk-a8571f0b-9a64-43a0-a0be-72e04b7fc499
+        name: transfer_to_agent
+        response:
+          result: null
+  - user_message_index: 1
+    agent_name: math_tutor
+    llm_recording:
+      llm_request:
+        model: gemini-2.5-flash
+        contents:
+          - parts:
+              - text: What is photosynthesis?
+            role: user
+          - parts:
+              - text: 'For context:'
+              - text: |-
+                  [study_buddy_coordinator] called tool `transfer_to_agent` with parameters: {'agent_name': 'science_tutor'}
+            role: user
+          - parts:
+              - text: 'For context:'
+              - text: |-
+                  [study_buddy_coordinator] `transfer_to_agent` tool returned result: {'result': None}
+            role: user
+          - parts:
+              - text: 'For context:'
+              - text: |-
+                  [science_tutor] said: Photosynthesis is a fascinating process that plants and some other organisms use to turn sunlight into food! Think of it like a plant's kitchen, where it cooks up its own meals.
+
+                  Here's a breakdown:
+
+                  *   **Ingredients:** Plants need three main things for photosynthesis:
+                      1.  **Sunlight:** This provides the energy for the whole process.
+                      2.  **Water (H₂O):** Plants absorb this from the soil through their roots.
+                      3.  **Carbon Dioxide (CO₂):** They take this gas from the air through tiny pores on their leaves called stomata.
+
+                  *   **The Kitchen (Chloroplasts):** Inside the plant cells, especially in the leaves, there are special organelles called chloroplasts. These are like the plant's mini-factories where photosynthesis happens. Chloroplasts contain a green pigment called **chlorophyll**, which is what gives plants their green color and, more importantly, is responsible for capturing sunlight!
+
+                  *   **The Recipe (The Process):**
+                      *   Chlorophyll traps the energy from sunlight.
+                      *   This energy is then used to convert water and carbon dioxide into two main products:
+                          *   **Glucose (sugar):** This is the plant's food! It uses glucose for energy to grow, flower, and produce fruits.
+                          *   **Oxygen (O₂):** This is released back into the air as a byproduct. And guess what? This is the oxygen that humans and animals breathe!
+
+                  **In simple terms:** Plants take in sunlight, water, and carbon dioxide, and through a chemical reaction in their leaves, they create their own food (sugar) and release oxygen.
+
+                  **Real-world example:** Have you ever seen a houseplant thriving near a sunny window? That plant is busily performing photosynthesis to grow big and strong! Or think about how trees in a forest help keep our air fresh – they're constantly taking in CO2 and giving us oxygen.
+
+                  It's a super important process not just for plants, but for almost all life on Earth!
+            role: user
+          - parts:
+              - text: Now help me calculate the area of a rectangle that is 5 meters by 3 meters.
+            role: user
+          - parts:
+              - text: 'For context:'
+              - text: |-
+                  [science_tutor] called tool `transfer_to_agent` with parameters: {'agent_name': 'math_tutor'}
+            role: user
+          - parts:
+              - text: 'For context:'
+              - text: |-
+                  [science_tutor] `transfer_to_agent` tool returned result: {'result': None}
+            role: user
+        config:
+          http_options:
+            headers:
+              x-goog-api-client: google-adk/1.19.0 gl-python/3.12.8
+              user-agent: google-adk/1.19.0 gl-python/3.12.8
+          system_instruction: |
+            You are a Math Tutor specialized in helping students with mathematics.
+
+            Your expertise includes:
+            - Arithmetic and basic operations
+            - Algebra and equations
+            - Geometry and shapes
+            - Calculus and derivatives
+            - Statistics and probability
+
+            When helping students:
+            1. Break down complex problems into simple steps
+            2. Explain the reasoning behind each step
+            3. Provide clear examples
+            4. Be patient and encouraging
+
+            Focus ONLY on mathematics-related questions. For other subjects, indicate that you specialize in math.
+
+
+            You are an agent. Your internal name is "math_tutor". The description about you is "Mathematics tutor specializing in math problems and concepts.".
+
+
+            You have a list of other agents to transfer to:
+
+
+            Agent name: study_buddy_coordinator
+            Agent description: Study coordinator that delegates questions to subject-specific tutors.
+
+
+            Agent name: science_tutor
+            Agent description: Science tutor specializing in physics, chemistry, and biology.
+
+
+            Agent name: history_tutor
+            Agent description: History tutor specializing in historical events and social studies.
+
+
+            If you are the best to answer the question according to your description,
+            you can answer it.
+
+            If another agent is better for answering the question according to its
+            description, call `transfer_to_agent` function to transfer the question to that
+            agent. When transferring, do not generate any text other than the function
+            call.
+
+            **NOTE**: the only available agents for `transfer_to_agent` function are
+            `history_tutor`, `science_tutor`, `study_buddy_coordinator`.
+
+            If neither you nor the other agents are best for the question, transfer to your parent agent study_buddy_coordinator.
+          tools:
+            - function_declarations:
+                - description: "Transfer the question to another agent.\n\n  This tool hands off control to another agent when it's more suitable to\n  answer the user's question according to the agent's description.\n\n  Note:\n    For most use cases, you should use TransferToAgentTool instead of this\n    function directly. TransferToAgentTool provides additional enum constraints\n    that prevent LLMs from hallucinating invalid agent names.\n\n  Args:\n    agent_name: the agent name to transfer to.\n  "
+                  name: transfer_to_agent
+                  parameters:
+                    properties:
+                      agent_name:
+                        enum:
+                          - study_buddy_coordinator
+                          - science_tutor
+                          - history_tutor
+                        type: STRING
+                    required:
+                      - agent_name
+                    type: OBJECT
+                  response:
+                    type: 'NULL'
+          labels:
+            adk_agent_name: math_tutor
+        live_connect_config:
+          input_audio_transcription: {}
+          output_audio_transcription: {}
+      llm_response:
+        model_version: gemini-2.5-flash
+        content:
+          parts:
+            - text: |-
+                To calculate the area of a rectangle, you multiply its length by its width.
+
+                In this case:
+                *   Length = 5 meters
+                *   Width = 3 meters
+
+                Area = Length × Width
+                Area = 5 meters × 3 meters
+                Area = 15 square meters
+
+                So, the area of the rectangle is 15 square meters.
+              thought_signature: CtIBAePx_17ejfPjAN_r2AXrhXgWhWRKTVUGQeV1OK5aEZbaKnU4Hwd9dISwhRWYe5Tb1TqEQgW2rlOe8nqH6jdPx8fKq0Xjs0ZHv4VnrJ6A62MaVaTfJu18f3THHqAxdStMi-a8DZJG9THbETmBAXg4svliCu2Q8Kr9ycRMWLucQUUNj52uWedojBMCTNVq8aV7QlnbFlpniUQz5txrybVEQDNMxFI0QZwIECIfToOSfyoseUENK4YSx4veak5gaBxRCDK6ob3ctvIO_juE9Gvo5_uq
+          role: model
+        finish_reason: STOP
+        usage_metadata:
+          candidates_token_count: 76
+          candidates_tokens_details:
+            - modality: TEXT
+              token_count: 76
+          prompt_token_count: 1048
+          prompt_tokens_details:
+            - modality: TEXT
+              token_count: 1048
+          thoughts_token_count: 37
+          total_token_count: 1161
+          traffic_type: ON_DEMAND
+        avg_logprobs: -0.19268114943253367

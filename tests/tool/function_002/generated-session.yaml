@@ -1,0 +1,285 @@
+# Copyright 2025 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+id: f59376c6-352d-41a5-a14d-20b5d216078c
+app_name: tools_agent_004
+user_id: adk_conformance_test_user
+state: {}
+events:
+  - content:
+      parts:
+        - text: I need a round-trip flight from San Francisco to Tokyo, leaving March 15 and returning March 25. I prefer business class and direct flights only.
+      role: user
+    invocation_id: e-195cb372-e3af-4783-9ed3-f3f13a2a2185
+    author: user
+    actions:
+      state_delta: {}
+    id: cb93c763-259f-46ce-8344-7d8976dfcd15
+    timestamp: 1761014486.800314
+  - content:
+      parts:
+        - thought_signature: Cr4FAePx_15ImLJNdtSAbm06L4x5fO8cZF6Y4wfOK7eZ49cJ5HJWPDTu7W8RBv5F-4hotBMzxf4cLYzV9cBOV8BXS4UQl5uhiQwLe8oT_CAvnhGC0BoPq-ATWz-k5Y6taqV8v8JWUYF-qbKYL67IkifR2d6CG0zCRh5VStYDFtxkesSMaQaJgktLxdt-4jHLyaFiNtffZgJcu_0f0kV-_4tra_klzJAkpFb75nyh8tLShh877jjMu7Ll0w-0Yb__j1owWgnJdDj9I5XZ6r-zBENu7q9cFdsOPL9wOWD7cRWJJnqAPV3wr2zLrpdpMQxnul-RvGjgjWyuODla8_P4_mF8EJ17Tbz2kdJe41w8jNSfgmn0PToHDIv8vqgmWdtMSxU0LOKQRTbqwFqvBZUvd9y048WyopAyRGqxGhKzrcGYbe9ZTBiNZpTeE7hBFGMnmzpDutV7ynzFsLvpw69qOvxHdA432aCNN0BBH2hgsOW1BMBOqXUDdqLdHzPf0KZB3W0eazzMjJ0V848RT29NzHUgpMx7rKQNmxIVL-68aDHnntG7xLrGSrD6--PAwBhELoYvg7SLL9QOsyeluB9PTOgDJURd5tycgMlDQiOcnmLIQf6qbAnXWth-2fQIW4eyDqRocQS4f1AAntKEBe7AXF-dzjcFAYQkcgLvU89pBwKILHl-530Rf1ypZqClnp0dvGzsFbLF1RGlh6pRzvMQQwaoFFX5lJ9wvFcsMAObv0tuRce7xWlRVaPRlAcsPBqqEY1dpmrROcQjwGWdNHShW3nG3Mw5jRmuh2IuBGyx5Agafaqh5NFMMqyWbdUzUz8BeEU912PX_H7NNvvee1n-jS-ymUe33uljtzgR-0hnwXfOvIX-13y45n1zZorvcR4GsgJjDooNn0dPHWhQKzjN_h71S9FTsDqShCZA3itSJmt9
+          function_call:
+            id: adk-914471d7-b9d3-4663-8420-a55e715d4fe7
+            args:
+              trip:
+                origin: San Francisco
+                departure_date: March 15
+                return_date: March 25
+                destination: Tokyo
+              preferences:
+                max_stops: 0
+                cabin_class: Business
+            name: search_flights
+      role: model
+    finish_reason: STOP
+    usage_metadata:
+      candidates_token_count: 32
+      candidates_tokens_details:
+        - modality: TEXT
+          token_count: 32
+      prompt_token_count: 493
+      prompt_tokens_details:
+        - modality: TEXT
+          token_count: 493
+      thoughts_token_count: 164
+      total_token_count: 689
+      traffic_type: PROVISIONED_THROUGHPUT
+    avg_logprobs: -0.9385378360748291
+    invocation_id: e-195cb372-e3af-4783-9ed3-f3f13a2a2185
+    author: travel_planner
+    long_running_tool_ids: []
+    id: 063e7225-bd7b-43dd-a5da-55a2d9a750a8
+    timestamp: 1761014486.800952
+  - content:
+      parts:
+        - function_response:
+            id: adk-914471d7-b9d3-4663-8420-a55e715d4fe7
+            name: search_flights
+            response:
+              trip_type: round-trip
+              route: San Francisco to Tokyo
+              departure_date: March 15
+              return_date: March 25
+              cabin_class: Business
+              max_stops: 0
+              preferred_airline: null
+              flexible_dates: false
+              search_status: completed
+              available_flights:
+                - Various Airlines - round-trip Business flight with direct
+                - 'Departure: March 15'
+                - 'Return: March 25'
+      role: user
+    invocation_id: e-195cb372-e3af-4783-9ed3-f3f13a2a2185
+    author: travel_planner
+    id: 1fff02ae-8144-4a8e-8eb2-10eec5b68c81
+    timestamp: 1761014489.06145
+  - content:
+      parts:
+        - text: |-
+            Great! I've found a round-trip business class flight from San Francisco to Tokyo, departing on March 15th and returning on March 25th, with no stops.
+
+            Would you like to explore any other dates or destinations, or perhaps look into adding insurance or checked baggage for this trip?
+      role: model
+    finish_reason: STOP
+    usage_metadata:
+      candidates_token_count: 64
+      candidates_tokens_details:
+        - modality: TEXT
+          token_count: 64
+      prompt_token_count: 598
+      prompt_tokens_details:
+        - modality: TEXT
+          token_count: 760
+      total_token_count: 662
+      traffic_type: PROVISIONED_THROUGHPUT
+    avg_logprobs: -0.19581888616085052
+    invocation_id: e-195cb372-e3af-4783-9ed3-f3f13a2a2185
+    author: travel_planner
+    id: f10db129-13e7-442d-a864-08b5cc579b28
+    timestamp: 1761014489.062144
+  - content:
+      parts:
+        - text: Great! Now calculate the cost for a base fare of $800 for just one passenger with carry-on only.
+      role: user
+    invocation_id: e-27fc9dd4-f85b-4f8d-ba45-0be72d95757f
+    author: user
+    actions:
+      state_delta: {}
+    id: 488088a5-cbc1-4440-afc5-a526fa812ec0
+    timestamp: 1761014490.509475
+  - content:
+      parts:
+        - thought_signature: CvYFAePx_17K6Qlc-fTiDmXidDt9AymVV7jQXB0Jjjj6AamYGikoF5rGo7e0MStGb5ozPZfxngiwXJkn2URegUTawbNa98ivTz22uXtSWmWm1WdAq2BGaWrw4FqXGhdXNL2tx9iVUeD0bAF6wCnVr0AHqW0lXbRN8mBQO3K0Je-oSFt06Z6GE8N-BTHuA70Ruop54hSQWFCJ_5Eur_qyKlqhwfgjtGAFdDCJ3X3R3i7nz-5Ze4S-khtt5QW6ccceNE-Vq4VVA1qsl6Nm9M1VB14ukFpZ0WE0wLavQ4Gctp2R0VTgf3uQUCLfdbXP86XQYY2EO6lSfTYn-Sj7zKnTOpece7XvRZA8KpkcZaIVinTbrIa92g-Hrrf7SZwW4Fg869mwn5E51C_PnAlQMMFiRHeEByQBB08k6VgfKgAx0Bf4-OnZtNlJ1R4fwmvQ9wzOKKB6evjoRnXrob-Sffziw_0owa6M4dKHVGTNtua_MgP36Ci0I-ZczxhZB3Tqiq8aD3x0TbEDPUBDTZQmtkiF5DU1iHojCJevNIO4xIf3HEpIILiJtVOkbOEzM007aRr1_eDUl8o99qWY1PAAeosOYqouUaqGPNgEdZVJ6YKxbXmasAfibZtImwyuo7FGDazxBllv8olOtdU_M9zlDl2Lw-BNoVOyN9w9NKCGwNeGDmgqUbemsGFbuDRC4hgx1FhGMKo4mvjny8FfzrEobb7aqkLcuPTMBXfyAGo4b_8CLivPtg2-_c1LiAcOnlhKFmYEmDY-Syr_Ml64heEKGKY-RfTEe_kbhD1BtOmvQkRqYtTlbXxhNvu5OoMNyjHqp31lfxcX5vLNj7iGWR7qPc_yXnEm4obWR5G1X6q6ARJh_UdRopOECunR5LBD4yVZ8LQNMOSv_6Qv4798uKIC36nOOc59GomJN-n0jBT5wuLERJzeTBmI1wXWbyW7TmB5GIdpNTG4OKij7EjuQcMwmtqMABfdgROpYlwEZoDH7emCiHDCwWxIwYgNvzg=
+          function_call:
+            id: adk-a87cd2b9-2f10-43dc-bbc5-73bac6ec9961
+            args:
+              baggage_count: null
+              base_fare: 800
+              num_passengers: 1
+            name: calculate_trip_cost
+      role: model
+    finish_reason: STOP
+    usage_metadata:
+      candidates_token_count: 18
+      candidates_tokens_details:
+        - modality: TEXT
+          token_count: 18
+      prompt_token_count: 687
+      prompt_tokens_details:
+        - modality: TEXT
+          token_count: 849
+      thoughts_token_count: 202
+      total_token_count: 907
+      traffic_type: PROVISIONED_THROUGHPUT
+    avg_logprobs: -3.8236232333713107
+    invocation_id: e-27fc9dd4-f85b-4f8d-ba45-0be72d95757f
+    author: travel_planner
+    long_running_tool_ids: []
+    id: 1bfcfad8-78b5-406b-aad4-bef6ea37b63d
+    timestamp: 1761014490.524106
+  - content:
+      parts:
+        - function_response:
+            id: adk-a87cd2b9-2f10-43dc-bbc5-73bac6ec9961
+            name: calculate_trip_cost
+            response:
+              base_fare: 800
+              num_passengers: 1
+              subtotal: 800
+              insurance_included: false
+              insurance_cost: 0.0
+              baggage_count: null
+              baggage_cost: 0.0
+              total_cost: 800.0
+      role: user
+    invocation_id: e-27fc9dd4-f85b-4f8d-ba45-0be72d95757f
+    author: travel_planner
+    id: 1ed054fd-19c7-4e75-b975-73a44bf4c5e8
+    timestamp: 1761014492.935321
+  - content:
+      parts:
+        - text: |-
+            The total cost for your trip, with a base fare of $800 for one passenger and carry-on only, will be $800. This includes no additional cost for baggage or insurance.
+
+            Would you like to add travel insurance or checked baggage to your trip?
+      role: model
+    finish_reason: STOP
+    usage_metadata:
+      candidates_token_count: 57
+      candidates_tokens_details:
+        - modality: TEXT
+          token_count: 57
+      prompt_token_count: 742
+      prompt_tokens_details:
+        - modality: TEXT
+          token_count: 1104
+      total_token_count: 799
+      traffic_type: PROVISIONED_THROUGHPUT
+    avg_logprobs: -0.13230695222553454
+    invocation_id: e-27fc9dd4-f85b-4f8d-ba45-0be72d95757f
+    author: travel_planner
+    id: 4e954e4a-d840-4de1-bf69-2ce2d50a4866
+    timestamp: 1761014492.937826
+  - content:
+      parts:
+        - text: 'Also calculate another option: base fare $1200 for 2 passengers, with 2 checked bags each and travel insurance.'
+      role: user
+    invocation_id: e-4a64d83a-6279-44e1-a8cc-c86c910cf957
+    author: user
+    actions:
+      state_delta: {}
+    id: 433588dd-1f60-4f23-878d-402da60e4fdf
+    timestamp: 1761014494.0637
+  - content:
+      parts:
+        - thought_signature: CpQDAePx_15HEI9SUYyY3DZktEyOtzyBmP4LYJDtEhmWK4brlHTsytZUeteU0L2xdmLySsaiayPS5EsGfIRzdABIHND6_lA7qolqErF4TTwGOQlfNMPApACEJ57JLRWRoG5p9_RUJRs47guZ4AYaPoAsks6WnkPcQZMUEecAZ-zJS7oEBzoaPUtlHfVxIjPQsfoF8i5UECKhM3cZp_e19pxvGgCOXX-WLx_cIOF6WTaLrbq9HOqtREwNg7a-utFNd8g-ojx2r8o4CUAfxJf950MAkgpvzUnoxtK_ClfrirASfrEcTbFTA7Z7jqdA7QD2CWIH07alnnRSTZAMm29BAC5vB5YE4ctw6qAsKyWO1h6VgTHhinf9Vilsi-0qsezRmIqb_TWRYL6ayMv0XYz2rrE6zkTvKNYAkg0og0r0-kxd7hbo0RSJsDQMvgKGHOv-N7Fi3vWeRraHtOqFy91GBItcsjrNovFmo6adhRtDOxUwyBj7lZvUIbOfDWD8c71jn9s0n-nmJp3EJ0VAfKD1B0KLRL1I0UE=
+          function_call:
+            id: adk-c7bff122-90fb-43f3-b601-d3fc19c02bf9
+            args:
+              insurance: true
+              base_fare: 1200
+              num_passengers: 2
+              baggage_count: 2
+            name: calculate_trip_cost
+      role: model
+    finish_reason: STOP
+    usage_metadata:
+      candidates_token_count: 20
+      candidates_tokens_details:
+        - modality: TEXT
+          token_count: 20
+      prompt_token_count: 826
+      prompt_tokens_details:
+        - modality: TEXT
+          token_count: 1188
+      thoughts_token_count: 112
+      total_token_count: 958
+      traffic_type: PROVISIONED_THROUGHPUT
+    avg_logprobs: -1.0280840873718262
+    invocation_id: e-4a64d83a-6279-44e1-a8cc-c86c910cf957
+    author: travel_planner
+    long_running_tool_ids: []
+    id: a3806160-064e-4931-a269-98c0bfbd3f0e
+    timestamp: 1761014494.08743
+  - content:
+      parts:
+        - function_response:
+            id: adk-c7bff122-90fb-43f3-b601-d3fc19c02bf9
+            name: calculate_trip_cost
+            response:
+              base_fare: 1200
+              num_passengers: 2
+              subtotal: 2400
+              insurance_included: true
+              insurance_cost: 240.0
+              baggage_count: 2
+              baggage_cost: 70
+              total_cost: 2710.0
+      role: user
+    invocation_id: e-4a64d83a-6279-44e1-a8cc-c86c910cf957
+    author: travel_planner
+    id: a10a2ccb-52ec-4f59-b6cb-cdc4e17893a3
+    timestamp: 1761014495.986125
+  - content:
+      parts:
+        - text: |-
+            For the second option, with a base fare of $1200 per person for 2 passengers, 2 checked bags each, and travel insurance:
+
+            *   **Base Fare:** $2400 (2 passengers * $1200/passenger)
+            *   **Baggage Cost:** $70 (for 2 checked bags per person)
+            *   **Insurance Cost:** $240
+            *   **Total Cost:** $2710
+
+            Do you have any other questions or need further assistance with your travel plans?
+      role: model
+    finish_reason: STOP
+    usage_metadata:
+      candidates_token_count: 115
+      candidates_tokens_details:
+        - modality: TEXT
+          token_count: 115
+      prompt_token_count: 883
+      prompt_tokens_details:
+        - modality: TEXT
+          token_count: 1355
+      total_token_count: 998
+      traffic_type: ON_DEMAND
+    avg_logprobs: -0.10657048432723336
+    invocation_id: e-4a64d83a-6279-44e1-a8cc-c86c910cf957
+    author: travel_planner
+    id: 42a201db-71a0-4ade-aa0d-afcc2360b2fe
+    timestamp: 1761014495.989003
+last_update_time: 1761014495.989003

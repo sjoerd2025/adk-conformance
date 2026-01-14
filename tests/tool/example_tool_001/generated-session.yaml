@@ -1,0 +1,85 @@
+# Copyright 2025 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+id: ab899a2b-4eeb-4d60-92fb-a265f34a2db7
+app_name: tools_agent_007
+user_id: adk_conformance_test_user
+state: {}
+events:
+  - content:
+      parts:
+        - text: The product is great, but the customer service is terrible.
+      role: user
+    invocation_id: e-66e5f086-890b-46e7-8f55-43fad8ae3e39
+    author: user
+    actions:
+      state_delta: {}
+    id: 2118dbfa-ce3d-4ad0-b3e9-288c66b448e1
+    timestamp: 1761677688.4513
+  - content:
+      parts:
+        - text: 'Sentiment: Neutral. Reasoning: The review has both positive feedback for the product and negative feedback for the customer service.'
+      role: model
+    finish_reason: STOP
+    usage_metadata:
+      candidates_token_count: 23
+      candidates_tokens_details:
+        - modality: TEXT
+          token_count: 23
+      prompt_token_count: 251
+      prompt_tokens_details:
+        - modality: TEXT
+          token_count: 251
+      thoughts_token_count: 40
+      total_token_count: 314
+      traffic_type: ON_DEMAND
+    avg_logprobs: -0.9855124432107677
+    invocation_id: e-66e5f086-890b-46e7-8f55-43fad8ae3e39
+    author: example_tool_agent
+    id: 5fa7ce07-5a21-4f9a-8405-038e28ab383e
+    timestamp: 1761677688.452003
+  - content:
+      parts:
+        - text: |-
+            Absolutely love this product! Best purchase I've made all year.
+      role: user
+    invocation_id: e-68b098ca-1045-4385-921f-264750cfe9a2
+    author: user
+    actions:
+      state_delta: {}
+    id: 8ad97957-0782-4448-a888-2901593360bd
+    timestamp: 1761677690.856227
+  - content:
+      parts:
+        - text: 'Sentiment: Positive. Reasoning: Enthusiastic praise with superlative language.'
+      role: model
+    finish_reason: STOP
+    usage_metadata:
+      candidates_token_count: 14
+      candidates_tokens_details:
+        - modality: TEXT
+          token_count: 14
+      prompt_token_count: 288
+      prompt_tokens_details:
+        - modality: TEXT
+          token_count: 288
+      thoughts_token_count: 58
+      total_token_count: 360
+      traffic_type: ON_DEMAND
+    avg_logprobs: -0.8077043805803571
+    invocation_id: e-68b098ca-1045-4385-921f-264750cfe9a2
+    author: example_tool_agent
+    id: 22289a40-8ada-41e2-8982-b68a280f7f3f
+    timestamp: 1761677690.866091
+last_update_time: 1761677690.866091

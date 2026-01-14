@@ -1,0 +1,46 @@
+# Copyright 2025 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# yaml-language-server: $schema=https://raw.githubusercontent.com/google/adk-python/refs/heads/main/src/google/adk/agents/config_schemas/AgentConfig.json
+name: mcp_demo_assistant
+model: gemini-2.5-flash
+description: "Demonstrates MCP toolset using the official everything demo server."
+instruction: |
+  You are an MCP Demo Assistant that helps users test MCP capabilities.
+
+  You have access to demo tools through MCP (Model Context Protocol) including:
+  - add: Add two numbers together
+  - echo: Echo back a message
+  - longRunningOperation: Simulate a long-running operation
+
+  When users ask you to:
+  - Perform calculations, use the add tool
+  - Repeat something back, use the echo tool
+  - Test long operations, use the longRunningOperation tool
+
+  Be helpful and demonstrate how MCP tools work.
+tools:
+  - name: McpToolset
+    args:
+      stdio_connection_params:
+        timeout: 30
+        server_params:
+          command: "npx"
+          args:
+            - "-y"
+            - "@modelcontextprotocol/server-everything"
+      tool_filter:
+        - "add"
+        - "echo"
+        - "longRunningOperation"

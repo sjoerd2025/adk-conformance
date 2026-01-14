@@ -1,0 +1,66 @@
+# Copyright 2025 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+id: 9bf5701e-0e79-46f9-9857-0f085a762ae4
+app_name: tools_agent_005
+user_id: adk_conformance_test_user
+state: {}
+events:
+  - content:
+      parts:
+        - text: Who is the maintainer of google-adk on the page https://pypi.org/project/google-adk/
+      role: user
+    invocation_id: e-57695a02-464f-4632-9c4d-f9d185ff4ec1
+    author: user
+    actions:
+      state_delta: {}
+    id: 06c362df-f268-4141-89f9-41fbb90fc6a7
+    timestamp: 1761014480.26488
+  - content:
+      parts:
+        - text: The maintainer of google-adk on PyPI is vertex_ai.
+      role: model
+    grounding_metadata:
+      grounding_chunks:
+        - web:
+            title: google-adk · PyPI
+            uri: https://pypi.org/project/google-adk/
+      grounding_supports:
+        - grounding_chunk_indices:
+            - 0
+          segment:
+            end_index: 50
+            text: The maintainer of google-adk on PyPI is vertex_ai.
+    finish_reason: STOP
+    usage_metadata:
+      candidates_token_count: 16
+      candidates_tokens_details:
+        - modality: TEXT
+          token_count: 16
+      prompt_token_count: 173
+      prompt_tokens_details:
+        - modality: TEXT
+          token_count: 173
+      thoughts_token_count: 103
+      tool_use_prompt_token_count: 38
+      tool_use_prompt_tokens_details:
+        - modality: TEXT
+          token_count: 38
+      total_token_count: 330
+      traffic_type: PROVISIONED_THROUGHPUT
+    invocation_id: e-57695a02-464f-4632-9c4d-f9d185ff4ec1
+    author: url_context_agent
+    id: 7aef1306-8d7d-4a7d-a642-9f51964076bb
+    timestamp: 1761014480.265608
+last_update_time: 1761014480.265608

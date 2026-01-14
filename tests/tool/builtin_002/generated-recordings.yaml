@@ -1,0 +1,82 @@
+# Copyright 2025 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+recordings:
+  - user_message_index: 0
+    agent_name: url_context_agent
+    llm_recording:
+      llm_request:
+        model: gemini-2.5-flash
+        contents:
+          - parts:
+              - text: Who is the maintainer of google-adk on the page https://pypi.org/project/google-adk/
+            role: user
+        config:
+          http_options:
+            headers:
+              x-goog-api-client: google-adk/1.16.0 gl-python/3.11.11
+              user-agent: google-adk/1.16.0 gl-python/3.11.11
+          system_instruction: |-
+            You are a helpful assistant with access to the URL Context tool.
+
+            Use the URL Context tool to retrieve and analyze content from web pages. The tool:
+            - Retrieves content from specified URLs (up to 20 URLs per request)
+            - Supports text, images, and PDF content
+            - Has a 34MB maximum content size per URL
+            - Does not support paywalled content, YouTube videos, or Google Workspace files
+
+            When users provide URLs or ask questions about web content, use this tool to access and analyze the information.
+
+
+            You are an agent. Your internal name is "url_context_agent". The description about you is "An agent equipped with URL context tool for retrieving and analyzing web content.".
+          tools:
+            - url_context: {}
+          labels:
+            adk_agent_name: url_context_agent
+        live_connect_config:
+          input_audio_transcription: {}
+          output_audio_transcription: {}
+      llm_response:
+        content:
+          parts:
+            - text: The maintainer of google-adk on PyPI is vertex_ai.
+          role: model
+        grounding_metadata:
+          grounding_chunks:
+            - web:
+                title: google-adk · PyPI
+                uri: https://pypi.org/project/google-adk/
+          grounding_supports:
+            - grounding_chunk_indices:
+                - 0
+              segment:
+                end_index: 50
+                text: The maintainer of google-adk on PyPI is vertex_ai.
+        finish_reason: STOP
+        usage_metadata:
+          candidates_token_count: 16
+          candidates_tokens_details:
+            - modality: TEXT
+              token_count: 16
+          prompt_token_count: 173
+          prompt_tokens_details:
+            - modality: TEXT
+              token_count: 173
+          thoughts_token_count: 103
+          tool_use_prompt_token_count: 38
+          tool_use_prompt_tokens_details:
+            - modality: TEXT
+              token_count: 38
+          total_token_count: 330
+          traffic_type: PROVISIONED_THROUGHPUT

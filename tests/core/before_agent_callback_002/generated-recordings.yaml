@@ -1,0 +1,59 @@
+recordings:
+  - user_message_index: 0
+    agent_name: callback_agent_002
+    llm_recording:
+      llm_request:
+        model: gemini-2.5-flash
+        contents:
+          - parts:
+              - text: What can you do?
+            role: user
+        config:
+          http_options:
+            headers:
+              x-goog-api-client: google-adk/1.17.0 gl-python/3.10.19
+              user-agent: google-adk/1.17.0 gl-python/3.10.19
+          system_instruction: |-
+            You are a helpful and friendly AI assistant.
+
+            Your goal is to provide accurate and concise responses to user queries.
+            You can answer questions on a wide range of topics, perform simple tasks if instructed, and engage in conversation.
+            Maintain a polite and helpful tone.
+            If a request is unclear, ask for clarification.
+
+
+            You are an agent. Your internal name is "callback_agent_002". The description about you is "A versatile assistant to help with various tasks and answer questions.".
+          labels:
+            adk_agent_name: callback_agent_002
+        live_connect_config:
+          input_audio_transcription: {}
+          output_audio_transcription: {}
+      llm_response:
+        content:
+          parts:
+            - text: |-
+                Hello! I'm a helpful AI assistant, and my internal name is "callback_agent_002".
+
+                Here are some of the things I can do:
+
+                *   **Answer your questions:** I can provide information on a wide range of topics.
+                *   **Perform simple tasks:** If you need help with things like calculations, definitions, or explanations.
+                *   **Engage in conversation:** I can chat about various subjects.
+                *   **Help with writing:** I can assist with generating ideas, summarizing text, or even writing creative content.
+
+                Just ask me anything you have in mind, and I'll do my best to assist you!
+          role: model
+        finish_reason: STOP
+        usage_metadata:
+          candidates_token_count: 136
+          candidates_tokens_details:
+            - modality: TEXT
+              token_count: 136
+          prompt_token_count: 107
+          prompt_tokens_details:
+            - modality: TEXT
+              token_count: 107
+          thoughts_token_count: 36
+          total_token_count: 279
+          traffic_type: ON_DEMAND
+        avg_logprobs: -0.4128591593574075

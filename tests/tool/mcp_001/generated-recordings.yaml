@@ -1,0 +1,227 @@
+recordings:
+  - user_message_index: 0
+    agent_name: mcp_demo_assistant
+    llm_recording:
+      llm_request:
+        model: gemini-2.5-flash
+        contents:
+          - parts:
+              - text: Add 5 and 7 together.
+            role: user
+        config:
+          http_options:
+            headers:
+              x-goog-api-client: google-adk/1.16.0 gl-python/3.11.11
+              user-agent: google-adk/1.16.0 gl-python/3.11.11
+          system_instruction: |-
+            You are an MCP Demo Assistant that helps users test MCP capabilities.
+
+            You have access to demo tools through MCP (Model Context Protocol) including:
+            - add: Add two numbers together
+            - echo: Echo back a message
+            - longRunningOperation: Simulate a long-running operation
+
+            When users ask you to:
+            - Perform calculations, use the add tool
+            - Repeat something back, use the echo tool
+            - Test long operations, use the longRunningOperation tool
+
+            Be helpful and demonstrate how MCP tools work.
+
+
+            You are an agent. Your internal name is "mcp_demo_assistant". The description about you is "Demonstrates MCP toolset using the official everything demo server.".
+          tools:
+            - function_declarations:
+                - description: Echoes back the input
+                  name: echo
+                  parameters:
+                    properties:
+                      message:
+                        description: Message to echo
+                        type: STRING
+                    required:
+                      - message
+                    type: OBJECT
+                - description: Adds two numbers
+                  name: add
+                  parameters:
+                    properties:
+                      a:
+                        description: First number
+                        type: NUMBER
+                      b:
+                        description: Second number
+                        type: NUMBER
+                    required:
+                      - a
+                      - b
+                    type: OBJECT
+                - description: Demonstrates a long running operation with progress updates
+                  name: longRunningOperation
+                  parameters:
+                    properties:
+                      duration:
+                        default: 10
+                        description: Duration of the operation in seconds
+                        type: NUMBER
+                      steps:
+                        default: 5
+                        description: Number of steps in the operation
+                        type: NUMBER
+                    type: OBJECT
+          labels:
+            adk_agent_name: mcp_demo_assistant
+        live_connect_config:
+          input_audio_transcription: {}
+          output_audio_transcription: {}
+      llm_response:
+        content:
+          parts:
+            - thought_signature: Cs0BAePx_16nKUKb_0u6O-XkTqJfwS_I-rlWvvKT3TQvxhCkIoH_c08WFJtF-j5w0VSqnTpwxIicHhRk5vblmiIgBp5dVOATzzeRDWv4h8SGqa18vnOxDJazkUp929k2-HayCGCVH4_va4KpQ4jfPZroio2WozVDq4tKOK2k8nkJK8jfYSpyqiw_47swO0z_ozwyrQx8aE7c5OJoOj3NcHiH47cTT9paLr0rvQxjz_IqfIxlzPeV6OYnotCKQ6mXV24bRYcGoT1U1v0K48SF3Q==
+              function_call:
+                args:
+                  b: 7
+                  a: 5
+                name: add
+          role: model
+        finish_reason: STOP
+        usage_metadata:
+          candidates_token_count: 5
+          candidates_tokens_details:
+            - modality: TEXT
+              token_count: 5
+          prompt_token_count: 209
+          prompt_tokens_details:
+            - modality: TEXT
+              token_count: 209
+          thoughts_token_count: 53
+          total_token_count: 267
+          traffic_type: ON_DEMAND
+        avg_logprobs: -1.7109228134155274
+  - user_message_index: 0
+    agent_name: mcp_demo_assistant
+    tool_recording:
+      tool_call:
+        id: adk-c2957487-8db9-4144-8787-69901aa28528
+        args:
+          b: 7
+          a: 5
+        name: add
+      tool_response:
+        id: adk-c2957487-8db9-4144-8787-69901aa28528
+        name: add
+        response:
+          content:
+            - type: text
+              text: The sum of 5 and 7 is 12.
+          isError: false
+  - user_message_index: 0
+    agent_name: mcp_demo_assistant
+    llm_recording:
+      llm_request:
+        model: gemini-2.5-flash
+        contents:
+          - parts:
+              - text: Add 5 and 7 together.
+            role: user
+          - parts:
+              - thought_signature: Cs0BAePx_16nKUKb_0u6O-XkTqJfwS_I-rlWvvKT3TQvxhCkIoH_c08WFJtF-j5w0VSqnTpwxIicHhRk5vblmiIgBp5dVOATzzeRDWv4h8SGqa18vnOxDJazkUp929k2-HayCGCVH4_va4KpQ4jfPZroio2WozVDq4tKOK2k8nkJK8jfYSpyqiw_47swO0z_ozwyrQx8aE7c5OJoOj3NcHiH47cTT9paLr0rvQxjz_IqfIxlzPeV6OYnotCKQ6mXV24bRYcGoT1U1v0K48SF3Q==
+                function_call:
+                  args:
+                    b: 7
+                    a: 5
+                  name: add
+            role: model
+          - parts:
+              - function_response:
+                  name: add
+                  response:
+                    content:
+                      - type: text
+                        text: The sum of 5 and 7 is 12.
+                    isError: false
+            role: user
+        config:
+          http_options:
+            headers:
+              x-goog-api-client: google-adk/1.16.0 gl-python/3.11.11
+              user-agent: google-adk/1.16.0 gl-python/3.11.11
+          system_instruction: |-
+            You are an MCP Demo Assistant that helps users test MCP capabilities.
+
+            You have access to demo tools through MCP (Model Context Protocol) including:
+            - add: Add two numbers together
+            - echo: Echo back a message
+            - longRunningOperation: Simulate a long-running operation
+
+            When users ask you to:
+            - Perform calculations, use the add tool
+            - Repeat something back, use the echo tool
+            - Test long operations, use the longRunningOperation tool
+
+            Be helpful and demonstrate how MCP tools work.
+
+
+            You are an agent. Your internal name is "mcp_demo_assistant". The description about you is "Demonstrates MCP toolset using the official everything demo server.".
+          tools:
+            - function_declarations:
+                - description: Echoes back the input
+                  name: echo
+                  parameters:
+                    properties:
+                      message:
+                        description: Message to echo
+                        type: STRING
+                    required:
+                      - message
+                    type: OBJECT
+                - description: Adds two numbers
+                  name: add
+                  parameters:
+                    properties:
+                      a:
+                        description: First number
+                        type: NUMBER
+                      b:
+                        description: Second number
+                        type: NUMBER
+                    required:
+                      - a
+                      - b
+                    type: OBJECT
+                - description: Demonstrates a long running operation with progress updates
+                  name: longRunningOperation
+                  parameters:
+                    properties:
+                      duration:
+                        default: 10
+                        description: Duration of the operation in seconds
+                        type: NUMBER
+                      steps:
+                        default: 5
+                        description: Number of steps in the operation
+                        type: NUMBER
+                    type: OBJECT
+          labels:
+            adk_agent_name: mcp_demo_assistant
+        live_connect_config:
+          input_audio_transcription: {}
+          output_audio_transcription: {}
+      llm_response:
+        content:
+          parts:
+            - text: The sum of 5 and 7 is 12.
+          role: model
+        finish_reason: STOP
+        usage_metadata:
+          candidates_token_count: 13
+          candidates_tokens_details:
+            - modality: TEXT
+              token_count: 13
+          prompt_token_count: 234
+          prompt_tokens_details:
+            - modality: TEXT
+              token_count: 285
+          total_token_count: 247
+          traffic_type: ON_DEMAND
+        avg_logprobs: -0.0013209077028127818

@@ -1,0 +1,36 @@
+# Copyright 2025 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# yaml-language-server: $schema=https://raw.githubusercontent.com/google/adk-python/refs/heads/main/src/google/adk/agents/config_schemas/AgentConfig.json
+agent_class: LlmAgent
+name: email_rewriter
+model: gemini-2.5-flash
+description: "Refines the email based on tone analyzer's feedback."
+instruction: |
+  You are an Email Rewriter. Your job is to improve the email based on the tone analyzer's feedback.
+
+  Review the feedback provided by the tone analyzer and apply the suggested improvements to the email.
+
+  Important:
+  - Keep improvements focused on the specific aspect mentioned in the feedback
+  - Maintain the overall structure and other good aspects of the email
+  - Preserve any previous improvements that were made
+  - Only make changes related to the current feedback
+
+  Format your response as:
+  Subject: [improved subject line]
+
+  [improved email body]
+
+  Changes made: [brief description of what you improved]
