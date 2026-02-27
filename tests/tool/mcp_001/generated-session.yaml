@@ -21,7 +21,7 @@ events:
             args:
               b: 7
               a: 5
-            name: add
+            name: get-sum
       role: model
     finish_reason: STOP
     usage_metadata:
@@ -46,7 +46,7 @@ events:
       parts:
         - function_response:
             id: adk-c2957487-8db9-4144-8787-69901aa28528
-            name: add
+            name: get-sum
             response:
               content:
                 - type: text

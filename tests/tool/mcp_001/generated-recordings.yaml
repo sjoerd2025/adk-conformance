@@ -17,14 +17,14 @@ recordings:
             You are an MCP Demo Assistant that helps users test MCP capabilities.
 
             You have access to demo tools through MCP (Model Context Protocol) including:
-            - add: Add two numbers together
+            - get-sum: Add two numbers together
             - echo: Echo back a message
-            - longRunningOperation: Simulate a long-running operation
+            - trigger-long-running-operation: Simulate a long-running operation
 
             When users ask you to:
-            - Perform calculations, use the add tool
+            - Perform calculations, use the get-sum tool
             - Repeat something back, use the echo tool
-            - Test long operations, use the longRunningOperation tool
+            - Test long operations, use the trigger-long-running-operation tool
 
             Be helpful and demonstrate how MCP tools work.
 
@@ -43,7 +43,7 @@ recordings:
                       - message
                     type: OBJECT
                 - description: Adds two numbers
-                  name: add
+                  name: get-sum
                   parameters:
                     properties:
                       a:
@@ -57,7 +57,7 @@ recordings:
                       - b
                     type: OBJECT
                 - description: Demonstrates a long running operation with progress updates
-                  name: longRunningOperation
+                  name: trigger-long-running-operation
                   parameters:
                     properties:
                       duration:
@@ -82,7 +82,7 @@ recordings:
                 args:
                   b: 7
                   a: 5
-                name: add
+                name: get-sum
           role: model
         finish_reason: STOP
         usage_metadata:
@@ -106,10 +106,10 @@ recordings:
         args:
           b: 7
           a: 5
-        name: add
+        name: get-sum
       tool_response:
         id: adk-c2957487-8db9-4144-8787-69901aa28528
-        name: add
+        name: get-sum
         response:
           content:
             - type: text
@@ -130,11 +130,11 @@ recordings:
                   args:
                     b: 7
                     a: 5
-                  name: add
+                  name: get-sum
             role: model
           - parts:
               - function_response:
-                  name: add
+                  name: get-sum
                   response:
                     content:
                       - type: text
@@ -150,14 +150,14 @@ recordings:
             You are an MCP Demo Assistant that helps users test MCP capabilities.
 
             You have access to demo tools through MCP (Model Context Protocol) including:
-            - add: Add two numbers together
+            - get-sum: Add two numbers together
             - echo: Echo back a message
-            - longRunningOperation: Simulate a long-running operation
+            - trigger-long-running-operation: Simulate a long-running operation
 
             When users ask you to:
-            - Perform calculations, use the add tool
+            - Perform calculations, use the get-sum tool
             - Repeat something back, use the echo tool
-            - Test long operations, use the longRunningOperation tool
+            - Test long operations, use the trigger-long-running-operation tool
 
             Be helpful and demonstrate how MCP tools work.
 
@@ -176,7 +176,7 @@ recordings:
                       - message
                     type: OBJECT
                 - description: Adds two numbers
-                  name: add
+                  name: get-sum
                   parameters:
                     properties:
                       a:
@@ -190,7 +190,7 @@ recordings:
                       - b
                     type: OBJECT
                 - description: Demonstrates a long running operation with progress updates
-                  name: longRunningOperation
+                  name: trigger-long-running-operation
                   parameters:
                     properties:
                       duration:
